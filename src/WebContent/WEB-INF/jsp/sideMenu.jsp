@@ -7,11 +7,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/machico/css/base.css">
-<link rel="stylesheet" href="/machico/css/sideMenuServlet.css">
+<link rel="stylesheet" href="/machico/css/sideMenu.css">
 </head>
 <body>
 
 <script type="text/javascript" src="/machico/js/base.js"></script>
-<script type="text/javascript" src="/machico/js/sideMenuServlet.js"></script>
+<script type="text/javascript" src="/machico/js/sideMenu.js"></script>
 </body>
 </html>
