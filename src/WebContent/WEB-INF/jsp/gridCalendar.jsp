@@ -11,5 +11,7 @@
 </head>
 <body>
 
+<script type="text/javascript" src="/machico/js/base.js"></script>
+<script type="text/javascript" src="/machico/js/gridCalendar.js"></script>
 </body>
 </html>
