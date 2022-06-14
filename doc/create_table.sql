@@ -28,7 +28,7 @@ CREATE TABLE schedules (
     calendar_id INT NOT NULL,
     FOREIGN KEY (calendar_id) REFERENCES calendars (calendar_id),
     last_date date NOT NULL,
-    is_delete BOOLEAN DEFAULT FALSE NOT NULL
+    is_delete BOOLEAN DEFAULT FALSE NOT NULL,
     is_lock BOOLEAN DEFAULT FALSE NOT NULL
 );
 CREATE TABLE regular_schedules (
