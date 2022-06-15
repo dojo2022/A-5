@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -10,8 +10,11 @@
 <link rel="stylesheet" href="/machico/css/gridCalendar.css">
 </head>
 <body>
-
-<script type="text/javascript" src="/machico/js/base.js"></script>
-<script type="text/javascript" src="/machico/js/gridCalendar.js"></script>
+	<%@ include file="header.jsp" %>
+	<main>
+		<section id="calender">このなかに要素を書いてね</section>
+	</main>
+	<script type="text/javascript" src="/machico/js/base.js"></script>
+	<script type="text/javascript" src="/machico/js/gridCalendar.js"></script>
 </body>
 </html>
