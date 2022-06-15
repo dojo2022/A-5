@@ -1,7 +1,7 @@
 package beans;
 
-import java.sql.Date; //質問
-import java.sql.Time;
+
+import java.util.Date;
 
 public class Schedule {
 
@@ -14,7 +14,7 @@ public class Schedule {
 	private String schedule;
 	private String schedule_type;
 	private Date date;
-	private Time time;
+	private Date time;
 	private String memo;
 	private int calendar_id;
 	private Date last_date;
@@ -42,10 +42,10 @@ public class Schedule {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public Time getTime() {
+	public Date getTime() {
 		return time;
 	}
-	public void setTime(Time time) {
+	public void setTime(Date time) {
 		this.time = time;
 	}
 	public String getMemo() {
