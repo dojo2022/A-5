@@ -1,1 +1,11 @@
 @charset "UTF-8";
+
+#main-header {
+	padding: 10px 0;
+	position: fixed;
+	background-color: #D2B48C;
+	width: 100%;
+	height: 75px;
+	text-align: center;
+	border-bottom: 3px solid #615a50;
+}
