@@ -44,11 +44,12 @@ public class CalendarBeans {
 		this.calendarType = calendarType;
 	}
 
-	public boolean isLock() {
+	public boolean isIsLock() {
 		return isLock;
 	}
 
-	public void setLock(boolean isLock) {
+
+	public void setIsLock(boolean isLock) {
 		this.isLock = isLock;
 	}
 
@@ -59,5 +60,6 @@ public class CalendarBeans {
 	public void setLock(int lock) {
 		this.lock = lock;
 	}
+
 
 }
