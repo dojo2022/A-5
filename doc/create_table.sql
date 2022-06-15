@@ -2,7 +2,6 @@ DROP TABLE IF EXISTS schedules;
 DROP TABLE IF EXISTS regular_schedules;
 DROP TABLE IF EXISTS calendars;
 DROP TABLE IF EXISTS users;
-
 CREATE TABLE users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     user_name VARCHAR(15) NOT NULL UNIQUE,
@@ -10,7 +9,6 @@ CREATE TABLE users (
     priority_calendar INT DEFAULT 0 NOT NULL,
     is_delete BOOLEAN DEFAULT FALSE NOT NULL
 );
-
 CREATE TABLE calendars(
     calendar_id INT AUTO_INCREMENT PRIMARY KEY,
     calendar_name VARCHAR(15) NOT NULL,
@@ -20,7 +18,6 @@ CREATE TABLE calendars(
     calendar_type CHAR(1),
     lock INT DEFAULT null
 );
-
 CREATE TABLE schedules (
     schedule_id INT AUTO_INCREMENT PRIMARY KEY,
     schedule VARCHAR(15) NOT NULL,
@@ -31,9 +28,9 @@ CREATE TABLE schedules (
     calendar_id INT NOT NULL,
     FOREIGN KEY (calendar_id) REFERENCES calendars (calendar_id),
     last_date date NOT NULL,
-    is_delete BOOLEAN DEFAULT FALSE NOT NULL
+    is_delete BOOLEAN DEFAULT FALSE NOT NULL,
+    is_lock BOOLEAN DEFAULT FALSE NOT NULL
 );
-
 CREATE TABLE regular_schedules (
     schedule_id INT AUTO_INCREMENT PRIMARY KEY,
     schedule VARCHAR(15) NOT NULL,
