@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet {
 		// ログイン処理を行う
 		UserDAO uDao = new UserDAO();
 
-		//Beanseからとってきたidとnameを u に入れて持ってくる
+		//Beansからとってきたidとnameを u に入れて持ってくる
 		User u = uDao.isLoginOK(name, pw);
 
 		// ログイン成功
