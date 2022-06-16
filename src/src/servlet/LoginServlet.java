@@ -58,8 +58,9 @@ public class LoginServlet extends HttpServlet {
 			// リクエストスコープにエラーメッセージを格納する
 			request.setAttribute("errMessage", "入力内容が間違っています");
 
-			// 結果ページにリダイレクトする
-			response.sendRedirect("/machico/LoginServlet");
+			// 結果ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+			dispatcher.forward(request, response);
 
 		}
 	}

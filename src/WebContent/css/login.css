@@ -1,106 +1,105 @@
 @charset "UTF-8";
 
-        /* base.cssに書く必須項目 */
-        * {
-            box-sizing: border-box;
-            margin: 0px;
-        }
+/* base.cssに書く必須項目 */
+* {
+	box-sizing: border-box;
+	margin: 0px;
+}
 
-        html,
-        body {
-            background-color: #deb887;
-            margin-top: 20px;
-            text-align: center;
-            font-size: 25px;
-            height: auto;
-        }
+html, body {
+	background-color: #deb887;
+	margin-top: 20px;
+	text-align: center;
+	font-size: 25px;
+	height: auto;
+}
 
-        #title_logo{
-            font-size: 80px;
-            color: white;
-            margin-bottom: 30px;
-            font-weight: bold;
-        }
-        /* base.cssに書く必須項目 ここまで*/
-        .error_message {
-            color: #ff3535;
-            height: 1em;
-            line-height: 1em;
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
+#title_logo {
+	font-size: 80px;
+	color: white;
+	margin-bottom: 30px;
+	font-weight: bold;
+}
+/* base.cssに書く必須項目 ここまで*/
+.error_message {
+	color: #ff3535;
+	height: 1em;
+	line-height: 1em;
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
 
-        /* テーブル */
-        div #login{
-            text-align: center;
-        }
+/* テーブル */
+div #login {
+	text-align: center;
+}
 
-        table{
-            padding: auto;
-            margin: auto;
-        }
+table {
+	padding: auto;
+	margin: auto;
+}
 
-        /* テキストの見た目 */
-        input[type='text'] {
-            font: 25px;
-            box-sizing: border-box;
-            width: 300px;
-            height: 30px;
-            padding: 0.3em;
-            padding-left: 40px;
-            letter-spacing: 1px;
-            border: 0;
-            border-radius: 10px;
-        }
+/* テキストの見た目 */
+input[type='text'] {
+	font: 25px;
+	box-sizing: border-box;
+	width: 300px;
+	height: 30px;
+	padding: 0.3em;
+	padding-left: 40px;
+	letter-spacing: 1px;
+	border: 0;
+	border-radius: 10px;
+}
 
-        /* ボタンたちの見た目 */
-        input[type="submit"] {
-            width: 80%;
-            font-size: 25px;
-            color: #fff;
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 0px;
-            text-align: center;
-            background-color: #7A73DA;
-            border: 1px solid #7A73DA;
-            border-radius: 10px;
-            text-decoration: none;
-            cursor: pointer;
-            box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
-        }
+/* ボタンたちの見た目 */
+input[type="submit"] {
+	width: 80%;
+	font-size: 25px;
+	color: #fff;
+	display: inline-block;
+	margin-top: 10px;
+	padding: 10px 0px;
+	text-align: center;
+	background-color: #7A73DA;
+	border: 1px solid #7A73DA;
+	border-radius: 10px;
+	text-decoration: none;
+	cursor: pointer;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+}
 
-        button[type="button"]{
-            margin-left: 60%;
-            width: 340px;
-            height: 100px;
-            background-color: #deb887;
-            font-size: 25px;
-            display: inline-block;
-            padding: 10px 0px;
-            text-align: center;
-            border-radius: 10px;
-            text-decoration: none;
-            cursor: pointer;
-            border: 0px;
-        }
+button[type="button"] {
+	margin-left: 60%;
+	width: 340px;
+	height: 100px;
+	background-color: #deb887;
+	font-size: 25px;
+	display: inline-block;
+	padding: 10px 0px;
+	text-align: center;
+	border-radius: 10px;
+	text-decoration: none;
+	cursor: pointer;
+	border: 0px;
+}
 
-        #yellow_button_img{
-            filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.3));
-        }
+#yellow_button_img {
+	filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.3));
+}
 
-        /* 黄色いボタンに「新規会員作成」の文字を重ねる */
-        .button_area{
-            position: relative;
-        }
+/* 黄色いボタンに「新規会員作成」の文字を重ねる */
+.button_area {
+	position: relative;
+}
 
-        .new_member_text{
-            position: absolute;
-            font-size: 25px;
-            font-weight: bold;
-            color: white;
-            top: 35%;
-            left: 72%;
-            pointer-events: none;
-        }
+.new_member_text {
+	position: absolute;
+	font-size: 25px;
+	font-weight: bold;
+	color: white;
+	top: 35%;
+	left: 72%;
+	pointer-events: none;
+}
