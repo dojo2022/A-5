@@ -1,1 +1,106 @@
 @charset "UTF-8";
+
+#calendar_header {
+	height: 90px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+#arrow-month {
+	margin-left: 10px;
+	display: flex;
+	align-items: center;
+	display: flex;
+}
+
+#mouth_text {
+	display: block;
+	height: 33px;
+	font-size: 3.8em;
+	line-height: 44px;
+	margin: auto 10px;
+	color: #FFF;
+}
+
+#left_arrow_month {
+	display: block;
+	width: 55px;
+	height: 55px;
+}
+
+#left_arrow_month img {
+	width: 55px;
+	height: 55px;
+	transform: rotate(90deg);
+	filter: drop-shadow(3px -3px 3px rgba(0, 0, 0, 0.3));
+}
+
+#right_arrow_month {
+	display: block;
+	width: 55px;
+	height: 55px;
+}
+
+#right_arrow_month img {
+	width: 55px;
+	height: 55px;
+	transform: rotate(270deg);
+	filter: drop-shadow(-3px 3px 3px rgba(0, 0, 0, 0.3));
+}
+
+#calendar_title {
+	font: 3.8em;
+	text-decoration: underline;
+	color: #333;
+	font-size: 40px;
+}
+
+#calendar_header_button_area {
+	display: flex;
+}
+
+#change_calendar_menu {
+	margin-right: 15px;
+	position: relative;
+}
+
+#change_calendar_menu select {
+	padding-left: 15px;
+	font-size: 22px;
+	width: 110px;
+	height: 50px;
+	border-radius: 50px;
+	background-color: #8CCCD1;
+	border: none;
+	color: white;
+	font-weight: bold;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+	appearance: none;
+}
+
+#change_calendar_menu img {
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	right: 10px;
+	top: 17px;
+}
+
+#schedule_register_button {
+	font-size: 22px;
+	width: 100px;
+	height: 50px;
+	line-height: 39px;
+	border-radius: 50px;
+	background-color: #8CCCD1;
+	border: none;
+	color: white;
+	font-weight: bold;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+#schedule_register_button::after {
+	content: '＋';
+	color: #EFCF24;
+}
