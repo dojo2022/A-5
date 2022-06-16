@@ -8,17 +8,22 @@
 
 html, body {
 	background-color: #deb887;
-	margin-top: 20px;
 	text-align: center;
 	font-size: 25px;
-	height: auto;
+	height: 100%;
 }
 
 #title_logo {
-	font-size: 80px;
-	color: white;
-	margin-bottom: 30px;
-	font-weight: bold;
+	padding-bottom: 40px;
+	padding-top: 55px;
+}
+
+.login_background_img{
+	background-image:url(../img/login_background.png);
+	background-size:85%;
+	object-fit: cover;
+	background-position: right top 20%;
+	background-repeat: no-repeat;
 }
 /* base.cssに書く必須項目 ここまで*/
 .error_message {
@@ -53,6 +58,18 @@ input[type='text'] {
 	border-radius: 10px;
 }
 
+input[type='password'] {
+	font: 25px;
+	box-sizing: border-box;
+	width: 300px;
+	height: 30px;
+	padding: 0.3em;
+	padding-left: 40px;
+	letter-spacing: 1px;
+	border: 0;
+	border-radius: 10px;
+}
+
 /* ボタンたちの見た目 */
 input[type="submit"] {
 	width: 80%;
@@ -70,20 +87,6 @@ input[type="submit"] {
 	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
 }
 
-button[type="button"] {
-	margin-left: 60%;
-	width: 340px;
-	height: 100px;
-	background-color: #deb887;
-	font-size: 25px;
-	display: inline-block;
-	padding: 10px 0px;
-	text-align: center;
-	border-radius: 10px;
-	text-decoration: none;
-	cursor: pointer;
-	border: 0px;
-}
 
 #yellow_button_img {
 	filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.3));
@@ -91,6 +94,8 @@ button[type="button"] {
 
 /* 黄色いボタンに「新規会員作成」の文字を重ねる */
 .button_area {
+	width:300px;
+	left:1000px;
 	position: relative;
 }
 
@@ -99,7 +104,7 @@ button[type="button"] {
 	font-size: 25px;
 	font-weight: bold;
 	color: white;
-	top: 35%;
-	left: 72%;
+	top: 30%;
+	left:15%;
 	pointer-events: none;
 }

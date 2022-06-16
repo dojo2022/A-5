@@ -10,7 +10,10 @@
 <link rel="stylesheet" href="/machico/css/login.css">
 </head>
 <body>
-	<p id="title_logo">machico</p>
+<div class="login_background_img">
+	<div id="title_logo">
+		<img src="img/logo_machico.png" width="600px">
+	</div>
 	<div id="login-page">
 		<form id="login-form" method="POST" action="/machico/LoginServlet">
 			<div id="login">
@@ -34,7 +37,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td><input type="text" name="password" id="password">
+						<td><input type="password" name="password" id="password">
 						</td>
 					</tr>
 					<tr>
@@ -49,15 +52,15 @@
 				</table>
 			</div>
 			<div class="button_area">
-				<button type="button"
-					onclick="location.href='/machico/AccountCreateServlet'">
+				<a href="/machico/AccountCreateServlet">
 					<img src="img/yellow_button.png" id="yellow_button_img">
-				</button>
+				</a>
 				<div class="new_member_text">新規会員作成</div>
 			</div>
 			<input type="hidden" id="err_message" value="${errMessage}">
 		</form>
 	</div>
+</div>
 	<script type="text/javascript" src="/machico/js/base.js"></script>
 	<script type="text/javascript" src="/machico/js/login.js"></script>
 </body>
