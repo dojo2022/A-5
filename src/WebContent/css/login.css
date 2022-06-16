@@ -24,6 +24,7 @@ html, body {
 	object-fit: cover;
 	background-position: right top 20%;
 	background-repeat: no-repeat;
+	height:100%;
 }
 /* base.cssに書く必須項目 ここまで*/
 .error_message {
