@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>マス目カレンダー | machico</title>
+<title>${currentCalendar.calendarName} | machico</title>
 <link rel="stylesheet" href="/machico/css/base.css">
 <link rel="stylesheet" href="/machico/css/gridCalendar.css">
 </head>
@@ -18,6 +18,7 @@
 		このなかに要素を書いてね</section>
 	</main>
 	<script type="text/javascript" src="/machico/js/base.js"></script>
+	<script type="text/javascript" src="/machico/js/calendarHeader.js"></script>
 	<script type="text/javascript" src="/machico/js/gridCalendar.js"></script>
 </body>
 </html>
