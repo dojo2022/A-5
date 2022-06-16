@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import beans.CalendarBeans;
 
@@ -27,15 +28,25 @@ public class CalendarServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//ログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession();
+//		if (session.getAttribute("loginUser") == null) {
+//			response.sendRedirect("/machico/LoginServlet");
+//			return;
+//		}
 
-		// HttpSession session = request.getSession();
-		// セッションから持ってくる予定のカレンダー
-		CalendarBeans calendar = new CalendarBeans();
-		calendar.setCalendarType("G");
-		calendar.setIsLock(false);
-		calendar.setCalendarName("テストカレンダ");
+		CalendarBeans calendar = (CalendarBeans) session.getAttribute("currentCalendar");
 
-		request.setAttribute("currentCalendar", calendar);
+		// カレンダーが無ければDAOから持ってくる
+		if (calendar == null) {
+			// セッションから持ってくる予定のカレンダー
+			// TODO 後でDAOに置き換える
+			calendar = new CalendarBeans();
+			calendar.setCalendarType("G");
+			calendar.setIsLock(false);
+			calendar.setCalendarName("テストカレンダ");
+			session.setAttribute("currentCalendar", calendar);
+		}
 
 		// URLから日付を設定
 		String urlDate = request.getParameter("date");
@@ -64,13 +75,26 @@ public class CalendarServlet extends HttpServlet {
 		request.setAttribute("month", cal.get(Calendar.MONTH));
 		// 次の月の年と月
 		cal.add(Calendar.MONTH, 1);
-
 		request.setAttribute("nextYearMouth", cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH) + 1));
 		// 前の月の年と月
 		cal.add(Calendar.MONTH, -2);
 		request.setAttribute("prevYearMouth", cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH) + 1));
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/gridCalendar.jsp");
+		// calendarTypeに合わせてjspを変更
+		String calendarName;
+		switch (calendar.getCalendarType()) {
+		case "L":
+			calendarName ="listCalendar";
+			break;
+		case "T":
+			calendarName ="todoCalendar";
+			break;
+		case "G":
+		default:
+			calendarName ="gridCalendar";
+			break;
+		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/" + calendarName + ".jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -79,7 +103,21 @@ public class CalendarServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		//ログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession();
+//		if (session.getAttribute("loginUser") == null) {
+//			response.sendRedirect("/machico/LoginServlet");
+//			return;
+//		}
+
+		request.setCharacterEncoding("UTF-8");
+		// calendarTypeが変わっていたら、カレンダーの種類を変更
+		String calendarType = request.getParameter("calendar_type");
+		if (calendarType != null){
+			CalendarBeans calendar = (CalendarBeans) session.getAttribute("currentCalendar");
+			calendar.setCalendarType(calendarType);
+		}
+
 		doGet(request, response);
 	}
 
