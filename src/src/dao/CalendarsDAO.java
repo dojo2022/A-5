@@ -10,6 +10,8 @@ import beans.CalendarBeans;
 import beans.User;
 
 public class CalendarsDAO {
+	//アレイリストを追加する？？
+	
 	// カレンダー追加
 	public boolean insertCalendar(CalendarBeans param, User user) {
 		Connection conn = null;
@@ -36,19 +38,21 @@ public class CalendarsDAO {
 				return false;
 			}
 			// SQL文を準備する
-			String insertSql = "INSERT INTO calendars ( calendar_name, user_id, calendar_type) VALUES (?, ?, ?)";
+			String insertSql = "INSERT INTO calendars ( calendar_name, user_id) VALUES (?, ?)";
 			PreparedStatement insertPStmt = conn.prepareStatement(insertSql);
 
 			// SQL文を完成させる
 			insertPStmt.setString(1, param.getCalendarName());
 
 			insertPStmt.setInt(2, user.getId());
-
+/*
 			insertPStmt.setString(3, param.getCalendarType());
-
+*/
 			// SQL文を実行し、結果表を取得する
 			if (pStmt.executeUpdate() == 1) {
 			conn.commit();
+			
+			//List.add()でアレイリストに1行追加する。？？
 				return true;
 			}
 			return false;

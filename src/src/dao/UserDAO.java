@@ -21,7 +21,7 @@ public class UserDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 			// SELECT文を準備する
-			String sql = "SELECT user_id , user_name FROM users WHERE user_name = ? AND user_pw = ?";
+			String sql = "SELECT user_id , user_name FROM users WHERE user_name = ? AND user_password = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, name);
 			pStmt.setString(2, pw);
@@ -72,7 +72,7 @@ public class UserDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 			// SQL文を準備する
-			String sql = "INSERT INTO users (user_name , user_pw) VALUES (?, ?)";
+			String sql = "INSERT INTO users (user_name,user_password) VALUES (?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -166,7 +166,7 @@ public class UserDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 			// SQL文を準備する
-			String sql = "UPDATE users SET user_pw=? WHERE user_id=?";
+			String sql = "UPDATE users SET user_password=? WHERE user_id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる<ここも>
