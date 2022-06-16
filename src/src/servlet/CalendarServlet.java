@@ -10,17 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ListCalendarServlet
+ * Servlet implementation class GridCalendarServlet
  */
-@WebServlet("/ListCalendarServlet")
-public class ListCalendarServlet extends HttpServlet {
+@WebServlet("/CalendarServlet")
+public class CalendarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/accountCreate.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/gridCalendar.jsp");
 		dispatcher.forward(request, response);
 	}
 
