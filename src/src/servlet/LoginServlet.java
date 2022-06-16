@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/accountCreate.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -50,16 +50,17 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", u);
 
-			// メニューサーブレットにリダイレクトする
-			response.sendRedirect("/servlet/GridCalendarServlet");
+			// 暫定マス目カレンダーにリダイレクトする
+			response.sendRedirect("/machico/CalendarServlet");
 
 			// ログイン失敗
 		} else {
 			// リクエストスコープにエラーメッセージを格納する
 			request.setAttribute("errMessage", "入力内容が間違っています");
 
-			// 結果ページにリダイレクトする
-			response.sendRedirect("/WEB-INF/jsp/login.jsp");
+			// 結果ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+			dispatcher.forward(request, response);
 
 		}
 	}

@@ -5,14 +5,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Insert title here</title>
+<title>マス目カレンダー | machico</title>
 <link rel="stylesheet" href="/machico/css/base.css">
 <link rel="stylesheet" href="/machico/css/gridCalendar.css">
 </head>
 <body>
-	<%@ include file="header.jsp" %>
+	<%@ include file="header.jsp"%>
+
 	<main>
-		<section id="calender">このなかに要素を書いてね</section>
+		<section id="calender">
+		<%@ include file="calendarHeader.jsp"%>
+		このなかに要素を書いてね</section>
 	</main>
 	<script type="text/javascript" src="/machico/js/base.js"></script>
 	<script type="text/javascript" src="/machico/js/gridCalendar.js"></script>
