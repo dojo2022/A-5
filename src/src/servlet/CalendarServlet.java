@@ -70,7 +70,6 @@ public class CalendarServlet extends HttpServlet {
 		} else {
 			// urlから値を取得できなければそのまま(現在の日付)で
 		}
-		log(cal.get(Calendar.YEAR) + "-" + cal.get(Calendar.MONTH));
 		// 現在の月
 		request.setAttribute("month", cal.get(Calendar.MONTH));
 		// 次の月の年と月
