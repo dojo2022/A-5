@@ -40,14 +40,14 @@ public class SchedulesDAO {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Schedule sch = new Schedule();
-				rs.getString("schedule_id");
+				rs.getInt("schedule_id");
 				rs.getString("schedule");
 				rs.getString("schedule_type");
-				rs.getString("date");
-				rs.getString("time");
+				rs.getDate("date");
+				rs.getDate("time");
 				rs.getString("memo");
-				rs.getString("calender_id");
-				rs.getString("last_date");
+				rs.getInt("calender_id");
+				rs.getDate("last_date");
 
 				scheduleList.add(sch);
 			}
