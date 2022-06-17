@@ -19,6 +19,10 @@ main {
 	margin: 0 auto;
 	padding: 75px 0 0 0;
 	background-color: #DEB887;
+	background-image: url("/machico/img/calendar_background.png");
+	background-repeat: no-repeat;
+	background-size: 97%;
+	background-position: right top;
 }
 
 #calendar_day_of_week_container {
