@@ -147,8 +147,8 @@ public class RegularSchedulesDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 				// SQL文を準備する
-				String sql = "UPDATE regular_schedules SET  schedule =?, first_date =?, last_date=?, memo =?,"
-						+ "regular_schedule_type , regular_schedule_value WHERE calendar_id=?";
+				String sql = "UPDATE regular_schedules SET  schedule =?, first_date =?, last_date=?,"
+						+ " memo =?,regular_schedule_type =?, regular_schedule_value=? WHERE calendar_id=? AND schedule_id = ?";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる<ここも>
@@ -167,6 +167,8 @@ public class RegularSchedulesDAO {
 				pStmt.setString(6, regS.getRegularScheduleValue());
 
 				pStmt.setInt(7, cb.getCalendarId());
+
+				pStmt.setInt(8, regS.getScheduleId());
 
 				// SQL文を実行する
 				if (pStmt.executeUpdate() == 1) {

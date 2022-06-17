@@ -40,14 +40,14 @@ public class SchedulesDAO {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Schedule sch = new Schedule();
-				rs.getInt("schedule_id");
-				rs.getString("schedule");
-				rs.getString("schedule_type");
-				rs.getDate("date");
-				rs.getDate("time");
-				rs.getString("memo");
-				rs.getInt("calender_id");
-				rs.getDate("last_date");
+				sch.setScheduleId(rs.getInt("schedule_id"));
+				sch.setSchedule( rs.getString("schedule"));
+				sch.setScheduleType( rs.getString("schedule_type"));
+				sch.setDate(rs.getDate("date"));
+				sch.setTime( rs.getDate("time"));
+				sch.setMemo(rs.getString("memo"));
+				sch.setCalendarId(rs.getInt("calender_id"));
+				sch.setLastDate(rs.getDate("last_date"));
 
 				scheduleList.add(sch);
 			}
@@ -148,7 +148,7 @@ public class SchedulesDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 			// SQL文を準備する
-			String sql = "UPDATE schedules SET  schedule =?, date =?, time =?, memo =?,last_date =? WHERE calendar_id=?";
+			String sql = "UPDATE schedules SET  schedule =?, date =?, time =?, memo =?,last_date =? WHERE calendar_id=? AND schedule_id = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる<ここも>
@@ -167,6 +167,8 @@ public class SchedulesDAO {
 			pStmt.setDate(5, sqlLastDate);
 
 			pStmt.setInt(6, cb.getCalendarId());
+
+			pStmt.setInt(7, schedule.getScheduleId());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {

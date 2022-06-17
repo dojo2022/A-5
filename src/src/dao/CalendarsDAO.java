@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import beans.CalendarBeans;
-import beans.Schedule;
 import beans.User;
 
 public class CalendarsDAO {
@@ -28,7 +27,7 @@ public class CalendarsDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 			// SQL文を準備する
-			String sql = "SELECT *from calendars WHERE user_id LIKE ? ";
+			String sql = "SELECT * from calendars WHERE user_id LIKE ? ";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -42,12 +41,12 @@ public class CalendarsDAO {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				CalendarBeans cal = new CalendarBeans();
-				rs.getString("calendar_id");
-				rs.getString("calendar_name");
-				rs.getString("user_id");
-				rs.getString("calendar_type");
-				rs.getString("lock");
-				rs.getString("is_lock");
+			cal.setCalendarId(rs.getInt("calendar_id"));
+			cal.setCalendarName(rs.getString("calendar_name"));
+			cal.setUserId(rs.getInt("user_id"));
+			cal.setCalendarType(rs.getString("calendar_type"));
+			cal.setLock(rs.getInt("lock"));
+			cal.setIsLock(rs.getBoolean("is_lock"));
 
 				cbList.add(cal);
 			}
@@ -156,9 +155,10 @@ public class CalendarsDAO {
 			//オートコミットを解除
 
 			// SELECT文を準備する
-			String sql = "SELECT is_lock FROM calendars WHERE user_id = ?";
+			String sql = "SELECT is_lock FROM calendars WHERE user_id = ? AND calendar_id = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setInt(1, user.getId());
+			pStmt.setInt(2, cb.getCalendarId());
 
 			// SELECT文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
@@ -330,7 +330,7 @@ public class CalendarsDAO {
 	}
 
 	//カレンダータイプ変更
-	public boolean updateSchedule(Schedule schedule, CalendarBeans cb) {
+	public boolean updateCalendarType( CalendarBeans cb) {
 		Connection conn = null;
 
 		try {
@@ -341,7 +341,7 @@ public class CalendarsDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 			// SQL文を準備する
-			String sql = "UPDATE schedules SET  calendar_type = ? WHERE calendar_id=?";
+			String sql = "UPDATE calendars SET  calendar_type = ? WHERE calendar_id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる<ここも>
