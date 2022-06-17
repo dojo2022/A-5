@@ -15,7 +15,7 @@ CREATE TABLE calendars(
     user_id INT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     is_delete BOOLEAN DEFAULT FALSE NOT NULL,
-    calendar_type CHAR(1) DEFAULT 'G',
+    calendar_type CHAR(1) NOT NULL DEFAULT 'G',
     lock INT DEFAULT null,
     is_lock BOOLEAN DEFAULT FALSE NOT NULL
 );
