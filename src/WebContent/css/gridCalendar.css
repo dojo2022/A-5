@@ -20,3 +20,53 @@ main {
 	padding: 75px 0 0 0;
 	background-color: #DEB887;
 }
+
+#calendar_day_of_week_container {
+	display: flex;
+	gap: 5px;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 5px;
+}
+
+.day_of_week_item {
+	font-weight: bold;
+	width: 120px;
+	height: 21px;
+	text-align: center;
+	color: #FFF;
+}
+
+.day_of_week_item.saturday {
+	color: #4D43DE;
+}
+
+.day_of_week_item.sunday {
+	color: #DE2C4A;
+}
+
+#calendar_body {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	justify-content: center;
+	align-items: center;
+}
+
+.calendar_row {
+	display: flex;
+	gap: 5px;
+}
+
+.calendar_item {
+	font-weight: bold;
+	background-color: #FFF;
+	width: 120px;
+	height: 70px;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.calendar_item:not(.is_current_day) {
+	color: #686868;
+}
