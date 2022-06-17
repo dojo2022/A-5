@@ -37,4 +37,20 @@ public class ValidationLogic {
 		}
 
 	}
+
+	//カレンダーロック
+	private static Pattern LockValidator = Pattern.compile("^[0-9]{1,4}$");
+
+	public static boolean checkLock(String value) {
+		return value != null && LockValidator.matcher(value).find();
+	}
+
+	//カレンダータイプ
+	public static boolean checkCalendarType(String value) {
+		if(value != null && value.equals("G") || value.equals("L") || value.equals("T")) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 }
