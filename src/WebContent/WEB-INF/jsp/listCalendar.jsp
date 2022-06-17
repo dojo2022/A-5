@@ -15,7 +15,7 @@
 	<main>
 		<section id="calender">
 			<%@ include file="calendarHeader.jsp"%>
-			このなかに要素を書いてね
+			このなかに要素を書いてね(List)
 		</section>
 	</main>
 	<script type="text/javascript" src="/machico/js/base.js"></script>
