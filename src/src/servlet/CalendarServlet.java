@@ -56,10 +56,8 @@ public class CalendarServlet extends HttpServlet {
 			date = dateFormater.parse(urlDate);
 		} catch (ParseException e) {
 			// 読み取れない値が入れられたら無視
-			e.printStackTrace();
 		} catch (NullPointerException e) {
 			// 読み取れない値が入れられたら無視
-			e.printStackTrace();
 		}
 
 		Calendar cal = Calendar.getInstance();
