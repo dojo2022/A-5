@@ -4,18 +4,18 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class OneMonthSchedule implements Serializable {
-	private ArrayList<Schedule> schedule;
+	private ArrayList<ArrayList<Schedule>> schedule;
 
 	public OneMonthSchedule() {
 		super();
-		this.schedule = new  ArrayList<Schedule>();
+		this.schedule = new ArrayList<ArrayList<Schedule>>();
 	}
 
-	public ArrayList<Schedule> getSchedule() {
+	public ArrayList<ArrayList<Schedule>> getSchedule() {
 		return schedule;
 	}
 
-	public void setSchedule(ArrayList<Schedule> schedule) {
+	public void setSchedule(ArrayList<ArrayList<Schedule>> schedule) {
 		this.schedule = schedule;
 	}
 }
