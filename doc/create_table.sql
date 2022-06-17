@@ -44,7 +44,7 @@ CREATE TABLE regular_schedules (
     regular_schedule_value VARCHAR(7) NOT NULL
 );
 
-INSERT INTO users (user_name,user_password) VALUES ('てすと' ,'test0000');
+INSERT INTO users (user_name,user_password) VALUES ('test' ,'test0000');
 INSERT INTO calendars ( calendar_name, user_id) VALUES ('テストカレンダー', 1);
 INSERT INTO schedules ( schedule, schedule_type, date, time , memo , calendar_id,last_date) VALUES ('てすと', 'G',
 TO_DATE('22-02-11', 'YY-MM-DD') ,null , 'aaaa', 1, TO_DATE('22-02-12', 'YY-MM-DD') );
