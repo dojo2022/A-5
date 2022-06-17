@@ -1,6 +1,8 @@
 package beans;
 
-public class CalendarBeans {
+import java.io.Serializable;
+
+public class CalendarBeans implements Serializable {
 	private int calendarId;
 	private String calendarName;
 	private int userId;
@@ -48,7 +50,6 @@ public class CalendarBeans {
 		return isLock;
 	}
 
-
 	public void setIsLock(boolean isLock) {
 		this.isLock = isLock;
 	}
@@ -60,6 +61,5 @@ public class CalendarBeans {
 	public void setLock(int lock) {
 		this.lock = lock;
 	}
-
 
 }

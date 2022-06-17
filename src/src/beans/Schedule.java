@@ -1,8 +1,9 @@
 package beans;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Schedule {
+public class Schedule implements Serializable {
 	private int scheduleId;
 	private String schedule;
 	private String scheduleType;
