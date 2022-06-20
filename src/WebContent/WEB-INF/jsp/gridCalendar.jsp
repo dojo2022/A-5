@@ -34,13 +34,28 @@
 				<c:if test="${(index + 1) % 7 == 1}">
 				<div class="calendar_row">
 				</c:if>
-					<section
-					class=" calendar_item <c:if test="${gridOneMouthSchedule.isCurrentDays[index]}">is_current_day</c:if>" >
-					${gridOneMouthSchedule.days[index]}
-					</section>
+					<a><section class=" calendar_item <c:if test="${gridOneMouthSchedule.isCurrentDays[index]}">is_current_day</c:if>" >
+						<section>${gridOneMouthSchedule.days[index]}</section>
+						<c:choose>
+    					<c:when test="${gridOneMouthSchedule.schedule[index].size() == 1 }">
+						<section class="calendar_schedule schedule_type_${gridOneMouthSchedule.schedule[index][0].scheduleType}" >${gridOneMouthSchedule.schedule[index][0].schedule}</section>
+    					</c:when>
+    					<c:when test="${gridOneMouthSchedule.schedule[index].size() == 2 }">
+						<section class="calendar_schedule schedule_type_${gridOneMouthSchedule.schedule[index][0].scheduleType}" >${gridOneMouthSchedule.schedule[index][0].schedule}</section>
+						<section class="calendar_schedule schedule_type_${gridOneMouthSchedule.schedule[index][1].scheduleType}" >${gridOneMouthSchedule.schedule[index][1].schedule}</section>
+						</c:when>
+						<c:when test="${gridOneMouthSchedule.schedule[index].size() >= 3 }">
+						<section class="calendar_schedule schedule_type_${gridOneMouthSchedule.schedule[index][0].scheduleType}">${gridOneMouthSchedule.schedule[index][0].schedule}</section>
+						<section class="calendar_schedule schedule_type_${gridOneMouthSchedule.schedule[index][1].scheduleType}" >${gridOneMouthSchedule.schedule[index][1].schedule}</section>
+						<section class="leftover_count">+${gridOneMouthSchedule.schedule[index].size() - 2}</section>
+						</c:when>
+						</c:choose>
+						</section>
+				</a>
 				<c:if test="${(index + 1) % 7 == 0}">
 				</div>
 				</c:if>
+
 				</c:forEach>
 			</section>
 		</section>

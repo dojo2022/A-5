@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -17,11 +18,12 @@ import javax.servlet.http.HttpSession;
 import beans.CalendarBeans;
 import beans.GridOneMonthSchedule;
 import beans.OneMonthSchedule;
+import beans.Schedule;
 
 /**
  * Servlet implementation class GridCalendarServlet
  */
-@WebServlet("/CalendarServlet")
+@WebServlet({"/CalendarServlet",})
 public class CalendarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -90,6 +92,29 @@ public class CalendarServlet extends HttpServlet {
 
 		// 予定をjspに渡す
 		OneMonthSchedule oneMouthSchedule = new OneMonthSchedule();
+		Schedule s1 = new Schedule();
+		s1.setSchedule("今日の天気");
+		s1.setScheduleType("F");
+		Schedule s2 = new Schedule();
+		s2.setSchedule("明日の天気");
+		s2.setScheduleType("R");
+		Schedule s3 = new Schedule();
+		s3.setSchedule("昨日の天気");
+		s3.setScheduleType("A");
+
+		ArrayList<Schedule> oneSchedule = new ArrayList<Schedule>();
+		oneSchedule.add(s1);
+		ArrayList<Schedule> twoSchedule = new ArrayList<Schedule>();
+		twoSchedule.add(s1);
+		twoSchedule.add(s2);
+		ArrayList<Schedule> threeSchedule = new ArrayList<Schedule>();
+		threeSchedule.add(s1);
+		threeSchedule.add(s3);
+		threeSchedule.add(s2);
+		oneMouthSchedule.getSchedule().add(oneSchedule);
+		oneMouthSchedule.getSchedule().add(twoSchedule);
+		oneMouthSchedule.getSchedule().add(threeSchedule);
+
 		request.setAttribute("oneMouthSchedule", oneMouthSchedule);
 
 		// calendarTypeに合わせてjspを変更
@@ -162,7 +187,7 @@ public class CalendarServlet extends HttpServlet {
 		}
 		// 今月の日付をgridCalDaysに乗せる
 		for (int day = 1; day <= current.getActualMaximum(Calendar.DAY_OF_MONTH); day++) {
-			if (schedule.getSchedule().size() > day) {
+			if (schedule.getSchedule().size() > day - 1) {
 				gridSchedule.set(gridScheduleIndex, day, true, schedule.getSchedule().get(day - 1));
 			} else {
 				gridSchedule.set(gridScheduleIndex, day, true, null);

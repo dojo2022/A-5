@@ -69,8 +69,39 @@ main {
 	height: 70px;
 	border-radius: 10px;
 	text-align: center;
+	position: relative;
 }
 
 .calendar_item:not(.is_current_day) {
 	color: #686868;
+}
+
+.calendar_schedule {
+	width: calc(100% - 4px);
+	margin: auto;
+	margin-bottom: 2px;
+	border-radius: 10px;
+	color: #FFF;
+	font-size: 0.8em;
+}
+
+.schedule_type_F {
+	background-color: #4472C4;
+}
+
+.schedule_type_R {
+	background-color: #38E835;
+}
+
+.schedule_type_A {
+	background-color: #22E0B4;
+}
+
+.leftover_count {
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+	background-color: #FFF;
+	border-radius: 5px;
+	border: solid 1px #AAA;
 }
