@@ -158,7 +158,7 @@ public class UserDAO {
 			String idSql = "SELECT user_id FROM users WHERE user_name = ?";
 			PreparedStatement idPStmt = conn.prepareStatement(idSql);
 
-			pStmt.setString(1, name);
+			idPStmt.setString(1, name);
 
 
 			// SQL文を実行し、結果表を取得する
