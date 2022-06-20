@@ -89,10 +89,10 @@ public class CalendarServlet extends HttpServlet {
 		request.setAttribute("month", cal.get(Calendar.MONTH));
 		// 次の月の年と月
 		cal.add(Calendar.MONTH, 1);
-		request.setAttribute("nextYearMouth", cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH) + 1));
+		request.setAttribute("nextYearMonth", cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH) + 1));
 		// 前の月の年と月
 		cal.add(Calendar.MONTH, -2);
-		request.setAttribute("prevYearMouth", cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH) + 1));
+		request.setAttribute("prevYearMonth", cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH) + 1));
 
 		// 計算で変化した値を元の日付に戻す
 		cal = Calendar.getInstance();
@@ -103,7 +103,7 @@ public class CalendarServlet extends HttpServlet {
 		}
 
 		// 予定をjspに渡す
-		OneMonthSchedule oneMouthSchedule = new OneMonthSchedule();
+		OneMonthSchedule oneMonthSchedule = new OneMonthSchedule();
 		Schedule s1 = new Schedule();
 		s1.setSchedule("今日の天気");
 		s1.setScheduleType("F");
@@ -123,11 +123,11 @@ public class CalendarServlet extends HttpServlet {
 		threeSchedule.add(s1);
 		threeSchedule.add(s3);
 		threeSchedule.add(s2);
-		oneMouthSchedule.getSchedule().add(oneSchedule);
-		oneMouthSchedule.getSchedule().add(twoSchedule);
-		oneMouthSchedule.getSchedule().add(threeSchedule);
+		oneMonthSchedule.getSchedule().add(oneSchedule);
+		oneMonthSchedule.getSchedule().add(twoSchedule);
+		oneMonthSchedule.getSchedule().add(threeSchedule);
 
-		request.setAttribute("oneMouthSchedule", oneMouthSchedule);
+		request.setAttribute("oneMonthSchedule", oneMonthSchedule);
 
 		// calendarTypeに合わせてjspを変更
 		String calendarName;
@@ -142,8 +142,8 @@ public class CalendarServlet extends HttpServlet {
 		default:
 			calendarName = "gridCalendar";
 
-			request.setAttribute("gridOneMouthSchedule", packToGridOneMonthScedule(
-					oneMouthSchedule,
+			request.setAttribute("gridOneMonthSchedule", packToGridOneMonthScedule(
+					oneMonthSchedule,
 					cal.get(Calendar.YEAR),
 					cal.get(Calendar.MONTH)));
 			break;

@@ -34,27 +34,27 @@
 				<c:if test="${(index + 1) % 7 == 1}">
 				<div class="calendar_row">
 				</c:if>
-				<c:if test="${gridOneMouthSchedule.isCurrentDays[index]}">
-					<a href="/machico/CalendarServlet/T/?data${year}-${month + 1}#day${gridOneMouthSchedule.days[index]}">
+				<c:if test="${gridOneMonthSchedule.isCurrentDays[index]}">
+					<a href="/machico/CalendarServlet/T/?data${year}-${month + 1}#day${gridOneMonthSchedule.days[index]}">
 				</c:if>
-						<section class="calendar_item <c:if test="${gridOneMouthSchedule.isCurrentDays[index]}">is_current_day</c:if>" >
-						<section>${gridOneMouthSchedule.days[index]}</section>
+						<section class="calendar_item <c:if test="${gridOneMonthSchedule.isCurrentDays[index]}">is_current_day</c:if>" >
+						<section>${gridOneMonthSchedule.days[index]}</section>
 						<c:choose>
-    					<c:when test="${gridOneMouthSchedule.schedule[index].size() == 1 }">
-						<section class="calendar_schedule schedule_type_${gridOneMouthSchedule.schedule[index][0].scheduleType}" >${gridOneMouthSchedule.schedule[index][0].schedule}</section>
+    					<c:when test="${gridOneMonthSchedule.schedule[index].size() == 1 }">
+						<section class="calendar_schedule schedule_type_${gridOneMonthSchedule.schedule[index][0].scheduleType}" >${gridOneMonthSchedule.schedule[index][0].schedule}</section>
     					</c:when>
-    					<c:when test="${gridOneMouthSchedule.schedule[index].size() == 2 }">
-						<section class="calendar_schedule schedule_type_${gridOneMouthSchedule.schedule[index][0].scheduleType}" >${gridOneMouthSchedule.schedule[index][0].schedule}</section>
-						<section class="calendar_schedule schedule_type_${gridOneMouthSchedule.schedule[index][1].scheduleType}" >${gridOneMouthSchedule.schedule[index][1].schedule}</section>
+    					<c:when test="${gridOneMonthSchedule.schedule[index].size() == 2 }">
+						<section class="calendar_schedule schedule_type_${gridOneMonthSchedule.schedule[index][0].scheduleType}" >${gridOneMonthSchedule.schedule[index][0].schedule}</section>
+						<section class="calendar_schedule schedule_type_${gridOneMonthSchedule.schedule[index][1].scheduleType}" >${gridOneMonthSchedule.schedule[index][1].schedule}</section>
 						</c:when>
-						<c:when test="${gridOneMouthSchedule.schedule[index].size() >= 3 }">
-						<section class="calendar_schedule schedule_type_${gridOneMouthSchedule.schedule[index][0].scheduleType}">${gridOneMouthSchedule.schedule[index][0].schedule}</section>
-						<section class="calendar_schedule schedule_type_${gridOneMouthSchedule.schedule[index][1].scheduleType}" >${gridOneMouthSchedule.schedule[index][1].schedule}</section>
-						<section class="leftover_count">+${gridOneMouthSchedule.schedule[index].size() - 2}</section>
+						<c:when test="${gridOneMonthSchedule.schedule[index].size() >= 3 }">
+						<section class="calendar_schedule schedule_type_${gridOneMonthSchedule.schedule[index][0].scheduleType}">${gridOneMonthSchedule.schedule[index][0].schedule}</section>
+						<section class="calendar_schedule schedule_type_${gridOneMonthSchedule.schedule[index][1].scheduleType}" >${gridOneMonthSchedule.schedule[index][1].schedule}</section>
+						<section class="leftover_count">+${gridOneMonthSchedule.schedule[index].size() - 2}</section>
 						</c:when>
 						</c:choose>
 						</section>
-				<c:if test="${gridOneMouthSchedule.isCurrentDays[index]}">
+				<c:if test="${gridOneMonthSchedule.isCurrentDays[index]}">
 					</a>
 				</c:if>
 				<c:if test="${(index + 1) % 7 == 0}">
