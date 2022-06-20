@@ -1,1 +1,114 @@
 @charset "UTF-8";
+/* base.cssに書く必須項目 */
+* {
+	box-sizing: border-box;
+	margin: 0px;
+}
+
+html, body {
+	background-color: #deb887;
+	text-align: center;
+	font-size: 25px;
+	height: 100%;
+}
+
+#title_logo {
+	padding-bottom: 20px;
+	padding-top: 55px;
+}
+
+/* pタグの文章の設定 */
+p {
+	color: white;
+	font-size: 32px;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.login_background_img {
+	background-image: url(../img/login_background.png);
+	background-size: 85%;
+	object-fit: cover;
+	background-position: right top 20%;
+	background-repeat: no-repeat;
+	height: 100%;
+}
+/* base.cssに書く必須項目 ここまで*/
+.error_message {
+	color: #ff3535;
+	height: 1em;
+	line-height: 1em;
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 20px;
+	padding-right: 35px;
+}
+
+/* テーブル */
+div #account_create {
+	text-align: center;
+}
+
+table {
+	padding: auto;
+	margin: auto;
+}
+
+/* テキストの見た目 */
+input[type='text'] {
+	font: 25px;
+	box-sizing: border-box;
+	width: 300px;
+	height: 30px;
+	padding: 0.3em;
+	padding-left: 40px;
+	letter-spacing: 1px;
+	border: 0;
+	border-radius: 10px;
+}
+
+input[type='password'] {
+	font: 25px;
+	box-sizing: border-box;
+	width: 300px;
+	height: 30px;
+	padding: 0.3em;
+	padding-left: 40px;
+	letter-spacing: 1px;
+	border: 0;
+	border-radius: 10px;
+}
+
+/* ボタンたちの見た目 */
+input[type="submit"] {
+	width: 100px;
+	font-size: 25px;
+	color: #fff;
+	display: inline-block;
+	padding: 10px 0px;
+	text-align: center;
+	background-color: #7A73DA;
+	border: 2px solid #7A73DA;
+	border-radius: 10px;
+	text-decoration: none;
+	cursor: pointer;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+	margin-left: 0;
+}
+
+input[type="button"] {
+	width: 100px;
+	font: 25px sans-serif;
+	color: #8D87DE;
+	display: inline-block;
+	padding: 10px 0px;
+	text-align: center;
+	background-color: #fff;
+	border: 3px solid #8D87DE;
+	border-radius: 10px;
+	text-decoration: none;
+	cursor: pointer;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+	margin-right: 30%;
+}
