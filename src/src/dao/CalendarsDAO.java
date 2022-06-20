@@ -77,7 +77,7 @@ public class CalendarsDAO {
 	}
 
 	//カレンダー取得
-	public List<CalendarBeans> indexCalendar(User user ,int num) {
+	public List<CalendarBeans> indexCalendar(User user ,int calendarId) {
 		Connection conn = null;
 		List<CalendarBeans> cbList = new ArrayList<CalendarBeans>();
 
@@ -95,7 +95,7 @@ public class CalendarsDAO {
 			// SQL文を完成させる
 
 				pStmt.setInt(1,user.getId());
-				pStmt.setInt(2, num);
+				pStmt.setInt(2, calendarId);
 
 
 			// SQL文を実行し、結果表を取得する
