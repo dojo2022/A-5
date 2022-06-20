@@ -76,68 +76,6 @@ public class CalendarsDAO {
 		return cbList;
 	}
 
-	//カレンダー取得
-	public List<CalendarBeans> indexCalendar(User user ,int calendarId) {
-		Connection conn = null;
-		List<CalendarBeans> cbList = new ArrayList<CalendarBeans>();
-
-		try {
-			// JDBCドライバを読み込む
-			Class.forName("org.h2.Driver");
-
-			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
-
-			// SQL文を準備する
-			String sql = "SELECT * from calendars WHERE user_id = ? calendar_id = ? ";
-			PreparedStatement pStmt = conn.prepareStatement(sql);
-
-			// SQL文を完成させる
-
-				pStmt.setInt(1,user.getId());
-				pStmt.setInt(2, calendarId);
-
-
-			// SQL文を実行し、結果表を取得する
-			ResultSet rs = pStmt.executeQuery();
-
-			// 結果表をコレクションにコピーする
-			while (rs.next()) {
-				CalendarBeans cal = new CalendarBeans();
-			cal.setCalendarId(rs.getInt("calendar_id"));
-			cal.setCalendarName(rs.getString("calendar_name"));
-			cal.setUserId(rs.getInt("user_id"));
-			cal.setCalendarType(rs.getString("calendar_type"));
-			cal.setLock(rs.getInt("lock"));
-			cal.setIsLock(rs.getBoolean("is_lock"));
-
-				cbList.add(cal);
-			}
-		}
-		catch (SQLException e) {
-			e.printStackTrace();
-			cbList = null;
-		}
-		catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			cbList = null;
-		}
-		finally {
-			// データベースを切断
-			if (conn != null) {
-				try {
-					conn.close();
-				}
-				catch (SQLException e) {
-					e.printStackTrace();
-					cbList = null;
-				}
-			}
-		}
-
-		// 結果を返す
-		return cbList;
-	}
 
 	//カレンダータイトル
 	public String[] selectCalendarTitle(User user) {
