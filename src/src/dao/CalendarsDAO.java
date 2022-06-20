@@ -76,6 +76,125 @@ public class CalendarsDAO {
 		return cbList;
 	}
 
+	//カレンダー取得
+	public List<CalendarBeans> indexCalendar(User user ,int num) {
+		Connection conn = null;
+		List<CalendarBeans> cbList = new ArrayList<CalendarBeans>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
+
+			// SQL文を準備する
+			String sql = "SELECT * from calendars WHERE user_id = ? calendar_id = ? ";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+
+				pStmt.setInt(1,user.getId());
+				pStmt.setInt(2, num);
+
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// 結果表をコレクションにコピーする
+			while (rs.next()) {
+				CalendarBeans cal = new CalendarBeans();
+			cal.setCalendarId(rs.getInt("calendar_id"));
+			cal.setCalendarName(rs.getString("calendar_name"));
+			cal.setUserId(rs.getInt("user_id"));
+			cal.setCalendarType(rs.getString("calendar_type"));
+			cal.setLock(rs.getInt("lock"));
+			cal.setIsLock(rs.getBoolean("is_lock"));
+
+				cbList.add(cal);
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			cbList = null;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			cbList = null;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					cbList = null;
+				}
+			}
+		}
+
+		// 結果を返す
+		return cbList;
+	}
+
+	//カレンダータイトル
+	public String[] selectCalendarTitle(User user) {
+		Connection conn = null;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
+
+			// SQL文を準備する
+			String sql = "SELECT calendar_name from calendars WHERE user_id LIKE ? ";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+
+				pStmt.setInt(1,user.getId());
+
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+			int i = 0;
+			String calendarName[] = new String[3];
+			// 結果表をコレクションにコピーする
+			while (rs.next()) {
+
+				 calendarName[i] = rs.getString("calendar_name") ;
+				 i++;
+			}
+			return calendarName;
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			 return null;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			return null;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					return null;
+				}
+			}
+		}
+
+
+	}
+
 	// カレンダー追加
 	public boolean insertCalendar(CalendarBeans cb, User user) {
 		Connection conn = null;
