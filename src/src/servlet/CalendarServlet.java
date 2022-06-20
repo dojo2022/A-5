@@ -108,11 +108,17 @@ public class CalendarServlet extends HttpServlet {
 		s1.setSchedule("今日の天気");
 		s1.setScheduleType("F");
 		Schedule s2 = new Schedule();
-		s2.setSchedule("明日の天気");
+		s2.setSchedule("明日の天気aaaaaaaaaaaaaaaaa");
 		s2.setScheduleType("R");
 		Schedule s3 = new Schedule();
 		s3.setSchedule("昨日の天気");
 		s3.setScheduleType("A");
+		Schedule s4 = new Schedule();
+		s4.setSchedule("明後日の天気");
+		s4.setScheduleType("A");
+		Schedule s5 = new Schedule();
+		s5.setSchedule("しあさっての天気");
+		s5.setScheduleType("F");
 
 		ArrayList<Schedule> oneSchedule = new ArrayList<Schedule>();
 		oneSchedule.add(s1);
@@ -123,9 +129,22 @@ public class CalendarServlet extends HttpServlet {
 		threeSchedule.add(s1);
 		threeSchedule.add(s3);
 		threeSchedule.add(s2);
+		ArrayList<Schedule> fourSchedule = new ArrayList<Schedule>();
+		fourSchedule.add(s1);
+		fourSchedule.add(s3);
+		fourSchedule.add(s2);
+		fourSchedule.add(s4);
+		ArrayList<Schedule> fiveSchedule = new ArrayList<Schedule>();
+		fiveSchedule.add(s1);
+		fiveSchedule.add(s3);
+		fiveSchedule.add(s2);
+		fiveSchedule.add(s4);
+		fiveSchedule.add(s5);
 		oneMonthSchedule.getSchedule().add(oneSchedule);
 		oneMonthSchedule.getSchedule().add(twoSchedule);
 		oneMonthSchedule.getSchedule().add(threeSchedule);
+		oneMonthSchedule.getSchedule().add(fourSchedule);
+		oneMonthSchedule.getSchedule().add(fiveSchedule);
 
 		while(oneMonthSchedule.getSchedule().size() <= 30) {
 			oneMonthSchedule.getSchedule().add(new ArrayList<Schedule>());
