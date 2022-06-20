@@ -19,11 +19,12 @@ import beans.CalendarBeans;
 import beans.GridOneMonthSchedule;
 import beans.OneMonthSchedule;
 import beans.Schedule;
+import logic.ValidationLogic;
 
 /**
  * Servlet implementation class GridCalendarServlet
  */
-@WebServlet({"/CalendarServlet",})
+@WebServlet({ "/CalendarServlet", "/CalendarServlet/*" })
 public class CalendarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -51,7 +52,18 @@ public class CalendarServlet extends HttpServlet {
 			calendar.setCalendarName("テストカレンダ");
 			session.setAttribute("currentCalendar", calendar);
 		}
-
+		// URLからCalendarTypeを判定
+		String uri = request.getRequestURI();
+		if (uri.substring(uri.length() - 1).equals("/")) {
+			uri = uri.substring(0, uri.length() - 1);
+		}
+		String[] paths = uri.split("/");
+		String calendarType = paths[paths.length - 1];
+		if (ValidationLogic.checkCalendarType(calendarType)) {
+			calendar.setCalendarType(calendarType);
+		} else {
+			// urlから値を取得できなければそのまま(現在のCalendarType)で
+		}
 		// URLから日付を設定
 		String urlDate = request.getParameter("date");
 		Date date = null;

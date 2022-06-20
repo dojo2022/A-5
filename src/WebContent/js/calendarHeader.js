@@ -11,8 +11,7 @@ selectBox.addEventListener('change', function (event) {
         case "G":
         case "L":
         case "T":
-            form.action = "CalendarServlet" + location.search
-            form.submit()
+			location.href = `/machico/CalendarServlet/${select.value}/${location.search}`;
             break;
         default:
             // それ以外は入ってくることは無いはずなので、何もしない
