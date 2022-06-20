@@ -21,7 +21,7 @@
 </select>
 <img alt="カレンダの見た目を選ぶ" src="/machico/img/yellow_triangle.png">
 </div>
-<button id="schedule_register_button">予定</button>
+<%@ include file="scheduleRegisterTypeMenu.jsp"%>
 </div>
 </section>
 
