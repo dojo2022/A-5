@@ -34,7 +34,10 @@
 				<c:if test="${(index + 1) % 7 == 1}">
 				<div class="calendar_row">
 				</c:if>
-					<a><section class=" calendar_item <c:if test="${gridOneMouthSchedule.isCurrentDays[index]}">is_current_day</c:if>" >
+				<c:if test="${gridOneMouthSchedule.isCurrentDays[index]}">
+					<a href="/machico/CalendarServlet/T/?data${year}-${month + 1}#day${gridOneMouthSchedule.days[index]}">
+				</c:if>
+						<section class="calendar_item <c:if test="${gridOneMouthSchedule.isCurrentDays[index]}">is_current_day</c:if>" >
 						<section>${gridOneMouthSchedule.days[index]}</section>
 						<c:choose>
     					<c:when test="${gridOneMouthSchedule.schedule[index].size() == 1 }">
@@ -51,7 +54,9 @@
 						</c:when>
 						</c:choose>
 						</section>
-				</a>
+				<c:if test="${gridOneMouthSchedule.isCurrentDays[index]}">
+					</a>
+				</c:if>
 				<c:if test="${(index + 1) % 7 == 0}">
 				</div>
 				</c:if>
