@@ -88,6 +88,9 @@ main {
 	border-radius: 10px;
 	color: #FFF;
 	font-size: 0.8em;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 }
 
 .schedule_type_F {
