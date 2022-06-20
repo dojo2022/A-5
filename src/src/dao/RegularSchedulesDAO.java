@@ -27,7 +27,7 @@ public class RegularSchedulesDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 				// SQL文を準備する
-				String sql = "SELECT *from regular_schedules WHERE calendar_id LIKE ? ";
+				String sql = "SELECT *from regular_schedules WHERE calendar_id = ? ";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる

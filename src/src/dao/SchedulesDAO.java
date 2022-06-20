@@ -16,7 +16,7 @@ public class SchedulesDAO {
 	//スケジュール取得
 	public List<Schedule> select(Schedule schedule , CalendarBeans cb) {
 		Connection conn = null;
-		List<Schedule> scheduleList = new ArrayList<Schedule>();
+		 List<Schedule> scheduleList = new ArrayList<Schedule>();
 
 		try {
 			// JDBCドライバを読み込む
@@ -26,7 +26,7 @@ public class SchedulesDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 			// SQL文を準備する
-			String sql = "SELECT *from schedules WHERE calendar_id LIKE ? ";
+			String sql = "SELECT * from schedules WHERE calendar_id = ? ";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -46,7 +46,7 @@ public class SchedulesDAO {
 				sch.setDate(rs.getDate("date"));
 				sch.setTime( rs.getDate("time"));
 				sch.setMemo(rs.getString("memo"));
-				sch.setCalendarId(rs.getInt("calender_id"));
+				sch.setCalendarId(rs.getInt("calendar_id"));
 				sch.setLastDate(rs.getDate("last_date"));
 
 				scheduleList.add(sch);
