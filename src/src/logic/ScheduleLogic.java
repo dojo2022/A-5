@@ -5,19 +5,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import beans.CalendarBeans;
 import beans.Schedule;
-import dao.SchedulesDAO;
 
 public class ScheduleLogic {
-
-	public static void main(String[] args) {
-		SchedulesDAO sdao = new SchedulesDAO();
-		Schedule s = new Schedule();
-		CalendarBeans cb = new CalendarBeans();
-		ScheduleCompile(sdao.select(s, cb));
-
-	}
 
 	//メインをただのメソッドにしたとき引数でデータをもらう
 	public static List<ArrayList<Schedule>> ScheduleCompile(List<Schedule> ScheduleList) {
