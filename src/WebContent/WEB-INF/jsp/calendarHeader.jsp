@@ -5,12 +5,12 @@
 <section id="calendar_header">
 <div id="arrow-month">
 <a id="left_arrow_month" href="?date=${prevYearMouth}"><img alt="前の月へ" src="/machico/img/aqua_triangle.png"></a>
-<span id="mouth_text">${month + 1}月</span>
+<span id="mouth_text">${year}/${month + 1}</span>
 <a id="right_arrow_month" href="?date=${nextYearMouth}" ><img alt="次の月へ" src="/machico/img/aqua_triangle.png"></a>
 </div>
 <h1 id="calendar_title">${currentCalendar.calendarName}</h1>
 <div id="calendar_header_button_area">
-
+<button id="current_month_button">今日</button>
 <div id="change_calendar_menu">
 <select name="calendar_type">
 <option value="G" <c:if test="${currentCalendar.calendarType.equals('G')}">selected</c:if>>マス目</option>

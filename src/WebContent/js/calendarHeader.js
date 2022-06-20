@@ -18,3 +18,9 @@ selectBox.addEventListener('change', function (event) {
             break;
     }
 })
+
+const currentMonthButton = document.getElementById("current_month_button");
+
+currentMonthButton.addEventListener('click', function (event) {
+    location.search = "";
+})

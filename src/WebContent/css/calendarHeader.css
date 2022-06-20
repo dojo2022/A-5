@@ -17,7 +17,7 @@
 #mouth_text {
 	display: block;
 	height: 33px;
-	font-size: 3.8em;
+	font-size: 3em;
 	line-height: 44px;
 	margin: auto 10px;
 	color: #FFF;
@@ -58,6 +58,20 @@
 
 #calendar_header_button_area {
 	display: flex;
+}
+
+#current_month_button {
+	margin-right: 15px;
+	font-size: 22px;
+	width: 100px;
+	height: 50px;
+	line-height: 39px;
+	border-radius: 50px;
+	background-color: #EFCF24;
+	border: none;
+	color: white;
+	font-weight: bold;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
 }
 
 #change_calendar_menu {
