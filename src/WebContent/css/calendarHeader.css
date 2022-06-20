@@ -1,10 +1,22 @@
 @charset "UTF-8";
 
 #calendar_header {
-	height: 90px;
-	display: flex;
+	height: 60px;
+	background-color: #D2B48C;
+	border-bottom: 3px solid #615A50;
+}
+
+#calendar_header_title_logo {
+	margin-left: 70px;
+	width: 178px;
+}
+
+#calendar_header_controller_area {
+	display: inline-flex;
 	align-items: center;
 	justify-content: space-around;
+	width: 953px;
+	height: 58px;
 }
 
 #arrow-month {
@@ -17,43 +29,42 @@
 #month_text {
 	display: block;
 	height: 33px;
-	font-size: 3em;
-	line-height: 44px;
+	font-size: 2.2em;
 	margin: auto 10px;
+	line-height: 36px;
 	color: #FFF;
 }
 
 #left_arrow_month {
 	display: block;
-	width: 55px;
-	height: 55px;
+	width: 35px;
+	height: 35px;
 }
 
 #left_arrow_month img {
-	width: 55px;
-	height: 55px;
+	width: 35px;
+	height: 35px;
 	transform: rotate(90deg);
 	filter: drop-shadow(3px -3px 3px rgba(0, 0, 0, 0.3));
 }
 
 #right_arrow_month {
 	display: block;
-	width: 55px;
-	height: 55px;
+	width: 35px;
+	height: 35px;
 }
 
 #right_arrow_month img {
-	width: 55px;
-	height: 55px;
+	width: 35px;
+	height: 35px;
 	transform: rotate(270deg);
 	filter: drop-shadow(-3px 3px 3px rgba(0, 0, 0, 0.3));
 }
 
 #calendar_title {
-	font: 3.8em;
 	text-decoration: underline;
+	font-size: 35px;
 	color: #333;
-	font-size: 40px;
 }
 
 #calendar_header_button_area {
@@ -62,9 +73,9 @@
 
 #current_month_button {
 	margin-right: 15px;
-	font-size: 22px;
+	font-size: 18px;
 	width: 100px;
-	height: 50px;
+	height: 40px;
 	line-height: 39px;
 	border-radius: 50px;
 	background-color: #EFCF24;
@@ -81,9 +92,9 @@
 
 #change_calendar_menu select {
 	padding-left: 15px;
-	font-size: 22px;
-	width: 110px;
-	height: 50px;
+	font-size: 18px;
+	width: 100px;
+	height: 40px;
 	border-radius: 50px;
 	background-color: #8CCCD1;
 	border: none;
@@ -98,13 +109,13 @@
 	width: 15px;
 	height: 15px;
 	right: 10px;
-	top: 17px;
+	top: 13px;
 }
 
 #schedule_register_button {
 	font-size: 22px;
 	width: 100px;
-	height: 50px;
+	height: 40px;
 	line-height: 39px;
 	border-radius: 50px;
 	background-color: #8CCCD1;

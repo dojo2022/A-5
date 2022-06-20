@@ -9,7 +9,7 @@ h1 {
 /* 左右に余白を付けるよ */
 main {
 	width: 100%;
-	height: 100%;
+	height: calc(100% - 60px);
 }
 
 #calender {
@@ -17,7 +17,7 @@ main {
 	min-height: 100%;
 	height: auto;
 	margin: 0 auto;
-	padding: 75px 0 0 0;
+	padding-top: 0px;
 	background-color: #DEB887;
 	background-image: url("/machico/img/calendar_background.png");
 	background-repeat: no-repeat;
@@ -71,7 +71,7 @@ main {
 	font-weight: bold;
 	background-color: #FFF;
 	width: 120px;
-	height: 70px;
+	height: 90px;
 	border-radius: 10px;
 	text-align: center;
 	position: relative;

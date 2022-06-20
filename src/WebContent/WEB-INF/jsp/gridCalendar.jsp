@@ -16,10 +16,9 @@
 <link rel="stylesheet" href="/machico/css/gridCalendar.css">
 </head>
 <body>
-	<%@ include file="header.jsp"%>
+	<%@ include file="calendarHeader.jsp"%>
 	<main>
 		<section id="calender">
-			<%@ include file="calendarHeader.jsp"%>
 			<section id= "calendar_day_of_week_container">
 				<section class="day_of_week_item sunday">日</section>
 				<section class="day_of_week_item">月</section>
@@ -47,10 +46,16 @@
 						<section class="calendar_schedule schedule_type_${gridOneMonthSchedule.schedule[index][0].scheduleType}" >${gridOneMonthSchedule.schedule[index][0].schedule}</section>
 						<section class="calendar_schedule schedule_type_${gridOneMonthSchedule.schedule[index][1].scheduleType}" >${gridOneMonthSchedule.schedule[index][1].schedule}</section>
 						</c:when>
-						<c:when test="${gridOneMonthSchedule.schedule[index].size() >= 3 }">
-						<section class="calendar_schedule schedule_type_${gridOneMonthSchedule.schedule[index][0].scheduleType}">${gridOneMonthSchedule.schedule[index][0].schedule}</section>
+    					<c:when test="${gridOneMonthSchedule.schedule[index].size() == 3 }">
+						<section class="calendar_schedule schedule_type_${gridOneMonthSchedule.schedule[index][0].scheduleType}" >${gridOneMonthSchedule.schedule[index][0].schedule}</section>
 						<section class="calendar_schedule schedule_type_${gridOneMonthSchedule.schedule[index][1].scheduleType}" >${gridOneMonthSchedule.schedule[index][1].schedule}</section>
-						<section class="leftover_count">+${gridOneMonthSchedule.schedule[index].size() - 2}</section>
+						<section class="calendar_schedule schedule_type_${gridOneMonthSchedule.schedule[index][2].scheduleType}" >${gridOneMonthSchedule.schedule[index][2].schedule}</section>
+						</c:when>
+						<c:when test="${gridOneMonthSchedule.schedule[index].size() >= 4 }">
+						<section class="calendar_schedule schedule_type_${gridOneMonthSchedule.schedule[index][0].scheduleType}" >${gridOneMonthSchedule.schedule[index][0].schedule}</section>
+						<section class="calendar_schedule schedule_type_${gridOneMonthSchedule.schedule[index][1].scheduleType}" >${gridOneMonthSchedule.schedule[index][1].schedule}</section>
+						<section class="calendar_schedule schedule_type_${gridOneMonthSchedule.schedule[index][2].scheduleType}" >${gridOneMonthSchedule.schedule[index][2].schedule}</section>
+						<section class="leftover_count">+${gridOneMonthSchedule.schedule[index].size() - 3}</section>
 						</c:when>
 						</c:choose>
 						</section>

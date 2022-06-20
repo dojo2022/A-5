@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.Calendar"%>
 <section id="calendar_header">
+<img id="calendar_header_title_logo" alt="タイトルロゴ" src="/machico/img/machico_logo.png">
+<section id="calendar_header_controller_area">
 <div id="arrow-month">
 <a id="left_arrow_month" href="?date=${prevYearMonth}"><img alt="前の月へ" src="/machico/img/aqua_triangle.png"></a>
 <span id="month_text">${year}/${month + 1}</span>
@@ -21,5 +23,6 @@
 </div>
 <button id="schedule_register_button">予定</button>
 </div>
+</section>
 
 </section>
