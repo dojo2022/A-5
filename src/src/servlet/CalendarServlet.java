@@ -127,6 +127,9 @@ public class CalendarServlet extends HttpServlet {
 		oneMonthSchedule.getSchedule().add(twoSchedule);
 		oneMonthSchedule.getSchedule().add(threeSchedule);
 
+		while(oneMonthSchedule.getSchedule().size() <= 30) {
+			oneMonthSchedule.getSchedule().add(new ArrayList<Schedule>());
+		}
 		request.setAttribute("oneMonthSchedule", oneMonthSchedule);
 
 		// calendarTypeに合わせてjspを変更
