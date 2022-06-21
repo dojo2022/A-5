@@ -47,6 +47,7 @@ public class SchedulesDAO {
 				sch.setScheduleType( rs.getString("schedule_type"));
 				sch.setDate(rs.getDate("date"));
 				sch.setTime( rs.getDate("time"));
+				sch.setLastTime(rs.getDate("last_time"));
 				sch.setMemo(rs.getString("memo"));
 				sch.setCalendarId(rs.getInt("calendar_id"));
 				sch.setLastDate(rs.getDate("last_date"));
@@ -91,7 +92,7 @@ public class SchedulesDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 			// SQL文を準備する
-			String sql = "INSERT INTO schedules ( schedule, schedule_type, date, time , memo , calendar_id,last_date) VALUES (?,?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO schedules ( schedule, schedule_type, date, time ,last_time, memo , calendar_id,last_date) VALUES (?,?,?,?,?,?,?,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -106,12 +107,15 @@ public class SchedulesDAO {
 			java.sql.Date sqlTime = new java.sql.Date(schedule.getTime().getTime());
 			pStmt.setDate(4, sqlTime);
 
-			pStmt.setString(5, schedule.getMemo());
+			java.sql.Date sqlLastTime = new java.sql.Date(schedule.getLastTime().getTime());
+			pStmt.setDate(5, sqlLastTime);
 
-			pStmt.setInt(6, cb.getCalendarId());
+			pStmt.setString(6, schedule.getMemo());
+
+			pStmt.setInt(7, cb.getCalendarId());
 			java.sql.Date sqlLastDate = new java.sql.Date(schedule.getLastDate().getTime());
 
-			pStmt.setDate(7, sqlLastDate);
+			pStmt.setDate(8, sqlLastDate);
 
 			if (pStmt.executeUpdate() == 1) {
 
@@ -150,7 +154,7 @@ public class SchedulesDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 			// SQL文を準備する
-			String sql = "UPDATE schedules SET  schedule =?, date =?, time =?, memo =?,last_date =? WHERE calendar_id=? AND schedule_id = ?";
+			String sql = "UPDATE schedules SET  schedule =?, date =?, time =?,last_time=?, memo =?,last_date =? WHERE calendar_id=? AND schedule_id = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる<ここも>
@@ -165,12 +169,15 @@ public class SchedulesDAO {
 
 			pStmt.setString(4, schedule.getMemo());
 
+			java.sql.Date sqlLastTime = new java.sql.Date(schedule.getLastTime().getTime());
+			pStmt.setDate(5, sqlLastTime);
+
 			java.sql.Date sqlLastDate = new java.sql.Date(schedule.getLastDate().getTime());
-			pStmt.setDate(5, sqlLastDate);
+			pStmt.setDate(6, sqlLastDate);
 
-			pStmt.setInt(6, cb.getCalendarId());
+			pStmt.setInt(7, cb.getCalendarId());
 
-			pStmt.setInt(7, schedule.getScheduleId());
+			pStmt.setInt(8, schedule.getScheduleId());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
