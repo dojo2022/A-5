@@ -49,4 +49,4 @@ INSERT INTO calendars ( calendar_name, user_id) VALUES ('テストカレンダ�
 INSERT INTO schedules ( schedule, schedule_type, date, time , memo , calendar_id,last_date) VALUES ('てすと', 'G',
 TO_DATE('22-02-11', 'YY-MM-DD') ,null , 'aaaa', 1, TO_DATE('22-02-12', 'YY-MM-DD') );
 INSERT INTO regular_schedules (schedule , first_date , last_date , memo , calendar_id , regular_schedule_type ,regular_schedule_value)
-VALUES('定期てすと' , TO_DATE('22-02-11', 'YY-MM-DD') , TO_DATE('22-02-12', 'YY-MM-DD') ,'めもてすと',1,'W',' 1 , 6')
+VALUES('定期てすと' , TO_DATE('22-02-11', 'YY-MM-DD') , TO_DATE('22-02-12', 'YY-MM-DD') ,'めもてすと',1,'W','1,6')
