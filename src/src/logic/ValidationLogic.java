@@ -1,5 +1,7 @@
 package logic;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.regex.Pattern;
 
 public class ValidationLogic {
@@ -59,6 +61,50 @@ public class ValidationLogic {
 		if (value != null && value.equals("F") || value.equals("R") || value.equals("A")) {
 			return true;
 		} else {
+			return false;
+		}
+	}
+
+	private static Pattern regularScheduleWeekTypeValdator = Pattern.compile("^([1-7],)+[1-7]$");
+
+	public static boolean checkRegularScheduleType(String type, String value) {
+		if (type == null || value == null || type.length() != 1 || value.isEmpty() || value.isBlank()) {
+			return false;
+		}
+		if (type.equals("Y")) {
+			SimpleDateFormat formater = new SimpleDateFormat("MM/dd");
+			try {
+				formater.parse(value);
+				return true;
+			} catch (ParseException e) {
+				return false;
+			}
+		}
+		if (type.equals("M")) {
+			try {
+				int day = Integer.parseInt(value);
+				return 1 <= day && day <= 12;
+			} catch (NumberFormatException e) {
+				return false;
+			}
+		}
+		if (type.equals("W")) {
+			String[] weeks = value.split(",");
+			// 値が１桁の場合
+			if (weeks.length == 1) {
+				try {
+					int week = Integer.parseInt(value);
+					if (1 <= week && week <= 7) {
+						// valueが数字に変更可能かつ、有効な曜日ならtrue
+						return true;
+					}
+				} catch (NumberFormatException e) {
+					return false;
+				}
+			}
+			// 数字が複数個ある場合
+			return (regularScheduleWeekTypeValdator.matcher(value).find());
+		}else {
 			return false;
 		}
 	}

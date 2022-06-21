@@ -39,6 +39,15 @@ public class ValidataionTest {
 		System.out.println("15文字" + (ValidationLogic.checkCalendarName("abcdefghigklmno") == true));
 		System.out.println("16文字" + (ValidationLogic.checkCalendarName("abcdefghigklmnop") == false));
 		System.out.println("英数字以外" + (ValidationLogic.checkCalendarName("ab_efgh") == true));
+
+		System.out.println("== 定期予定タイプ ==");
+		System.out.println("入力なし" + (ValidationLogic.checkRegularScheduleType("","") == false));
+		System.out.println("null" + (ValidationLogic.checkRegularScheduleType(null,null) == false));
+		System.out.println("空白文字" + (ValidationLogic.checkRegularScheduleType("  	","     ") == false));
+		System.out.println("毎年" + (ValidationLogic.checkRegularScheduleType("Y","12/1") == true));
+		System.out.println("毎月" + (ValidationLogic.checkRegularScheduleType("M","11") == true));
+		System.out.println("毎曜日" + (ValidationLogic.checkRegularScheduleType("W","1,2") == true));
+		System.out.println("存在しない毎曜日" + (ValidationLogic.checkRegularScheduleType("W","8,1") == false));
 	}
 
 }
