@@ -87,6 +87,9 @@ public class CalendarServlet extends HttpServlet {
 		// 現在の月
 		request.setAttribute("year", cal.get(Calendar.YEAR));
 		request.setAttribute("month", cal.get(Calendar.MONTH));
+
+		// 現在の月の最終日
+		request.setAttribute("lastDay", cal.getActualMaximum(Calendar.DAY_OF_MONTH));
 		// 次の月の年と月
 		cal.add(Calendar.MONTH, 1);
 		request.setAttribute("nextYearMonth", cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH) + 1));
