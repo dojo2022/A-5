@@ -49,9 +49,9 @@ public class ValidationLogic {
 
 	//カレンダータイプ
 	public static boolean checkCalendarType(String value) {
-		if(value != null && value.equals("G") || value.equals("L") || value.equals("T")) {
+		if (value != null && value.equals("G") || value.equals("L") || value.equals("T")) {
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}
@@ -71,6 +71,7 @@ public class ValidationLogic {
 		if (type == null || value == null || type.length() != 1 || value.isEmpty() || value.isBlank()) {
 			return false;
 		}
+		// 年単位は(月/日)が入力される
 		if (type.equals("Y")) {
 			SimpleDateFormat formater = new SimpleDateFormat("MM/dd");
 			try {
@@ -80,6 +81,7 @@ public class ValidationLogic {
 				return false;
 			}
 		}
+		// 月単位は(日）
 		if (type.equals("M")) {
 			try {
 				int day = Integer.parseInt(value);
@@ -88,6 +90,8 @@ public class ValidationLogic {
 				return false;
 			}
 		}
+		// 曜日単位は(1 or 1,2,3）
+		// 空白は無し
 		if (type.equals("W")) {
 			String[] weeks = value.split(",");
 			// 値が１桁の場合
@@ -104,7 +108,7 @@ public class ValidationLogic {
 			}
 			// 数字が複数個ある場合
 			return (regularScheduleWeekTypeValdator.matcher(value).find());
-		}else {
+		} else {
 			return false;
 		}
 	}

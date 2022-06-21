@@ -12,6 +12,7 @@ public class Schedule implements Serializable {
 	private String memo;
 	private int calendarId;
 	private Date lastDate;
+	private Date lastTime;
 
 	public Schedule() {
 		super();
@@ -82,6 +83,14 @@ public class Schedule implements Serializable {
 	public void setLastDate(Date lastDate) {
 
 		this.lastDate = lastDate;
+	}
+
+	public Date getLastTime() {
+		return lastTime;
+	}
+
+	public void setLastTime(Date lastTime) {
+		this.lastTime = lastTime;
 	}
 
 }
