@@ -15,7 +15,7 @@ public class CalendarsDAO {
 	//アレイリストを追加する？？
 
 	//カレンダー取得
-	public List<CalendarBeans> select(CalendarBeans cb , User user) {
+	public List<CalendarBeans> select(User user) {
 		Connection conn = null;
 		List<CalendarBeans> cbList = new ArrayList<CalendarBeans>();
 
