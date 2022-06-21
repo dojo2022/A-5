@@ -149,7 +149,7 @@ public class CalendarServlet extends HttpServlet {
 		oneMonthSchedule.getSchedule().add(fourSchedule);
 		oneMonthSchedule.getSchedule().add(fiveSchedule);
 
-		while(oneMonthSchedule.getSchedule().size() <= 30) {
+		while (oneMonthSchedule.getSchedule().size() <= 30) {
 			oneMonthSchedule.getSchedule().add(new ArrayList<Schedule>());
 		}
 		request.setAttribute("oneMonthSchedule", oneMonthSchedule);
