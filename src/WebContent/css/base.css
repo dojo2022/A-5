@@ -1,6 +1,7 @@
 @charset "UTF-8";
 @import url("/machico/css/header.css");
 @import url("/machico/css/calendarHeader.css");
+@import url("/machico/css/scheduleRegisterTypeMenu.css");
 
 * {
 	box-sizing: border-box;

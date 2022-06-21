@@ -73,7 +73,8 @@
 /* ここのマージンレフトを書き換えると
 							予定のボタンが動くよ */
 .clicktxt {
-	position: absolute;
+	position: relative;
+	display:block;
 	color: #ffffff;
 	background-color: #8CCCD1;;
 	padding: 15px;
