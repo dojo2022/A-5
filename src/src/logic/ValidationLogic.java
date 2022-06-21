@@ -53,4 +53,13 @@ public class ValidationLogic {
 			return false;
 		}
 	}
+
+	// 予定タイプ
+	public static boolean checkScheduleType(String value) {
+		if (value != null && value.equals("F") || value.equals("R") || value.equals("A")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
