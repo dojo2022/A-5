@@ -49,9 +49,9 @@ public class ValidationLogic {
 
 	//カレンダータイプ
 	public static boolean checkCalendarType(String value) {
-		if(value != null && value.equals("G") || value.equals("L") || value.equals("T")) {
+		if (value != null && value.equals("G") || value.equals("L") || value.equals("T")) {
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}
@@ -64,7 +64,6 @@ public class ValidationLogic {
 			return false;
 		}
 	}
-
 
 	private static Pattern regularScheduleWeekTypeValdator = Pattern.compile("^([1-7],)+[1-7]$");
 
@@ -109,7 +108,7 @@ public class ValidationLogic {
 			}
 			// 数字が複数個ある場合
 			return (regularScheduleWeekTypeValdator.matcher(value).find());
-		}else {
+		} else {
 			return false;
 		}
 	}
