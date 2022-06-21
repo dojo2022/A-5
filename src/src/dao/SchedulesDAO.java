@@ -14,7 +14,7 @@ import beans.Schedule;
 public class SchedulesDAO {
 
 	//スケジュール取得
-	public List<Schedule> select(Schedule schedule , CalendarBeans cb) {
+	public List<Schedule> select(Schedule schedule , CalendarBeans cb , int year , int month) {
 		Connection conn = null;
 		 List<Schedule> scheduleList = new ArrayList<Schedule>();
 
@@ -26,12 +26,14 @@ public class SchedulesDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 			// SQL文を準備する
-			String sql = "SELECT * from schedules WHERE calendar_id = ? ";
+			String sql = "SELECT * from schedules WHERE calendar_id = ? AND date BETWEEN ?  AND ? ";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
 
 				pStmt.setInt(1, cb.getCalendarId());
+				pStmt.setString(2, year + "-" + month + "-" + 1 );
+				pStmt.setString(3,year + "-" + month + "-" + 31 );
 
 
 			// SQL文を実行し、結果表を取得する
