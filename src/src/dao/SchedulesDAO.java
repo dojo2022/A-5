@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,10 +31,15 @@ public class SchedulesDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
+			String firstDate = String.format("%04d-%02d-%02d",year,month ,1);
+			String lastdDate = String.format("%04d-%02d-%02d",year,month ,31);
+
 
 				pStmt.setInt(1, cb.getCalendarId());
-				pStmt.setString(2, year + "-" + String.format("%02d", month) + "-" + 1 );
-				pStmt.setString(3,year + "-" + String.format("%02d", month) + "-" + 31 );
+				Date sqlFirstDate= Date.valueOf(firstDate);
+				pStmt.setDate(2,sqlFirstDate);
+				Date sqlLastDate = Date.valueOf(lastdDate);
+				pStmt.setDate(3,sqlLastDate);
 
 
 			// SQL文を実行し、結果表を取得する
