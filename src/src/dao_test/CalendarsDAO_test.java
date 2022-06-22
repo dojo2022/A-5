@@ -39,10 +39,9 @@ public class CalendarsDAO_test {
 
 	public static void select() {
 		CalendarsDAO cdao = new CalendarsDAO();
-		CalendarBeans cb = new CalendarBeans();
 		 User user = new User();
 		 user.setId(1);
-		List<CalendarBeans>  b = cdao.select(cb, user);
+		List<CalendarBeans>  b = cdao.select(user);
 		 for(int i = 0 ; i < b.size(); i++) {
 			 System.out.println(b.get(i).getCalendarName());
 			 System.out.println(b.get(i).getCalendarType());
