@@ -48,7 +48,7 @@
 						</table>
 					</div>
 					<div class="frame_contents">
-						<img src="img/ここにいれるよ.png" class="arrow">
+						<img src="img/aqua_tripletriangle.png" class="arrow">
 					</div>
 					<div class="frame_contents">
 						<table id="date_table_end">
