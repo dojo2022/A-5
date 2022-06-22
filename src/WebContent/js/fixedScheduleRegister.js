@@ -26,7 +26,7 @@ function connecttextB(textid, ischecked) {
 
 const title = document.getElementById('calendar_new_title')
 
-const form = document.getElementById('automatic-schedule-form')
+const form = document.getElementById('fixed-schedule-form')
 
 function titleValidation() {
 	if (title.value == null || title.value == "") {

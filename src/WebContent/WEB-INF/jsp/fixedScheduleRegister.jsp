@@ -14,7 +14,7 @@
 	<main>
 		<section id="calender">
 			<div class="background_img">
-				<form>
+				<form id="fixed-schedule-form">
 					<div class="screen_contents">
 						<div id="frame">
 							<table id="title_area">
@@ -83,7 +83,7 @@
 						<input type="submit" value="保存" style="font-weight: bold;">
 					</div>
 					<div class="screen_contents">
-						<input type="button" value="戻る" style="font-weight: bold;">
+						<input type="button" value="戻る" style="font-weight: bold;" onclick="location.href='/machico/CalendarServlet'">
 					</div>
 				</form>
 			</div>
