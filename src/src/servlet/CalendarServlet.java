@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,11 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.CalendarBeans;
 import beans.GridOneMonthSchedule;
+import beans.LoginUser;
 import beans.OneMonthSchedule;
 import beans.Schedule;
-import logic.ValidationLogic;
 
 /**
  * Servlet implementation class GridCalendarServlet
@@ -35,35 +35,36 @@ public class CalendarServlet extends HttpServlet {
 			throws ServletException, IOException {
 		//ログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		//		if (session.getAttribute("loginUser") == null) {
-		//			response.sendRedirect("/machico/LoginServlet");
-		//			return;
-		//		}
-
-		CalendarBeans calendar = (CalendarBeans) session.getAttribute("currentCalendar");
-
-		// カレンダーが無ければDAOから持ってくる
-		if (calendar == null) {
-			// セッションから持ってくる予定のカレンダー
-			// TODO 後でDAOに置き換える
-			calendar = new CalendarBeans();
-			calendar.setCalendarType("G");
-			calendar.setIsLock(false);
-			calendar.setCalendarName("テストカレンダ");
-			session.setAttribute("currentCalendar", calendar);
+		LoginUser loginUser = (LoginUser) session.getAttribute("loginUser");
+		if (loginUser == null) {
+			response.sendRedirect("/machico/LoginServlet");
+			return;
 		}
-		// URLからCalendarTypeを判定
+
+		// URLからCalendarTypeと日付を判定
+		Pattern validator = Pattern.compile("^[0-2]-[GLT]$");
 		String uri = request.getRequestURI();
 		if (uri.substring(uri.length() - 1).equals("/")) {
 			uri = uri.substring(0, uri.length() - 1);
 		}
 		String[] paths = uri.split("/");
-		String calendarType = paths[paths.length - 1];
-		if (ValidationLogic.checkCalendarType(calendarType)) {
-			calendar.setCalendarType(calendarType);
+		String urlPathParamatar = paths[paths.length - 1];
+
+		if (validator.matcher(urlPathParamatar).find()) {
+			String[] calendarAndCalendarTypePair = urlPathParamatar.split("-");
+			int calendarIndex = Integer.parseInt(calendarAndCalendarTypePair[0]);
+			String calendarType = calendarAndCalendarTypePair[1];
+
+			if (loginUser.getCalendarList().size() > calendarIndex) {
+				loginUser.setCalendarId(calendarIndex);
+			} else {
+				loginUser.setCalendarId(0);
+			}
+			loginUser.setCalendarType(calendarType);
 		} else {
 			// urlから値を取得できなければそのまま(現在のCalendarType)で
 		}
+
 		// URLから日付を設定
 		String urlDate = request.getParameter("date");
 		Date date = null;
@@ -76,6 +77,7 @@ public class CalendarServlet extends HttpServlet {
 			// 読み取れない値が入れられたら無視
 		}
 		Calendar cal = Calendar.getInstance();
+
 		log(cal.get(Calendar.YEAR) + "-" + cal.get(Calendar.MONTH));
 
 		if (date != null) {
@@ -84,9 +86,10 @@ public class CalendarServlet extends HttpServlet {
 			// urlから値を取得できなければそのまま(現在の日付)で
 		}
 
+		loginUser.setYear(cal.get(Calendar.YEAR));
+		loginUser.setMonth(cal.get(Calendar.MONTH));
+
 		// 現在の月
-		request.setAttribute("year", cal.get(Calendar.YEAR));
-		request.setAttribute("month", cal.get(Calendar.MONTH));
 
 		// 現在の月の最終日
 		request.setAttribute("lastDay", cal.getActualMaximum(Calendar.DAY_OF_MONTH));
@@ -166,7 +169,7 @@ public class CalendarServlet extends HttpServlet {
 
 		// calendarTypeに合わせてjspを変更
 		String calendarName;
-		switch (calendar.getCalendarType()) {
+		switch (loginUser.getCalendarType()) {
 		case "L":
 			calendarName = "listCalendar";
 			break;
@@ -194,13 +197,12 @@ public class CalendarServlet extends HttpServlet {
 			throws ServletException, IOException {
 		//ログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		//		if (session.getAttribute("loginUser") == null) {
-		//			response.sendRedirect("/machico/LoginServlet");
-		//			return;
-		//		}
+		if (session.getAttribute("loginUser") == null) {
+			response.sendRedirect("/machico/LoginServlet");
+			return;
+		}
 		request.setCharacterEncoding("UTF-8");
 		String moveRegistration = request.getParameter("move_registration");
-
 
 		if (moveRegistration != null) {
 			switch (moveRegistration) {
@@ -224,14 +226,6 @@ public class CalendarServlet extends HttpServlet {
 				// これ以外の場合は何もしない
 			}
 		}
-		request.setCharacterEncoding("UTF-8");
-		// calendarTypeが変わっていたら、カレンダーの種類を変更
-		String calendarType = request.getParameter("calendar_type");
-		if (calendarType != null) {
-			CalendarBeans calendar = (CalendarBeans) session.getAttribute("currentCalendar");
-			calendar.setCalendarType(calendarType);
-		}
-
 		doGet(request, response);
 	}
 

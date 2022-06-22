@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${currentCalendar.calendarName} | machico</title>
+<title>${loginUser.calendarList.get(loginUser.calendarId).calendarName} | machico</title>
 <link rel="stylesheet" href="/machico/css/base.css">
 <link rel="stylesheet" href="/machico/css/gridCalendar.css">
 </head>
@@ -30,7 +30,7 @@
 				<div class="calendar_row">
 				</c:if>
 				<c:if test="${gridOneMonthSchedule.isCurrentDays[index]}">
-					<a href="/machico/CalendarServlet/T/?date=${year}-${month + 1}#day${gridOneMonthSchedule.days[index]}">
+					<a href="/machico/CalendarServlet/${loginUser.calendarId}-T/?date=${year}-${month + 1}#day${gridOneMonthSchedule.days[index]}">
 				</c:if>
 						<section class="calendar_item <c:if test="${gridOneMonthSchedule.isCurrentDays[index]}">is_current_day</c:if>" >
 						<section>${gridOneMonthSchedule.days[index]}</section>

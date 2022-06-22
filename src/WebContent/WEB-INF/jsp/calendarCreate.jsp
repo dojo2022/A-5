@@ -16,7 +16,7 @@
 			<form id="calendarCreate-form" method="POST" action="/machico/CalendarCreateServlet">
 				<div id="frame">
 					<div class="cp_iptxt">
-					  <input type="text" placeholder="TITLE(カレンダー)" style="font-weight : bold ;">
+					  <input type="text" name="title_textbox" placeholder="TITLE(カレンダー)" style="font-weight : bold ;">
 					  <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
 					</div>
 				</div>
