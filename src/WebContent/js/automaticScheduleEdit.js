@@ -1,10 +1,10 @@
 'use strict';
 
-const title = document.getElementById('calendar_title')
+const title = document.getElementById('calendar_new_title')
 
 const form = document.getElementById('automatic-schedule-form')
 
-function userValidation() {
+function titleValidation() {
 	if (title.value == null || title.value == "") {
 		document.getElementById('title_error_message').textContent = 'タイトルを入力してください'
 	} else if (title.value.length < 1 || title.value.length > 15) {
@@ -15,13 +15,12 @@ function userValidation() {
 }
 
 // バリデーションチェック
-title.addEventListener('blur', userValidation)
+title.addEventListener('blur', titleValidation)
 
 // 送信時のバリデーションチェック
 form.onsubmit = function(event) {
 	// バリデーションチェックを実行
-	userValidation()
-	passwordValidation()
+	titleValidation()
 	if (document.getElementById('title_error_message').textContent.length === 0) {
 		//  エラーメッセージなければ送信
 	} else {
