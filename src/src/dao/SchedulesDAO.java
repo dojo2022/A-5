@@ -32,8 +32,8 @@ public class SchedulesDAO {
 			// SQL文を完成させる
 
 				pStmt.setInt(1, cb.getCalendarId());
-				pStmt.setString(2, year + "-" + month + "-" + 1 );
-				pStmt.setString(3,year + "-" + month + "-" + 31 );
+				pStmt.setString(2, year + "-" + String.format("%02d", month) + "-" + 1 );
+				pStmt.setString(3,year + "-" + String.format("%02d", month) + "-" + 31 );
 
 
 			// SQL文を実行し、結果表を取得する
