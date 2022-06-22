@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import beans.CalendarBeans;
+import beans.LoginUser;
 import beans.User;
+import dao.CalendarsDAO;
 import dao.UserDAO;
 
 /**
@@ -40,15 +45,22 @@ public class LoginServlet extends HttpServlet {
 		String pw = request.getParameter("password_textbox");
 		// ログイン処理を行う
 		UserDAO uDao = new UserDAO();
+		CalendarsDAO cDao = new CalendarsDAO();
 
 		//Beansからとってきたidとnameを u に入れて持ってくる
 		User u = uDao.isLoginOK(name, pw);
 
 		// ログイン成功
 		if (u != null) {
+			LoginUser loginUser = new LoginUser();
+			loginUser.setId(u.getId());
+			loginUser.setName(u.getName());
+			List<CalendarBeans> calendars = cDao.select(u);
+			loginUser.setCalendarList((ArrayList<CalendarBeans>) calendars);
+
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
-			session.setAttribute("loginUser", u);
+			session.setAttribute("loginUser",loginUser);
 
 			// 暫定マス目カレンダーにリダイレクトする
 			response.sendRedirect("/machico/CalendarServlet");

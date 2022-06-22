@@ -17,6 +17,66 @@ main {
 	min-height: 100%;
 	height: auto;
 	margin: 0 auto;
-	padding: 75px 0 0 0;
+	padding: 10px 0 0 0;
 	background-color: #DEB887;
+	background-image: url("/machico/img/calendar_background.png");
+	background-repeat: no-repeat;
+	background-size: 97%;
+	background-position: right top;
 }
+
+.date{
+	color: #333;
+	font-size: 30px;
+	font-weight:bold;
+	width: 75px;
+	text-align: right;
+}
+.calendar {
+	display: flex;
+	justify-content: center;
+}
+
+#schedule{
+	padding: 10px;
+}
+
+.calendar_item {
+	font-weight: bold;
+	background-color: #FFF;
+	width: 500px;
+	height: auto;
+	padding: 10px;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.calendar_schedule {
+	width: calc(100% - 50px);
+	margin: auto;
+	margin-bottom: 3px;
+	border-radius: 5px;
+	padding: 4px;
+	color: #FFF;
+	font-size: 1em;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.schedule_type_F {
+	background-color: #4472C4;
+}
+
+.schedule_type_R {
+	background-color: #38E835;
+}
+
+.schedule_type_A {
+	background-color: #22E0B4;
+}
+
+.empty_schedule {
+	height: 0px;
+}
+

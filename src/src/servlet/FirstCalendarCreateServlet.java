@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.CalendarBeans;
+import beans.LoginUser;
 import beans.User;
+import dao.CalendarsDAO;
 import dao.UserDAO;
 import logic.ValidationLogic;
 
@@ -44,6 +48,7 @@ public class FirstCalendarCreateServlet extends HttpServlet {
 		String new_title = request.getParameter("new_title_textbox");
 
 		UserDAO uDao = new UserDAO();
+		CalendarsDAO cDao = new CalendarsDAO();
 
 		if (!ValidationLogic.checkCalendarName(new_title)) {
 			request.setAttribute("errMessage", "入力内容が間違っています");
@@ -57,16 +62,26 @@ public class FirstCalendarCreateServlet extends HttpServlet {
 
 			if (uDao.createAccount(new_name, new_pw, cb)) {
 				//Beansからとってきたidとnameを u に入れて持ってくる
+
 				User u = uDao.isLoginOK(new_name, new_pw);
+
 				// ログイン成功
 				if (u != null) {
+
+					LoginUser loginUser = new LoginUser();
+					loginUser.setId(u.getId());
+					loginUser.setName(u.getName());
+					List<CalendarBeans> calendars = cDao.select(u);
+					loginUser.setCalendarList((ArrayList<CalendarBeans>) calendars);
+
 					// セッションスコープにIDを格納する
 					HttpSession session = request.getSession();
-					session.setAttribute("loginUser", u);
+					session.setAttribute("loginUser",loginUser);
+
 
 					// マス目カレンダーにフォワードする
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/gridCalendar.jsp");
-					dispatcher.forward(request, response);
+					// 暫定マス目カレンダーにリダイレクトする
+					response.sendRedirect("/machico/CalendarServlet");
 				} else {
 					// リクエストスコープにエラーメッセージを格納する
 					request.setAttribute("errMessage", "エラーが発生しました。アカウントは作成済です。");
