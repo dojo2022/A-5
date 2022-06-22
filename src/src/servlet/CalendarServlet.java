@@ -198,7 +198,32 @@ public class CalendarServlet extends HttpServlet {
 		//			response.sendRedirect("/machico/LoginServlet");
 		//			return;
 		//		}
+		request.setCharacterEncoding("UTF-8");
+		String moveRegistration = request.getParameter("move_registration");
 
+
+		if (moveRegistration != null) {
+			switch (moveRegistration) {
+			case "固定予定": {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/fixedScheduleRegister.jsp");
+				dispatcher.forward(request, response);
+				return;
+			}
+			case "定期予定": {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/regularScheduleRegister.jsp");
+				dispatcher.forward(request, response);
+				return;
+			}
+			case "自動予定": {
+				RequestDispatcher dispatcher = request
+						.getRequestDispatcher("/WEB-INF/jsp/automaticScheduleRegister.jsp");
+				dispatcher.forward(request, response);
+				return;
+			}
+			default:
+				// これ以外の場合は何もしない
+			}
+		}
 		request.setCharacterEncoding("UTF-8");
 		// calendarTypeが変わっていたら、カレンダーの種類を変更
 		String calendarType = request.getParameter("calendar_type");
