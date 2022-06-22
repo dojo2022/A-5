@@ -2,7 +2,7 @@ package beans;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 
 public class LoginUser implements Serializable {
 	private int id;
@@ -10,13 +10,32 @@ public class LoginUser implements Serializable {
 	private ArrayList<CalendarBeans> calendarList;
 	private int calendarId;
     private String calendarType;
-    private Date date;
+    private int year;
+    private int month;
 
     public LoginUser() {
 		super();
 		calendarId = 0;
 		calendarType = "G";
-		date = new Date();
+		Calendar calendar = Calendar.getInstance();
+		year = calendar.get(Calendar.YEAR);
+		month = calendar.get(Calendar.MONTH);
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+	public int getMonth() {
+		return month;
+	}
+
+	public void setMonth(int month) {
+		this.month = month;
 	}
 
 	public int getId() {
@@ -59,13 +78,6 @@ public class LoginUser implements Serializable {
 		this.calendarType = calendarType;
 	}
 
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
 
 
 
