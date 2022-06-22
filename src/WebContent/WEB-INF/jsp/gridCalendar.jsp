@@ -31,7 +31,7 @@
 				<div class="calendar_row">
 				</c:if>
 				<c:if test="${gridOneMonthSchedule.isCurrentDays[index]}">
-					<a href="/machico/CalendarServlet/${loginUser.calendarId}-T/?date=${year}-${month + 1}#day${gridOneMonthSchedule.days[index]}">
+					<a href="/machico/CalendarServlet/${loginUser.calendarId}-T/?date=${loginUser.year}-${loginUser.month + 1}#day${gridOneMonthSchedule.days[index]}">
 				</c:if>
 						<section class="calendar_item <c:if test="${gridOneMonthSchedule.isCurrentDays[index]}">is_current_day</c:if>" >
 						<section>${gridOneMonthSchedule.days[index]}</section>
