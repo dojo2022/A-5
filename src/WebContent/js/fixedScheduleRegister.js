@@ -21,17 +21,17 @@ function connecttextA( textid, ischecked ) {
       document.getElementById(textid).disabled = true;
    }
    else {
-      // チェックが入っていたら無効化
+      // チェックが入っていなかったら無効化
       document.getElementById(textid).disabled = false;
    }
 }
 function connecttextB( textid, ischecked ) {
    if( ischecked == true ) {
-    // チェックが入っていなかったら有効化
+    // チェックが入っていたら有効化
       document.getElementById(textid).disabled = true;
    }
    else {
-      // チェックが入っていたら無効化
+      // チェックが入っていなかったら無効化
       document.getElementById(textid).disabled = false;
    }
 }
