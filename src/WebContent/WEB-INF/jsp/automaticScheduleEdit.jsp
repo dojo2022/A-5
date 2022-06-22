@@ -53,7 +53,7 @@
 							class="submit_button_css">
 					</div>
 					<div class="screen_contents">
-						<input type="button" value="戻る" style="font-weight: bold;">
+						<input type="button" value="戻る" style="font-weight: bold;" onclick="location.href='/machico/CalendarServlet'">
 					</div>
 					<input type="hidden" id="err_message" value="">
 				</form>
