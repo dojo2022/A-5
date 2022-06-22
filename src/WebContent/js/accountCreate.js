@@ -6,7 +6,7 @@ const form = document.getElementById('account-create-form')
 
 function userValidation() {
 	if (userName.value == null || userName.value == "") {
-		document.getElementById('user_name_error_message').textContent = 'パスワードを入力してください'
+		document.getElementById('user_name_error_message').textContent = 'ユーザーネームを入力してください'
 	} else if (userName.value.length < 1 || userName.value.length > 15) {
 		document.getElementById('user_name_error_message').textContent = '1～15文字で入力してください'
 	} else {
