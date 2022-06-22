@@ -28,22 +28,7 @@ public class FixedScheduleRegisterServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//ログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
-		if (session.getAttribute("loginUser") == null) {
-			response.sendRedirect("/machico/LoginServlet");
-			return;
-		}
 
-		//foward先のjsp書き換え servletに行く？
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/sevlet/CarendarServlet.java");
-		dispatcher.forward(request, response);
-
-
-
-
-	}
 	//Date型をString型にするもの
 	public Date getDate(String d) { //中身をどうすればいいかわからない
 
@@ -95,6 +80,13 @@ public class FixedScheduleRegisterServlet extends HttpServlet {
 		Date lastDate = this.getDate(request.getParameter("lastDate"));//終了日
 		Date lastTime = this.getDate(request.getParameter("lastTime"));//終了時間
 		String isDayCheckBox = request.getParameter("checkbox");//チェックボックス
+
+		if (name= null) {	//idで取得しないといけない
+			boolean result = Boolean.valueOf();
+			log("チェックボックスの値は" + result);
+		} else {
+			log("チェックボックスの値がありません");
+		}
 //ここで値を治す
 //終日チェックがtrueだったら文字列を置き換える→get.timeを書く
 		//変数の中身を変える＝時間を書き換える

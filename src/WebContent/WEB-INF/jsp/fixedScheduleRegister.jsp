@@ -18,10 +18,21 @@
 			<%--【入力する項目】固定予定登録サーブレットのpostを使う --%>
 		<form method="POST" action="/machico/FixedScheduleRegisterServlet">
 				<div id="frame">
-                        <div class="cp_iptxt">
-                            <input type="text" placeholder="タイトル" style="font-weight : bold ;">
-                            <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
-                        </div>
+					<table id="title_area">
+						<tr>
+							<td>
+		                        <div class="cp_iptxt">
+		                            <input type="text" placeholder="タイトル" style="font-weight : bold ;">
+		                            <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+		                        </div>
+                       		</td>
+						</tr>
+                        		<tr>
+									<td>
+										<p id="title_error_message" class="error_message" align="left"></p>
+									</td>
+								</tr>
+						</table>
                         <div class="frame_contents">
                             　<table id="date_table">
                                 <tr>
@@ -72,7 +83,6 @@
                         </div><br>
                         <textarea id="memo" placeholder="MEMO" style="font-weight : bold ;"></textarea>
                     </div>
-
 				<%--【保存・キャンセルボタン】ボタン行先合ってる？ --%>
 				<div class="screen_contents">
 					<input type="button" name="cancel" value="キャンセル" style="font-weight: bold;"
@@ -85,8 +95,6 @@
 			</form>
 		</section>
 	</main>
-
-
 <%--textのJavascriptファイルであることを示す。スクリプトなどのリソースの URL を指定してる。--%>
 <script type="text/javascript" src="/machico/js/base.js"></script>
 <script type="text/javascript" src="/machico/js/fixedScheduleRegister.js"></script>
