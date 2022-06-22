@@ -1,8 +1,5 @@
 @charset "UTF-8";
-html,
-body {
-	background-color: #F3EEEE;
-}
+
 
 /* 左右に余白を付けるよ */
 main {
@@ -34,7 +31,7 @@ main {
 #frame{
 	margin:40px 40px 0 40px; /* サイズに合わせて変更してね */
 	width: 700px; /* サイズに合わせて変更してね */
-	border: 20px solid 4472C4;
+	border: 20px solid #4472C4;
 	background-color: white;
 	text-align: center;
 	border-radius: 10px;
