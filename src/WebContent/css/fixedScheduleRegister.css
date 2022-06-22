@@ -159,3 +159,17 @@ input[type="button"] {
 	box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
 	margin: 15%;
 }
+/* タイトルのテーブル設定 */
+#title_area {
+	margin-left: 17%;
+}
+
+/* エラーメッセージの設定 */
+.error_message {
+	color: #ff3535;
+	height: 1em;
+	line-height: 1em;
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
