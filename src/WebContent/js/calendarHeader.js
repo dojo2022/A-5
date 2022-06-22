@@ -4,6 +4,7 @@ const selectBox = document.querySelector("#change_calendar_menu select")
 /** @type {HTMLFormElement} */
 const form = document.querySelector("#change_calendar_menu")
 
+const calendarIndex = document.querySelector("#calendar_index").value;
 selectBox.addEventListener('change', function (event) {
     /** @type {HTMLSelectElement} */
     const select = event.currentTarget
@@ -11,7 +12,7 @@ selectBox.addEventListener('change', function (event) {
         case "G":
         case "L":
         case "T":
-			location.href = `/machico/CalendarServlet/${select.value}/${location.search}`;
+            location.href = `/machico/CalendarServlet/${calendarIndex}-${select.value}/${location.search}`;
             break;
         default:
             // それ以外は入ってくることは無いはずなので、何もしない
