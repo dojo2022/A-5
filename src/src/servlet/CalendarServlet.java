@@ -147,6 +147,16 @@ public class CalendarServlet extends HttpServlet {
 		oneMonthSchedule.getSchedule().add(twoSchedule);
 		oneMonthSchedule.getSchedule().add(threeSchedule);
 		oneMonthSchedule.getSchedule().add(fourSchedule);
+		oneMonthSchedule.getSchedule().add(new ArrayList<Schedule>());
+		oneMonthSchedule.getSchedule().add(new ArrayList<Schedule>());
+		oneMonthSchedule.getSchedule().add(new ArrayList<Schedule>());
+		oneMonthSchedule.getSchedule().add(new ArrayList<Schedule>());
+		oneMonthSchedule.getSchedule().add(new ArrayList<Schedule>());
+		oneMonthSchedule.getSchedule().add(new ArrayList<Schedule>());
+		oneMonthSchedule.getSchedule().add(new ArrayList<Schedule>());
+		oneMonthSchedule.getSchedule().add(new ArrayList<Schedule>());
+		oneMonthSchedule.getSchedule().add(new ArrayList<Schedule>());
+		oneMonthSchedule.getSchedule().add(new ArrayList<Schedule>());
 		oneMonthSchedule.getSchedule().add(fiveSchedule);
 
 		while (oneMonthSchedule.getSchedule().size() <= 30) {
