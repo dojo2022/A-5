@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="/machico/css/automaticScheduleEdit.css">
 </head>
 <body>
+<%@ include file="header.jsp"%>
 	<main>
 		<section id="calender">
 			<div class="background_img">
@@ -20,7 +21,7 @@
 								<tr>
 									<td>
 										<div class="cp_iptxt">
-											<input type="text" id="calendar_title" placeholder="タイトル"
+											<input type="text" id="calendar_new_title" placeholder="タイトル"
 												style="font-weight: bold;"> <i
 												class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
 										</div>
