@@ -2,6 +2,7 @@
 @import url("/machico/css/header.css");
 @import url("/machico/css/calendarHeader.css");
 @import url("/machico/css/scheduleRegisterTypeMenu.css");
+@import url("/machico/css/sideMenu.css");
 
 * {
 	box-sizing: border-box;

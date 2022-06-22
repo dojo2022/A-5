@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="/machico/css/gridCalendar.css">
 </head>
 <body>
+	<%@ include file="sideMenu.jsp" %>
 	<%@ include file="calendarHeader.jsp"%>
 	<main>
 		<section id="calender">

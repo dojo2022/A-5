@@ -1,21 +1,17 @@
 @charset "UTF-8";
-*, *:before, *:after {
-	z-index:10;
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
-}
-ol, ul {
+
+.cp_menu ol, ul {
 	list-style: none;
 }
 
 .cp_cont {
 	height: 65vh;
-
+	position: absolute;
+	z-index: 10;
 }
+
 .cp_offcm01 {
 	position: fixed;
-	top: 20px;
 	display: inline-block;
 }
 /* menu */
@@ -27,26 +23,28 @@ ol, ul {
 	height: 100%;
 	cursor: pointer;
 	-webkit-transition: 0.53s transform;
-	        transition: 0.53s transform;
-	-webkit-transition-timing-function: cubic-bezier(.38,.52,.23,.99);
-	        transition-timing-function: cubic-bezier(.38,.52,.23,.99);
+	transition: 0.53s transform;
+	-webkit-transition-timing-function: cubic-bezier(.38, .52, .23, .99);
+	transition-timing-function: cubic-bezier(.38, .52, .23, .99);
 	background-color: #7DB6BB;
-	opacity: 0.8;
 }
+
 .cp_offcm01 .cp_menu ul {
 	margin: 0;
 	padding: 0;
 }
+
 .cp_offcm01 .cp_menu li {
 	list-style: none;
 }
+
 .cp_offcm01 .cp_menu li a {
 	display: block;
 	padding: 30px;
 	text-decoration: none;
 	color: #ffffff;
-    font-weight: bold;
-    font-size: 20px;
+	font-weight: bold;
+	font-size: 20px;
 	border-bottom: 2px solid #ffffff;
 }
 
@@ -55,9 +53,10 @@ ol, ul {
 	display: none;
 	opacity: 0;
 }
+
 .cp_offcm01 #cp_toggle01:checked ~ .cp_menu {
 	-webkit-transform: translateX(18vw);
-	        transform: translateX(18vw);
+	transform: translateX(18vw);
 }
 /* menu toggle */
 .cp_offcm01 #cp_toggle01 ~ label {
@@ -65,22 +64,22 @@ ol, ul {
 	padding: 0.5em;
 	cursor: pointer;
 	-webkit-transition: 0.5s transform;
-	        transition: 0.5s transform;
-	-webkit-transition-timing-function: cubic-bezier(.61,-0.38,.37,1.27);
-	        transition-timing-function: cubic-bezier(.61,-0.38,.37,1.27);
+	transition: 0.5s transform;
+	-webkit-transition-timing-function: cubic-bezier(.61, -0.38, .37, 1.27);
+	transition-timing-function: cubic-bezier(.61, -0.38, .37, 1.27);
 	text-align: center;
 	color: #333333;
+	background-image: url(../img/sidemenu_icon.png);
+	background-repeat: no-repeat;
+	width: 60px;
+	height: 60px;
+	background-position: 6px 6px;
+	background-color: green;
 }
+
 .cp_offcm01 #cp_toggle01:checked ~ label {
 	-webkit-transform: translateX(250px);
-	        transform: translateX(250px);
-}
-.cp_offcm01 #cp_toggle01 ~ label::before {
-	font-family: 'FontAwesome';
-	content:url(../img/hamburger.png);
-	font-size: 2em;
-    padding-left: 10px;
-
+	transform: translateX(250px);
 }
 
 /* contents */
@@ -90,7 +89,6 @@ ol, ul {
 }
 
 /* マイページの部分に色を付ける */
-
-.mypage{
-    background: #EFCF24;
+.mypage {
+	background: #EFCF24;
 }
