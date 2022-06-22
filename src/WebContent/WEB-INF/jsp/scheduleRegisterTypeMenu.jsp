@@ -6,9 +6,9 @@
 	<div class="click_plus_screen">
 		<div id="click_plus_button">
 		<form method="POST" action="/machico/CalendarServlet">
-			<input type="submit" id="fixed_scheduled_button" value="固定予定" name="move_fixed">
-			<input type="submit" id="regular_scheduled_button" value="定期予定" name="move_regular">
-			<input type="submit" id="automatic_scheduled_button" value="自動予定" name="move_automatic">
+			<input type="submit" id="fixed_scheduled_button" value="固定予定" name="move_registration">
+			<input type="submit" id="regular_scheduled_button" value="定期予定" name="move_registration">
+			<input type="submit" id="automatic_scheduled_button" value="自動予定" name="move_registration">
 		</form>
 		</div>
 	</div>
