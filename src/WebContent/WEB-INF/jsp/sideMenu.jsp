@@ -6,30 +6,11 @@
 		<div class="cp_menu">
 			<ul>
 				<li class="mypage"><a href="#mypage">マイページ</a></li>
+				<c:forEach var="calendar" items="${loginUser.calendarList}" varStatus="status">
 				<li>
-					<form method="post">
-						<input type="hidden" name="change_calendar" value="1">
-						<button type="submit" id="change_calendar_button">
-							<!--カレンダー名をとってくる-->
-						</button>
-					</form>
+					<a href="/machico/CalendarServlet/${status.index}-${loginUser.calendarType}/?date=${loginUser.year}-${loginUser.month}">${calendar.calendarName}</a>
 				</li>
-				<li>
-					<form method="post">
-						<input type="hidden" name="change_calendar" value="2">
-						<button type="submit" id="change_calendar_button">
-							<!--カレンダー名をとってくる-->
-						</button>
-					</form>
-				</li>
-				<li>
-					<form method="post">
-						<input type="hidden" name="change_calendar" value="3">
-						<button type="submit" id="change_calendar_button">
-							<!--カレンダー名をとってくる-->
-						</button>
-					</form>
-				</li>
+				</c:forEach>
 				<li><a href="#clendar">カレンダーを追加</a></li>
 			</ul>
 		</div>
