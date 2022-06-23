@@ -21,7 +21,7 @@
 								<tr>
 									<td>
 										<div class="cp_iptxt">
-											<input type="text" id="calendar_new_title" placeholder="タイトル"
+											<input type="text" id="calendar_new_title" placeholder="タイトル" name="schedule"
 												style="font-weight: bold;"> <i
 												class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
 										</div>
@@ -39,12 +39,12 @@
 										<td><label><b>開始</b></label></td>
 									</tr>
 									<tr>
-										<td><input type="date" style="font-weight: bold;">
+										<td><input type="date" style="font-weight: bold;" name="date" >
 										</td>
 									</tr>
 									<tr>
 										<td><input type="time" style="font-weight: bold;"
-											id="time_entry"></td>
+											id="time_entry" name="time" ></td>
 									</tr>
 								</table>
 							</div>
@@ -57,18 +57,19 @@
 										<td><label><b>終了</b></label></td>
 									</tr>
 									<tr>
-										<td><input type="date" style="font-weight: bold;">
+										<td><input type="date" style="font-weight: bold;" name="lastDate">
 										</td>
 									</tr>
 									<tr>
 										<td><input type="time" style="font-weight: bold;"
-											id="time_entry_end"></td>
+											id="time_entry_end" name="lastTime"></td>
 									</tr>
 									<tr>
 										<td>
 											<p id="all_day_text">
 												<input type="checkbox" id="all_day_check"
-													onclick="connecttextA('time_entry',this.checked);connecttextB('time_entry_end',this.checked);">
+													onclick="connecttextA('time_entry',this.checked);connecttextB('time_entry_end',this.checked);"
+													name="checkbox">
 												終日チェック
 											</p>
 										</td>
@@ -76,7 +77,7 @@
 								</table>
 							</div>
 							<br>
-							<textarea id="memo" placeholder="MEMO" style="font-weight: bold;"></textarea>
+							<textarea id="memo" placeholder="MEMO" style="font-weight: bold;"name="memo"></textarea>
 						</div>
 					</div>
 					<div class="screen_contents">
