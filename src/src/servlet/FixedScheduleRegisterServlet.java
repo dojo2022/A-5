@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.CalendarBeans;
+import beans.LoginUser;
 import beans.Schedule;
 import dao.SchedulesDAO;
 
@@ -62,7 +63,8 @@ public class FixedScheduleRegisterServlet extends HttpServlet {
 			throws ServletException, IOException {
 		//もしログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if (session.getAttribute("loginUser") == null) {
+		LoginUser loginUser = (LoginUser)session.getAttribute("loginUser");
+		if (loginUser == null) {
 			response.sendRedirect("/machico/LoginServlet");
 			return;
 		}
@@ -73,17 +75,21 @@ public class FixedScheduleRegisterServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		//	int scheduleId = Integer.parseInt(request.getParameter("scheduleId"));
 		String schedule = request.getParameter("schedule");//予定タイトル
-		String scheduleType = request.getParameter("scheduleType");
 		Date date = this.getDate(request.getParameter("date"));//開始
-		Date time = this.getTime(request.getParameter("time"));//開始時間
+		Date time=this.getTime("00:00"); //開始時間
+		if(request.getParameter("time")!=null) {
+			time = this.getTime(request.getParameter("time"));
+		}
+
 		String memo = request.getParameter("memo");
 		//	int calendarId = Integer.parseInt(request.getParameter("calendarId"));		//int型もString型にするものが必要？→Integer.parseInt()で解決
 		Date lastDate = this.getDate(request.getParameter("lastDate"));//終了日
-		Date lastTime = this.getDate(request.getParameter("lastTime"));//終了時間
-		String[] isDayCheckBox = request.getParameterValues("checkbox");//チェックボックス
+		Date lastTime = this.getTime(request.getParameter("lastTime"));//終了時間
 
+		String[] isDayCheckBox = request.getParameterValues("checkbox");//チェックボックス
+//
 		String d = "00:00";//開始
-		if (isDayCheckBox.length != 0) {//取得した場合
+		if (isDayCheckBox != null) {//取得した場合
 			SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
 			try {
 				time = sdf.parse(d);
@@ -92,7 +98,7 @@ public class FixedScheduleRegisterServlet extends HttpServlet {
 			}
 		}
 		String dend = "23:59";//終了
-		if (isDayCheckBox.length != 0) {//取得した場合
+		if (isDayCheckBox  != null) {//取得した場合
 			SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
 			try {
 				lastTime = sdf.parse(dend);
@@ -101,12 +107,13 @@ public class FixedScheduleRegisterServlet extends HttpServlet {
 			}
 		}
 
-		CalendarBeans cb = (CalendarBeans) session.getAttribute("currentCalendar");
+		LoginUser lg = (LoginUser) session.getAttribute("loginUser");
+		CalendarBeans cb = lg.getCalendarList().get(lg.getCalendarIndex());
 
 		Schedule sc = new Schedule();
 		sc.setCalendarId(cb.getCalendarId());
 		sc.setSchedule(schedule);
-		sc.setScheduleType(scheduleType);
+		sc.setScheduleType("F");
 		sc.setDate(date);
 		sc.setTime(time);
 		sc.setMemo(memo);
@@ -117,8 +124,7 @@ public class FixedScheduleRegisterServlet extends HttpServlet {
 		SchedulesDAO sDao = new SchedulesDAO();//DAOをインスタンスする
 
 		if (sDao.insertSchedule(sc, cb)) { //↑の項目が入ってる
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/sevlet/CarendarServlet");
-			dispatcher.forward(request, response);
+			response.sendRedirect("/machico/CalendarServlet");
 		} else { // 登録失敗
 			request.setAttribute("errMessage", "登録が失敗しました");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/fixedScheduleRegister.jsp");
