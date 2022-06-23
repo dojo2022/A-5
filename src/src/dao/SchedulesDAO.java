@@ -187,8 +187,12 @@ public class SchedulesDAO {
 			java.sql.Date sqlLastDate = new java.sql.Date(schedule.getLastDate().getTime());
 			pStmt.setDate(8, sqlLastDate);
 
-			java.sql.Date sqlAutoLastDate = new java.sql.Date(schedule.getAutoLastDate().getTime());
-			pStmt.setDate(9, sqlAutoLastDate);
+			if(schedule.getAutoLastDate() != null) {
+				java.sql.Date sqlAutoLastDate = new java.sql.Date(schedule.getAutoLastDate().getTime());
+				pStmt.setDate(9, sqlAutoLastDate);
+			}else {
+				pStmt.setDate(9, null);
+			}
 			if (pStmt.executeUpdate() == 1) {
 
 				return true;
