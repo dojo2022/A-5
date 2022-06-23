@@ -4,9 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class LoginUser implements Serializable {
-	private int id;
-	private String name;
+public class LoginUser extends User implements  Serializable {
 	private ArrayList<CalendarBeans> calendarList;
 	private int calendarIndex;
 	private String calendarType;
@@ -36,22 +34,6 @@ public class LoginUser implements Serializable {
 
 	public void setMonth(int month) {
 		this.month = month;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public int getCalendarIndex() {
