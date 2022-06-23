@@ -150,6 +150,8 @@ public class UserDAO {
 
 
 
+
+
 			// SQL文を実行する
 			if (pStmt.executeUpdate() != 1) {
 				return false;
@@ -339,5 +341,6 @@ public class UserDAO {
 		}
 
 	}
+
 
 }

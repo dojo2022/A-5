@@ -15,7 +15,7 @@ import beans.RegularSchedule;
 public class RegularSchedulesDAO {
 
 	//スケジュール取得
-		public List<RegularSchedule> select(RegularSchedule regS , CalendarBeans cb , int year , int month) {
+		public List<RegularSchedule> select(CalendarBeans cb , int year , int month) {
 			Connection conn = null;
 			List<RegularSchedule> regularScheduleList = new ArrayList<RegularSchedule>();
 

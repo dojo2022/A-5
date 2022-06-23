@@ -245,7 +245,7 @@ public class CalendarsDAO {
 	}
 
 	//ロックする
-	public boolean lockCalendar(CalendarBeans cb, User user) {
+	public boolean lockCalendar(CalendarBeans cb) {
 		Connection conn = null;
 
 		try {
@@ -302,7 +302,7 @@ public class CalendarsDAO {
 
 	//ロック解除
 
-	public boolean unLockCalendar(CalendarBeans cb, User user) {
+	public boolean unLockCalendar(CalendarBeans cb) {
 		Connection conn = null;
 
 		try {

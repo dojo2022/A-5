@@ -15,7 +15,7 @@ import beans.Schedule;
 public class SchedulesDAO {
 
 	//スケジュール取得
-	public List<Schedule> select(Schedule schedule , CalendarBeans cb , int year , int month) {
+	public List<Schedule> select(CalendarBeans cb , int year , int month) {
 		Connection conn = null;
 		 List<Schedule> scheduleList = new ArrayList<Schedule>();
 
@@ -119,10 +119,9 @@ public class SchedulesDAO {
 			pStmt.setString(6, schedule.getMemo());
 
 			pStmt.setInt(7, cb.getCalendarId());
+
 			java.sql.Date sqlLastDate = new java.sql.Date(schedule.getLastDate().getTime());
-
 			pStmt.setDate(8, sqlLastDate);
-
 			if (pStmt.executeUpdate() == 1) {
 
 				return true;
