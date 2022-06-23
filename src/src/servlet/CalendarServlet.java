@@ -114,8 +114,7 @@ public class CalendarServlet extends HttpServlet {
 
 		// 予定をjspに渡す
 		SchedulesDAO schedulesDAO = new SchedulesDAO();
-		CalendarBeans cb = new CalendarBeans();
-		cb.setCalendarId(1);
+		CalendarBeans cb = loginUser.getCalendarList().get(loginUser.getCalendarIndex());
 		// TODO ScheduleをDBから適切に取れなかった場合の処理を書く
 		List<ArrayList<Schedule>> scheduleList = ScheduleLogic.ScheduleCompile(schedulesDAO.select(cb, loginUser.getYear(), loginUser.getMonth() + 1));
 		OneMonthSchedule oneMonthSchedule = new OneMonthSchedule();
