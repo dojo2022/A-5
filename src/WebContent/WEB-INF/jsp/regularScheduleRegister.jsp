@@ -113,10 +113,10 @@
 						</div>
 					</div>
 					<div class="screen_contents">
-						<input type="button" class="submit" value="保存" style="font-weight: bold;">
+						<input type="button" class="submit" value="保存" style="font-weight: bold;" onclick="location.href='/machico/CalendarServlet'">
 					</div>
 					<div class="screen_contents">
-						<input type="button" class="button" value="戻る" style="font-weight: bold;">
+						<input type="button" class="button" value="戻る" style="font-weight: bold;" onclick="location.href='/machico/CalendarServlet'">
 					</div>
 					<input type="hidden" id="err_message" value="">
 				</form>
