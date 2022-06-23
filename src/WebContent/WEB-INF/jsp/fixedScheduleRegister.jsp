@@ -14,7 +14,7 @@
 	<main>
 		<section id="calender">
 			<div class="background_img">
-				<form id="fixed-schedule-form">
+				<form id="fixed-schedule-form"  method="POST" action="/machico/FixedScheduleRegisterServlet">
 					<div class="screen_contents">
 						<div id="frame">
 							<table id="title_area">
