@@ -11,10 +11,9 @@ public class ScheduleLogicTest {
 
 	public static void main(String[] args) {
 		SchedulesDAO sdao = new SchedulesDAO();
-		Schedule s = new Schedule();
 		CalendarBeans cb = new CalendarBeans();
 		cb.setCalendarId(1);
-		var scheduleList = ScheduleLogic.ScheduleCompile(sdao.select(s, cb));
+		var scheduleList = ScheduleLogic.ScheduleCompile(sdao.select(cb, 2022, 2));
 		for (ArrayList<Schedule> schedules : scheduleList) {
 			for (Schedule schedule : schedules) {
 				System.out.println(schedule.getSchedule());
