@@ -13,6 +13,7 @@ public class Schedule implements Serializable {
 	private int calendarId;
 	private Date lastDate;
 	private Date lastTime;
+	private Date autoLastDate;
 
 	public Schedule() {
 		super();
@@ -92,5 +93,15 @@ public class Schedule implements Serializable {
 	public void setLastTime(Date lastTime) {
 		this.lastTime = lastTime;
 	}
+
+	public Date getAutoLastDate() {
+		return autoLastDate;
+	}
+
+	public void setAutoLastDate(Date autoLastDate) {
+		this.autoLastDate = autoLastDate;
+	}
+
+
 
 }

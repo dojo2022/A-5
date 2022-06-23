@@ -57,6 +57,7 @@ public class SchedulesDAO {
 				sch.setMemo(rs.getString("memo"));
 				sch.setCalendarId(rs.getInt("calendar_id"));
 				sch.setLastDate(rs.getDate("last_date"));
+				sch.setAutoLastDate(rs.getDate("auto_last_date"));
 
 				scheduleList.add(sch);
 			}
@@ -98,7 +99,7 @@ public class SchedulesDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 			// SQL文を準備する
-			String sql = "INSERT INTO schedules ( schedule, schedule_type, date, time ,last_time, memo , calendar_id,last_date) VALUES (?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO schedules ( schedule, schedule_type, date, time ,last_time, memo , calendar_id,last_date,auto_last_date) VALUES (?,?,?,?,?,?,?,?,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -122,6 +123,9 @@ public class SchedulesDAO {
 
 			java.sql.Date sqlLastDate = new java.sql.Date(schedule.getLastDate().getTime());
 			pStmt.setDate(8, sqlLastDate);
+
+			java.sql.Date sqlAutoLastDate = new java.sql.Date(schedule.getAutoLastDate().getTime());
+			pStmt.setDate(9, sqlAutoLastDate);
 			if (pStmt.executeUpdate() == 1) {
 
 				return true;
@@ -159,7 +163,7 @@ public class SchedulesDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 			// SQL文を準備する
-			String sql = "UPDATE schedules SET  schedule =?, date =?, time =?,last_time=?, memo =?,last_date =? WHERE calendar_id=? AND schedule_id = ?";
+			String sql = "UPDATE schedules SET  schedule =?, date =?, time =?,last_time=?, memo =?,last_date =? ,auto_last_date=? WHERE calendar_id=? AND schedule_id = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる<ここも>
@@ -180,9 +184,12 @@ public class SchedulesDAO {
 			java.sql.Date sqlLastDate = new java.sql.Date(schedule.getLastDate().getTime());
 			pStmt.setDate(6, sqlLastDate);
 
-			pStmt.setInt(7, cb.getCalendarId());
+			java.sql.Date sqlAutoLastDate = new java.sql.Date(schedule.getAutoLastDate().getTime());
+			pStmt.setDate(7, sqlAutoLastDate);
 
-			pStmt.setInt(8, schedule.getScheduleId());
+			pStmt.setInt(8, cb.getCalendarId());
+
+			pStmt.setInt(9, schedule.getScheduleId());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
