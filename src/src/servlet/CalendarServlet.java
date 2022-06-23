@@ -180,6 +180,42 @@ public class CalendarServlet extends HttpServlet {
 				// これ以外の場合は何もしない
 			}
 		}
+		String moveEdit = request.getParameter("move_edit");
+
+		try {
+			int scheduleId = Integer.parseInt(moveEdit);
+			SchedulesDAO scheduleDAO = new SchedulesDAO();
+			Schedule schedule = new Schedule();
+			schedule.setScheduleId(scheduleId);
+			schedule = scheduleDAO.select(schedule);
+			request.setAttribute("editedSchedule", schedule);
+			switch (schedule.getScheduleType()) {
+			case "F": {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/fixedScheduleEdit.jsp");
+				dispatcher.forward(request, response);
+				return;
+			}
+			case "R": {
+
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/regularScheduleEdit.jsp");
+				dispatcher.forward(request, response);
+				return;
+			}
+			case "A": {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/automaticScheduleEdit.css");
+				dispatcher.forward(request, response);
+				return;
+			}
+			default:
+				// これ以外なら何もしない（これ以外が入ってる事は、バグ）
+			}
+
+		} catch (NumberFormatException e) {
+			// 何もしない
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+			// 何もしない
+		}
 		doGet(request, response);
 	}
 

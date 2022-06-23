@@ -29,8 +29,7 @@
 									<c:forEach var="event" items="${oneMonthSchedule.schedule[index]}">
 										<form onclick="this.submit()" action="/machico/CalendarServlet/" method="POST" class="calendar_schedule schedule_type_${event.scheduleType}" >
 										${event.schedule}
-										     <input type="hidden" name="schedule_id" value="${event.scheduleId}">
-     										 <input type="hidden" name="schedule_Type" value="${event.scheduleType}">
+										     <input type="hidden" name="move_edit" value="${event.scheduleId}">
 										</form>
 				 					</c:forEach>
 			 					</section>
