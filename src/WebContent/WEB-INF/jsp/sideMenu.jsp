@@ -8,7 +8,7 @@
 				<li class="mypage"><a href="#mypage">マイページ</a></li>
 				<c:forEach var="calendar" items="${loginUser.calendarList}" varStatus="status">
 				<li>
-					<a href="/machico/CalendarServlet/${status.index}-${loginUser.calendarType}/?date=${loginUser.year}-${loginUser.month}">${calendar.calendarName}</a>
+					<a href="/machico/CalendarServlet/${status.index}-${loginUser.calendarType}/?date=${loginUser.year}-${loginUser.month + 1}">${calendar.calendarName}</a>
 				</li>
 				</c:forEach>
 				<li><a href="#clendar">カレンダーを追加</a></li>
