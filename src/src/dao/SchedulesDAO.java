@@ -87,6 +87,69 @@ public class SchedulesDAO {
 		return scheduleList;
 	}
 
+	//スケジュールをスケジュールIDで一件取得
+		public List<Schedule> select(Schedule schedule) {
+			Connection conn = null;
+			 List<Schedule> scheduleList = new ArrayList<Schedule>();
+
+			try {
+				// JDBCドライバを読み込む
+				Class.forName("org.h2.Driver");
+
+				// データベースに接続する
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
+
+				// SQL文を準備する
+				String sql = "SELECT * from schedules WHERE schedule_id = ? ";
+				PreparedStatement pStmt = conn.prepareStatement(sql);
+
+					pStmt.setInt(1, schedule.getScheduleId());
+
+				// SQL文を実行し、結果表を取得する
+				ResultSet rs = pStmt.executeQuery();
+
+				// 結果表をコレクションにコピーする
+				while (rs.next()) {
+					Schedule sch = new Schedule();
+					sch.setScheduleId(rs.getInt("schedule_id"));
+					sch.setSchedule( rs.getString("schedule"));
+					sch.setScheduleType( rs.getString("schedule_type"));
+					sch.setDate(rs.getDate("date"));
+					sch.setTime( rs.getDate("time"));
+					sch.setLastTime(rs.getDate("last_time"));
+					sch.setMemo(rs.getString("memo"));
+					sch.setCalendarId(rs.getInt("calendar_id"));
+					sch.setLastDate(rs.getDate("last_date"));
+					sch.setAutoLastDate(rs.getDate("auto_last_date"));
+
+					scheduleList.add(sch);
+				}
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+				scheduleList = null;
+			}
+			catch (ClassNotFoundException e) {
+				e.printStackTrace();
+				scheduleList = null;
+			}
+			finally {
+				// データベースを切断
+				if (conn != null) {
+					try {
+						conn.close();
+					}
+					catch (SQLException e) {
+						e.printStackTrace();
+						scheduleList = null;
+					}
+				}
+			}
+
+			// 結果を返す
+			return scheduleList;
+		}
+
 	//予定追加
 	public boolean insertSchedule(Schedule schedule, CalendarBeans cb) {
 		Connection conn = null;
