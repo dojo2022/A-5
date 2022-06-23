@@ -88,9 +88,8 @@ public class SchedulesDAO {
 	}
 
 	//スケジュールをスケジュールIDで一件取得
-		public List<Schedule> select(Schedule schedule) {
+		public Schedule select(Schedule schedule) {
 			Connection conn = null;
-			 List<Schedule> scheduleList = new ArrayList<Schedule>();
 
 			try {
 				// JDBCドライバを読み込む
@@ -109,7 +108,8 @@ public class SchedulesDAO {
 				ResultSet rs = pStmt.executeQuery();
 
 				// 結果表をコレクションにコピーする
-				while (rs.next()) {
+				if(rs.next()) {
+
 					Schedule sch = new Schedule();
 					sch.setScheduleId(rs.getInt("schedule_id"));
 					sch.setSchedule( rs.getString("schedule"));
@@ -122,16 +122,18 @@ public class SchedulesDAO {
 					sch.setLastDate(rs.getDate("last_date"));
 					sch.setAutoLastDate(rs.getDate("auto_last_date"));
 
-					scheduleList.add(sch);
+					return sch;
+				}else {
+
+					return null;
 				}
 			}
 			catch (SQLException e) {
-				e.printStackTrace();
-				scheduleList = null;
+				 return null;
 			}
 			catch (ClassNotFoundException e) {
 				e.printStackTrace();
-				scheduleList = null;
+				 return null;
 			}
 			finally {
 				// データベースを切断
@@ -141,13 +143,11 @@ public class SchedulesDAO {
 					}
 					catch (SQLException e) {
 						e.printStackTrace();
-						scheduleList = null;
+						 return null;
 					}
 				}
 			}
 
-			// 結果を返す
-			return scheduleList;
 		}
 
 	//予定追加
