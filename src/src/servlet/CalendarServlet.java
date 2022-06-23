@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import javax.servlet.RequestDispatcher;
@@ -16,10 +17,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import beans.CalendarBeans;
 import beans.GridOneMonthSchedule;
 import beans.LoginUser;
 import beans.OneMonthSchedule;
 import beans.Schedule;
+import dao.SchedulesDAO;
+import logic.ScheduleLogic;
 
 /**
  * Servlet implementation class GridCalendarServlet
@@ -109,62 +113,13 @@ public class CalendarServlet extends HttpServlet {
 		}
 
 		// 予定をjspに渡す
+		SchedulesDAO schedulesDAO = new SchedulesDAO();
+		CalendarBeans cb = new CalendarBeans();
+		cb.setCalendarId(1);
+		// TODO ScheduleをDBから適切に取れなかった場合の処理を書く
+		List<ArrayList<Schedule>> scheduleList = ScheduleLogic.ScheduleCompile(schedulesDAO.select(cb, loginUser.getYear(), loginUser.getMonth() + 1));
 		OneMonthSchedule oneMonthSchedule = new OneMonthSchedule();
-		Schedule s1 = new Schedule();
-		s1.setSchedule("今日の天気");
-		s1.setScheduleType("F");
-		Schedule s2 = new Schedule();
-		s2.setSchedule("明日の天気aaaaaaaaaaaaaaaaa");
-		s2.setScheduleType("R");
-		Schedule s3 = new Schedule();
-		s3.setSchedule("昨日の天気");
-		s3.setScheduleType("A");
-		Schedule s4 = new Schedule();
-		s4.setSchedule("明後日の天気");
-		s4.setScheduleType("A");
-		Schedule s5 = new Schedule();
-		s5.setSchedule("しあさっての天気");
-		s5.setScheduleType("F");
-
-		ArrayList<Schedule> oneSchedule = new ArrayList<Schedule>();
-		oneSchedule.add(s1);
-		ArrayList<Schedule> twoSchedule = new ArrayList<Schedule>();
-		twoSchedule.add(s1);
-		twoSchedule.add(s2);
-		ArrayList<Schedule> threeSchedule = new ArrayList<Schedule>();
-		threeSchedule.add(s1);
-		threeSchedule.add(s3);
-		threeSchedule.add(s2);
-		ArrayList<Schedule> fourSchedule = new ArrayList<Schedule>();
-		fourSchedule.add(s1);
-		fourSchedule.add(s3);
-		fourSchedule.add(s2);
-		fourSchedule.add(s4);
-		ArrayList<Schedule> fiveSchedule = new ArrayList<Schedule>();
-		fiveSchedule.add(s1);
-		fiveSchedule.add(s3);
-		fiveSchedule.add(s2);
-		fiveSchedule.add(s4);
-		fiveSchedule.add(s5);
-		oneMonthSchedule.getSchedule().add(oneSchedule);
-		oneMonthSchedule.getSchedule().add(twoSchedule);
-		oneMonthSchedule.getSchedule().add(threeSchedule);
-		oneMonthSchedule.getSchedule().add(fourSchedule);
-		oneMonthSchedule.getSchedule().add(new ArrayList<Schedule>());
-		oneMonthSchedule.getSchedule().add(new ArrayList<Schedule>());
-		oneMonthSchedule.getSchedule().add(new ArrayList<Schedule>());
-		oneMonthSchedule.getSchedule().add(new ArrayList<Schedule>());
-		oneMonthSchedule.getSchedule().add(new ArrayList<Schedule>());
-		oneMonthSchedule.getSchedule().add(new ArrayList<Schedule>());
-		oneMonthSchedule.getSchedule().add(new ArrayList<Schedule>());
-		oneMonthSchedule.getSchedule().add(new ArrayList<Schedule>());
-		oneMonthSchedule.getSchedule().add(new ArrayList<Schedule>());
-		oneMonthSchedule.getSchedule().add(new ArrayList<Schedule>());
-		oneMonthSchedule.getSchedule().add(fiveSchedule);
-
-		while (oneMonthSchedule.getSchedule().size() <= 30) {
-			oneMonthSchedule.getSchedule().add(new ArrayList<Schedule>());
-		}
+		oneMonthSchedule.setSchedule((ArrayList<ArrayList<Schedule>>) scheduleList);
 		request.setAttribute("oneMonthSchedule", oneMonthSchedule);
 
 		// calendarTypeに合わせてjspを変更
