@@ -10,11 +10,10 @@
 <link rel="stylesheet" href="/machico/css/listCalendar.css">
 </head>
 <body>
-	<%@ include file="header.jsp"%>
+	<%@ include file="calendarHeader.jsp"%>
 
 	<main>
 		<section id="calender">
-			<%@ include file="calendarHeader.jsp"%>
 			このなかに要素を書いてね(List)
 		</section>
 	</main>
