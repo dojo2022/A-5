@@ -56,9 +56,9 @@ public class CalendarServlet extends HttpServlet {
 			String calendarType = calendarAndCalendarTypePair[1];
 
 			if (loginUser.getCalendarList().size() > calendarIndex) {
-				loginUser.setCalendarId(calendarIndex);
+				loginUser.setCalendarIndex(calendarIndex);
 			} else {
-				loginUser.setCalendarId(0);
+				loginUser.setCalendarIndex(0);
 			}
 			loginUser.setCalendarType(calendarType);
 		} else {
