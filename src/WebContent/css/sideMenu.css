@@ -71,10 +71,13 @@
 	color: #333333;
 	background-image: url(../img/sidemenu_icon.png);
 	background-repeat: no-repeat;
-	width: 60px;
-	height: 60px;
-	background-position: 6px 6px;
-	background-color: green;
+	width: 55px;
+	height: 55px;
+	background-position: -2px 8px;
+	background-color: #EFCF24;
+	background-size: 109%;
+	border-radius: 10px;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
 }
 
 .cp_offcm01 #cp_toggle01:checked ~ label {

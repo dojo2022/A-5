@@ -116,7 +116,8 @@ public class CalendarServlet extends HttpServlet {
 		SchedulesDAO schedulesDAO = new SchedulesDAO();
 		CalendarBeans cb = loginUser.getCalendarList().get(loginUser.getCalendarIndex());
 		// TODO ScheduleをDBから適切に取れなかった場合の処理を書く
-		List<ArrayList<Schedule>> scheduleList = ScheduleLogic.ScheduleCompile(schedulesDAO.select(cb, loginUser.getYear(), loginUser.getMonth() + 1));
+		List<ArrayList<Schedule>> scheduleList = ScheduleLogic
+				.ScheduleCompile(schedulesDAO.select(cb, loginUser.getYear(), loginUser.getMonth() + 1));
 		OneMonthSchedule oneMonthSchedule = new OneMonthSchedule();
 		oneMonthSchedule.setSchedule((ArrayList<ArrayList<Schedule>>) scheduleList);
 		request.setAttribute("oneMonthSchedule", oneMonthSchedule);
@@ -156,8 +157,9 @@ public class CalendarServlet extends HttpServlet {
 			return;
 		}
 		request.setCharacterEncoding("UTF-8");
-		String moveRegistration = request.getParameter("move_registration");
 
+		// 予定を登録
+		String moveRegistration = request.getParameter("move_registration");
 		if (moveRegistration != null) {
 			switch (moveRegistration) {
 			case "固定予定": {
@@ -180,6 +182,45 @@ public class CalendarServlet extends HttpServlet {
 				// これ以外の場合は何もしない
 			}
 		}
+
+		// 予定を編集
+		String moveEdit = request.getParameter("move_edit");
+		try {
+			int scheduleId = Integer.parseInt(moveEdit);
+			SchedulesDAO scheduleDAO = new SchedulesDAO();
+			Schedule schedule = new Schedule();
+			schedule.setScheduleId(scheduleId);
+			schedule = scheduleDAO.select(schedule);
+			request.setAttribute("editedSchedule", schedule);
+			switch (schedule.getScheduleType()) {
+			case "F": {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/fixedScheduleEdit.jsp");
+				dispatcher.forward(request, response);
+				return;
+			}
+			case "R": {
+
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/regularScheduleEdit.jsp");
+				dispatcher.forward(request, response);
+				return;
+			}
+			case "A": {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/automaticScheduleEdit.css");
+				dispatcher.forward(request, response);
+				return;
+			}
+			default:
+				// これ以外なら何もしない（これ以外が入ってる事は、バグ）
+			}
+
+		} catch (NumberFormatException e) {
+			// 何もしない
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+			// 何もしない
+		}
+
+		// カレンダー画面へ移動
 		doGet(request, response);
 	}
 
