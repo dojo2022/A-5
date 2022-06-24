@@ -1,6 +1,7 @@
 package dao_test;
 
 import java.util.Date;
+import java.util.List;
 
 import beans.CalendarBeans;
 import beans.Schedule;
@@ -11,11 +12,13 @@ public class SchedulesDAO_test {
 	public static void main(String[] args) {
 //		insertSchedule();
 
-		updateSchedule();
+		select();
+
+//		updateSchedule();
 
 //		deleteSchedule();
 	}
-	
+
 	public static void insertSchedule() {
 
 		SchedulesDAO sdao = new SchedulesDAO();
@@ -31,7 +34,18 @@ public class SchedulesDAO_test {
 		s.setTime(d);
 		sdao.insertSchedule(s, cb);
 	}
-	
+
+	public static void select() {
+
+		SchedulesDAO sdao = new SchedulesDAO();
+		CalendarBeans cb = new CalendarBeans();
+		cb.setCalendarId(1);
+		List<Schedule> list = sdao.select(cb, 2022, 6);
+		System.out.println(list.size());
+
+
+	}
+
 	public static void updateSchedule() {
 		SchedulesDAO sdao = new SchedulesDAO();
 		Schedule s = new Schedule();
@@ -54,6 +68,6 @@ public class SchedulesDAO_test {
 		sdao.deleteSchedule(s);
 
 	}
-	
+
 
 }
