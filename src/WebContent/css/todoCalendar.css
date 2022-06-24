@@ -26,19 +26,20 @@ main {
 	background-position: right top;
 }
 
-.date{
+.date {
 	color: #333;
 	font-size: 30px;
-	font-weight:bold;
+	font-weight: bold;
 	width: 75px;
 	text-align: right;
 }
+
 .calendar {
 	display: flex;
 	justify-content: center;
 }
 
-#schedule{
+#schedule {
 	padding: 10px;
 }
 
@@ -80,4 +81,3 @@ main {
 .empty_schedule {
 	height: 0px;
 }
-
