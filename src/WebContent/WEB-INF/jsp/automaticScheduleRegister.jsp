@@ -14,14 +14,14 @@
 	<main>
 		<section id="calender">
 			<div class="background_img">
-				<form id="automatic-schedule-form">
+				<form id="automatic-schedule-form"method="POST"action="/machico/AutomaticScheduleRegisterServlet">
 					<div class="screen_contents">
 						<div id="frame">
 							<table id="title_area">
 								<tr>
 									<td>
 										<div class="cp_iptxt">
-											<input type="text" id="calendar_new_title" placeholder="タイトル"
+											<input type="text" id="calendar_new_title" name="autoschedule_new_title" placeholder="タイトル"
 												style="font-weight: bold;"> <i
 												class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
 										</div>
@@ -38,19 +38,19 @@
 									<td><label><b>締切日</b></label></td>
 								</tr>
 								<tr>
-									<td><input type="date" style="font-weight: bold;">
+									<td><input type="date"name="auto_last_date" style="font-weight: bold;">
 									</td>
 								</tr>
 							</table>
 							<br>
-							<textarea id="memo" placeholder="MEMO" style="font-weight: bold;"></textarea>
+							<textarea id="memo" placeholder="MEMO"name="memo" style="font-weight: bold;"></textarea>
 						</div>
 					</div>
 					<div class="screen_contents">
-						<input type="submit" value="保存" style="font-weight: bold;">
+						<input type="button" value="戻る" style="font-weight: bold;" onclick="location.href='/machico/CalendarServlet'">
 					</div>
 					<div class="screen_contents">
-						<input type="button" value="戻る" style="font-weight: bold;" onclick="location.href='/machico/CalendarServlet'">
+						<input type="submit" value="保存" style="font-weight: bold;">
 					</div>
 					<input type="hidden" id="err_message" value="">
 				</form>
