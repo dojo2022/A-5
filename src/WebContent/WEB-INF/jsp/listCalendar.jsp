@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="/machico/css/listCalendar.css">
 </head>
 <body>
+	<%@ include file="sideMenu.jsp" %>
 	<%@ include file="calendarHeader.jsp"%>
 
 	<main>

@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="/machico/css/todoCalendar.css">
 </head>
 <body>
+	<%@ include file="sideMenu.jsp" %>
 	<%@ include file="calendarHeader.jsp"%>
 	<main>
 		<section id="calender">
