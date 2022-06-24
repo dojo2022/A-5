@@ -32,7 +32,7 @@ public class SchedulesDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 			// SQL文を準備する
-			String sql = "SELECT * from schedules WHERE calendar_id = ? AND date BETWEEN ?  AND ? ";
+			String sql = "SELECT * from schedules WHERE calendar_id = ? AND(( ? <= last_date AND last_date <= ?) OR ( ? <= date AND date <= ?)) ";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -41,10 +41,16 @@ public class SchedulesDAO {
 
 
 				pStmt.setInt(1, cb.getCalendarId());
+
 				Date sqlFirstDate= Date.valueOf(firstDate);
 				pStmt.setDate(2,sqlFirstDate);
+
 				Date sqlLastDate = Date.valueOf(lastDate);
 				pStmt.setDate(3,sqlLastDate);
+
+				pStmt.setDate(4,sqlFirstDate);
+
+				pStmt.setDate(5,sqlLastDate);
 
 
 			// SQL文を実行し、結果表を取得する
