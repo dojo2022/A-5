@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import beans.CalendarBeans;
@@ -18,6 +19,10 @@ public class SchedulesDAO {
 	public List<Schedule> select(CalendarBeans cb , int year , int month) {
 		Connection conn = null;
 		 List<Schedule> scheduleList = new ArrayList<Schedule>();
+		  Calendar calendar = Calendar.getInstance();
+	        calendar.set(Calendar.YEAR, year);
+	        calendar.set(Calendar.MONTH, month - 1);
+	        int result = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
 
 		try {
 			// JDBCドライバを読み込む
@@ -32,13 +37,13 @@ public class SchedulesDAO {
 
 			// SQL文を完成させる
 			String firstDate = String.format("%04d-%02d-%02d",year,month ,1);
-			String lastdDate = String.format("%04d-%02d-%02d",year,month ,31);
+			String lastDate = String.format("%04d-%02d-%02d",year,month ,result);
 
 
 				pStmt.setInt(1, cb.getCalendarId());
 				Date sqlFirstDate= Date.valueOf(firstDate);
 				pStmt.setDate(2,sqlFirstDate);
-				Date sqlLastDate = Date.valueOf(lastdDate);
+				Date sqlLastDate = Date.valueOf(lastDate);
 				pStmt.setDate(3,sqlLastDate);
 
 
@@ -254,15 +259,14 @@ public class SchedulesDAO {
 				pStmt.setDate(3, null);
 			}
 
-			pStmt.setString(4, schedule.getMemo());
-
 			if(schedule.getLastTime() != null) {
-			java.sql.Date sqlLastTime = new java.sql.Date(schedule.getLastTime().getTime());
-			pStmt.setDate(5, sqlLastTime);
-			}else {
-				pStmt.setDate(5, null);
-			}
+				java.sql.Date sqlLastTime = new java.sql.Date(schedule.getLastTime().getTime());
+				pStmt.setDate(4, sqlLastTime);
+				}else {
+					pStmt.setDate(4, null);
+				}
 
+			pStmt.setString(5, schedule.getMemo());
 
 			if(schedule.getLastDate() != null) {
 			java.sql.Date sqlLastDate = new java.sql.Date(schedule.getLastDate().getTime());
