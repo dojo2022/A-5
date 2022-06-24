@@ -66,11 +66,9 @@ public class CalendarCreateServlet extends HttpServlet {
 
 		if (cDao.insertCalendar(cb, user)) {
 			List<CalendarBeans> calendarList = cDao.select(loginUser);
-			if (calendarList != null) {
-				//カレンダーにリダイレクトする
-				loginUser.setCalendarList((ArrayList<CalendarBeans>) calendarList);
-				loginUser.setCalendarIndex(loginUser.getCalendarList().size() - 1);
-			}
+			//カレンダーにリダイレクトする
+			loginUser.setCalendarList((ArrayList<CalendarBeans>) calendarList);
+			loginUser.setCalendarIndex(loginUser.getCalendarList().size() - 1);
 			response.sendRedirect("/machico/CalendarServlet");
 		} else {
 			//DAOではじかれたときのメッセージ表示
