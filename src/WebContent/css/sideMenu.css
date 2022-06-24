@@ -99,6 +99,12 @@
 	transform: translateX(250px);
 }
 
+.sidemenu_calendar_item {
+	position: relative;
+}
+
+
+
 /* contents */
 .cp_contents {
 	color: #333333;
@@ -108,4 +114,56 @@
 /* マイページの部分に色を付ける */
 .mypage {
 	background: #EFCF24;
+}
+
+/* コンテキストメニューの設定 */
+.popup {
+	width: 150px;
+	height: 60px;
+	background: #7DB6BB;
+	box-sizing: border-box;
+	display: none;
+	position: absolute;
+	top: 35px;
+	left: 115px;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.context_menu {
+	width: 150px;
+	font: 25px sans-serif;
+	font-weight: bold;
+	position: relative;
+	color: white;
+	list-style: none;
+	text-align: center;
+	top:10px
+}
+
+.sidemenu_calendar_item label {
+	display: block;
+	position: absolute;
+	bottom:0px;
+	right:10px;
+}
+
+.sidemenu_calendar_item label span {
+	display: block;
+	width: auto;
+	line-height: 40px;
+	border-radius: 4px;
+}
+
+.sidemenu_calendar_item label span:hover {
+	cursor: pointer;
+}
+
+.context_button {
+	display: none;
+}
+
+.context_button:checked+.popup {
+	display: block;
+	transition: .2s;
 }

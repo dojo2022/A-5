@@ -8,8 +8,17 @@
 			<ul>
 				<li class="mypage"><a href="#mypage">マイページ</a></li>
 				<c:forEach var="calendar" items="${loginUser.calendarList}" varStatus="status">
-				<li>
+				<li class="sidemenu_calendar_item">
 					<a href="/machico/CalendarServlet/${status.index}-${loginUser.calendarType}/?date=${loginUser.year}-${loginUser.month + 1}">${calendar.calendarName}</a>
+					<label>
+			            <span><img src="/machico/img/context_icon.png" width="30px"></span>
+			            <input type="checkbox" name="checkbox" class="context_button">
+			            <div class="popup">
+			                <ul class="context_menu">
+			                    <li>削除</li>
+			                </ul>
+			            </div>
+			        </label>
 				</li>
 				</c:forEach>
 				<li><form action="/machico/CalendarServlet" method="post"><input type="submit" name="move_calendar_registration" value="カレンダーを追加"<%-- ←値が送られて来たかで判定するのでここの値は何でもよい --%>></form></li>
