@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="cp_cont">
 	<div class="cp_offcm01">
 		<input type="checkbox" id="cp_toggle01"> <label for="cp_toggle01"></label>
