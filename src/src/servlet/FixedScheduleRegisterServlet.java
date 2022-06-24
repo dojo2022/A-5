@@ -17,6 +17,7 @@ import beans.CalendarBeans;
 import beans.LoginUser;
 import beans.Schedule;
 import dao.SchedulesDAO;
+import logic.ValidationLogic;
 
 /**
  * Servlet implementation class FixedScheduleRegisterServlet
@@ -32,7 +33,7 @@ public class FixedScheduleRegisterServlet extends HttpServlet {
 	//Date型をString型にするもの
 	public Date getDate(String d) { //中身をどうすればいいかわからない
 
-		// SimpleDateFormat をオブジェクト化			// TODO 自動生成された catch ブロック
+		// SimpleDateFormat をオブジェクト化
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = null;
 		try {
@@ -73,42 +74,51 @@ public class FixedScheduleRegisterServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する 項目を全部入れる
 		request.setCharacterEncoding("UTF-8");
-		//	int scheduleId = Integer.parseInt(request.getParameter("scheduleId"));
 		String schedule = request.getParameter("schedule");//予定タイトル
-		Date date = this.getDate(request.getParameter("date"));//開始
-		Date time=this.getTime("00:00"); //開始時間
-		if(request.getParameter("time")!=null) {
-			time = this.getTime(request.getParameter("time"));
+		if(!ValidationLogic.checkScheduleName(schedule)) {//頭に！追加＝失敗した場合
+			request.setAttribute("errMessage", "日付を入力してください。");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/fixedScheduleRegister.jsp");
+			dispatcher.forward(request, response);
+			return;
 		}
 
 		String memo = request.getParameter("memo");
-		//	int calendarId = Integer.parseInt(request.getParameter("calendarId"));		//int型もString型にするものが必要？→Integer.parseInt()で解決
-		Date lastDate = this.getDate(request.getParameter("lastDate"));//終了日
-		Date lastTime = this.getTime(request.getParameter("lastTime"));//終了時間
+
+		if(request.getParameter("date") == null ||request.getParameter("lastDate") == null) { //時間が入って
+			request.setAttribute("errMessage", "日付を入力してください。");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/fixedScheduleRegister.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
+		Date date = this.getDate(request.getParameter("date"));
+		Date lastDate = this.getDate(request.getParameter("lastDate"));
+
 
 		String[] isDayCheckBox = request.getParameterValues("checkbox");//チェックボックス
-//
-		String d = "00:00";//開始
-		if (isDayCheckBox != null) {//取得した場合
-			SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
-			try {
-				time = sdf.parse(d);
-			} catch (ParseException e) {
-				e.printStackTrace();
+
+		Date time;
+		Date lastTime;
+		if(isDayCheckBox == null) {//チェックが付いてなかったら
+			if(request.getParameter("time") == null ||
+					request.getParameter("time").length() == 0||
+					request.getParameter("lastTime") == null ||
+					request.getParameter("lastTime").length() == 0
+					) { //時間が入って
+				request.setAttribute("errMessage", "時間を入力してください。");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/fixedScheduleRegister.jsp");
+				dispatcher.forward(request, response);
+				return;
 			}
-		}
-		String dend = "23:59";//終了
-		if (isDayCheckBox  != null) {//取得した場合
-			SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
-			try {
-				lastTime = sdf.parse(dend);
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
+			time = this.getTime(request.getParameter("time"));
+			lastTime = this.getTime(request.getParameter("lastTime"));
+		}else {
+			time=this.getTime("00:00"); //開始時間
+			lastTime=this.getTime("23:59"); //終了時間
 		}
 
-		LoginUser lg = (LoginUser) session.getAttribute("loginUser");
-		CalendarBeans cb = lg.getCalendarList().get(lg.getCalendarIndex());
+
+
+		CalendarBeans cb = loginUser.getCalendarList().get(loginUser.getCalendarIndex());
 
 		Schedule sc = new Schedule();
 		sc.setCalendarId(cb.getCalendarId());

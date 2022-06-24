@@ -40,6 +40,16 @@ public class ValidationLogic {
 
 	}
 
+	//スケジュール名
+	public static boolean checkScheduleName(String value) {
+		if (value == null || value.isBlank() || value.length() == 0 || value.length() > 15) {
+			return false;
+		} else {
+			return true;
+		}
+
+	}
+
 	//カレンダーロック
 	private static Pattern LockValidator = Pattern.compile("^[0-9]{1,4}$");
 
