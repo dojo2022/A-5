@@ -60,4 +60,13 @@ public class AutomaticScheduleLogic {
 
 	return AutomaticDate;
 	}
+	public static boolean valitation(Date date, Date lastDate) {
+
+		  Date date1 = date;
+	      Date date2 = lastDate;
+	    boolean b =  date1.before(date2);
+
+		return b;
+	}
+
 }
