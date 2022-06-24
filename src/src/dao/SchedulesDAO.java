@@ -247,13 +247,22 @@ public class SchedulesDAO {
 			java.sql.Date sqlDate = new java.sql.Date(schedule.getDate().getTime());
 			pStmt.setDate(2, sqlDate);
 
+			if(schedule.getTime() != null) {
 			java.sql.Date sqlTime = new java.sql.Date(schedule.getTime().getTime());
 			pStmt.setDate(3, sqlTime);
+			}else {
+				pStmt.setDate(3, null);
+			}
 
 			pStmt.setString(4, schedule.getMemo());
 
+			if(schedule.getLastTime() != null) {
 			java.sql.Date sqlLastTime = new java.sql.Date(schedule.getLastTime().getTime());
 			pStmt.setDate(5, sqlLastTime);
+			}else {
+				pStmt.setDate(5, null);
+			}
+
 
 			if(schedule.getLastDate() != null) {
 			java.sql.Date sqlLastDate = new java.sql.Date(schedule.getLastDate().getTime());
