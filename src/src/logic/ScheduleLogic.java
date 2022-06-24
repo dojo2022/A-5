@@ -2,7 +2,6 @@ package logic;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import beans.Schedule;
@@ -14,8 +13,8 @@ public class ScheduleLogic {
 
 		List<ArrayList<Schedule>> scheduleData = new ArrayList<ArrayList<Schedule>>();
 
-		//最初に件数が0件のArrayList配列をつくるを30件作ってそこに入れる
-		for (int i = 0; i < 30; i++) {
+		//最初に件数が0件のArrayList配列をつくるを31件作ってそこに入れる
+		for (int i = 0; i <= 31; i++) {
 
 			scheduleData.add(i, new ArrayList<Schedule>());
 
