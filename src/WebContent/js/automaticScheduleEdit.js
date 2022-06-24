@@ -26,7 +26,14 @@ form.onsubmit = function(event) {
 	} else {
 		return false
 	}
+	dateValidation()
+	if (document.getElementById('date_error_message').textContent.length === 0) {
+		//  エラーメッセージなければ送信
+	} else {
+		return false
+	}
 }
+
 // アラートを表示
 const errMessage = document.getElementById("err_message").value
 if (errMessage !== "") {
