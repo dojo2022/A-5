@@ -8,7 +8,7 @@ public class OneMonthSchedule implements Serializable {
 
 	public OneMonthSchedule() {
 		super();
-		this.schedule = new ArrayList<ArrayList<Schedule>>(30);
+		this.schedule = new ArrayList<ArrayList<Schedule>>(31);
 	}
 
 	public ArrayList<ArrayList<Schedule>> getSchedule() {
