@@ -22,7 +22,7 @@
 									<td>
 										<div class="cp_iptxt">
 											<input type="text" id="calendar_new_title" placeholder="タイトル"
-												style="font-weight: bold;"> <i
+												style="font-weight: bold;" value="${editedSchedule.schedule}"> <i
 												class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
 										</div>
 									</td>
@@ -38,25 +38,26 @@
 									<td><label><b>締切日</b></label></td>
 								</tr>
 								<tr>
-									<td><input type="date" style="font-weight: bold;">
+									<td><input type="date" style="font-weight: bold;" value="${editedSchedule.autoLastDate}">
 									</td>
 								</tr>
 							</table>
 							<br>
-							<textarea id="memo" placeholder="MEMO" style="font-weight: bold;"></textarea>
+							<textarea id="memo" placeholder="MEMO" style="font-weight: bold;">${editedSchedule.memo}</textarea>
 						</div>
 					</div>
 					<div class="screen_contents">
 						<div id="pass_button">
 							<input type="submit" value="PASS" class="pass_button_css"><br>
 						</div>
+							<input type="button" value="戻る" style="font-weight: bold;" onclick="location.href='/machico/CalendarServlet'">
+					</div>
+					<div class="screen_contents">
 						<input type="submit" value="保存" style="font-weight: bold;"
 							class="submit_button_css">
 					</div>
-					<div class="screen_contents">
-						<input type="button" value="戻る" style="font-weight: bold;" onclick="location.href='/machico/CalendarServlet'">
-					</div>
 					<input type="hidden" id="err_message" value="">
+					<input type=hidden name="schedule_id" value="${editedSchedule.scheduleId}">  <!-- 記入していないデータを渡す -->
 				</form>
 			</div>
 		</section>

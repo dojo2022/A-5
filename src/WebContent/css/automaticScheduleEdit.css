@@ -193,4 +193,5 @@ input[type="button"] {
 	border-radius: 10px;
 	text-decoration: none;
 	cursor: pointer;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
 }
