@@ -157,6 +157,7 @@ input[type="submit"] {
 	cursor: pointer;
 	/*--水平方向 垂直方向 影のぼかし 色--*/
 	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+		margin: 15%;
 }
 
 input[type="button"] {
@@ -172,5 +173,5 @@ input[type="button"] {
 	text-decoration: none;
 	cursor: pointer;
 	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
-	margin: 15%;
+
 }
