@@ -205,7 +205,7 @@ public class CalendarServlet extends HttpServlet {
 				return;
 			}
 			case "A": {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/automaticScheduleEdit.css");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/automaticScheduleEdit.jsp");
 				dispatcher.forward(request, response);
 				return;
 			}
