@@ -11,7 +11,7 @@
 					<a href="/machico/CalendarServlet/${status.index}-${loginUser.calendarType}/?date=${loginUser.year}-${loginUser.month + 1}">${calendar.calendarName}</a>
 				</li>
 				</c:forEach>
-				<li><a href="#clendar">カレンダーを追加</a></li>
+				<li><form action="/machico/CalendarServlet" method="post"><input type="submit" name="move_calendar_registration" value="カレンダーを追加"<%-- ←値が送られて来たかで判定するのでここの値は何でもよい --%>></form></li>
 			</ul>
 		</div>
 	</div>

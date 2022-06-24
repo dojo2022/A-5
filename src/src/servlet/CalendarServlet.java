@@ -220,6 +220,14 @@ public class CalendarServlet extends HttpServlet {
 			// 何もしない
 		}
 
+		// カレンダを登録
+		String moveCalendarRegistration = request.getParameter("move_calendar_registration");
+		if (moveCalendarRegistration != null) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendarCreate.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
+
 		// カレンダー画面へ移動
 		doGet(request, response);
 	}

@@ -48,6 +48,20 @@
 	border-bottom: 2px solid #ffffff;
 }
 
+.cp_offcm01 .cp_menu li input[type=submit] {
+	width: 100%;
+	height: 85px;
+	border: none;
+	border-bottom: 2px solid #ffffff;
+	background-color: transparent;
+	color: #ffffff;
+	font-weight: bold;
+	font-size: 20px;
+	text-align: left;
+	padding-left: 30px;
+	cursor: pointer;
+}
+
 .cp_offcm01 #cp_toggle01 {
 	position: absolute;
 	display: none;
