@@ -159,6 +159,7 @@ input[type="time"] {
 	border-radius: 10px;
 	text-decoration: none;
 	cursor: pointer;
+	margin: 15%;
 	/*--水平方向 垂直方向 影のぼかし 色--*/
 	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
 }
@@ -192,6 +193,4 @@ input[type="button"] {
 	border-radius: 10px;
 	text-decoration: none;
 	cursor: pointer;
-	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
-	margin: 15%;
 }
