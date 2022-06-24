@@ -174,11 +174,18 @@ public class SchedulesDAO {
 			java.sql.Date sqlDate = new java.sql.Date(schedule.getDate().getTime());
 			pStmt.setDate(3, sqlDate);
 
+			if(schedule.getTime() != null) {
 			java.sql.Date sqlTime = new java.sql.Date(schedule.getTime().getTime());
 			pStmt.setDate(4, sqlTime);
-
+			}else {
+				pStmt.setDate(4, null);
+			}
+			if(schedule.getLastTime() != null) {
 			java.sql.Date sqlLastTime = new java.sql.Date(schedule.getLastTime().getTime());
 			pStmt.setDate(5, sqlLastTime);
+			}else {
+				pStmt.setDate(5, null);
+			}
 
 			pStmt.setString(6, schedule.getMemo());
 
@@ -248,11 +255,19 @@ public class SchedulesDAO {
 			java.sql.Date sqlLastTime = new java.sql.Date(schedule.getLastTime().getTime());
 			pStmt.setDate(5, sqlLastTime);
 
+			if(schedule.getLastDate() != null) {
 			java.sql.Date sqlLastDate = new java.sql.Date(schedule.getLastDate().getTime());
 			pStmt.setDate(6, sqlLastDate);
+			}else {
+				pStmt.setDate(6, null);
+			}
 
+			if(schedule.getAutoLastDate() != null) {
 			java.sql.Date sqlAutoLastDate = new java.sql.Date(schedule.getAutoLastDate().getTime());
 			pStmt.setDate(7, sqlAutoLastDate);
+			}else {
+				pStmt.setDate(7, null);
+			}
 
 			pStmt.setInt(8, cb.getCalendarId());
 
