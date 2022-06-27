@@ -43,17 +43,7 @@ public class AutomaticScheduleRegisterServlet extends HttpServlet {
         return date;
 	}
 /*
-	public Date getDate(String d) { //中身をどうすればいいかわからない
-		// SimpleDateFormat をオブジェクト化			// TODO 自動生成された catch ブロック
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = null;
-		try {
-			date = sdf.parse(d);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-        return date;
-	}
+
 	public Date getTime(String d) { //中身をどうすればいいかわからない
 		// SimpleDateFormat をオブジェクト化
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
@@ -118,7 +108,7 @@ public class AutomaticScheduleRegisterServlet extends HttpServlet {
 		Date randomDate = AutomaticScheduleLogic.autoSet(date, autoLastDate);
 		sc.setDate(randomDate);
 //		sc.setTime(null);
-		sc.setLastDate(autoLastDate);
+		sc.setLastDate(randomDate);
 		sc.setMemo(memo);
 		sc.setAutoLastDate(autoLastDate);;
 

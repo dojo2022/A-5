@@ -64,9 +64,26 @@ public class AutomaticScheduleLogic {
 
 		  Date date1 = date;
 	      Date date2 = lastDate;
+
+
+	      Calendar c = Calendar.getInstance();
+	      c.setTime(date1);
+	      c.set(Calendar.HOUR_OF_DAY, 0);
+	      c.set(Calendar.MINUTE, 0);
+	      c.set(Calendar.SECOND, 0);
+	      c.set(Calendar.MILLISECOND, 0);
+	      Date d1 = c.getTime();
+
+	      boolean a = d1.equals(date2);
+	      if(a) {
+
+	    	  return a;
+	      }else {
+
 	    boolean b =  date1.before(date2);
 
 		return b;
+	      }
 	}
 
 }
