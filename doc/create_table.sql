@@ -48,13 +48,21 @@ CREATE TABLE regular_schedules (
 
 INSERT INTO users (user_name,user_password) VALUES ('test' ,'test0000');
 INSERT INTO calendars ( calendar_name, user_id) VALUES ('テストカレンダー', 1);
-INSERT INTO schedules ( schedule, schedule_type, date, time, last_time, memo , calendar_id,last_date,auto_last_date) VALUES ('てすと', 'F',
-TO_DATE('22-06-16', 'YY-MM-DD') ,null , null,'aaaa', 1, TO_DATE('22-06-18', 'YY-MM-DD') , null);
-INSERT INTO schedules ( schedule, schedule_type, date, time, last_time, memo , calendar_id,last_date,auto_last_date) VALUES ('てすと', 'A',
-TO_DATE('22-06-26', 'YY-MM-DD') ,null , null,'aaaa', 1, TO_DATE('22-06-26', 'YY-MM-DD') , TO_DATE('22-06-29', 'YY-MM-DD'));
-INSERT INTO schedules ( schedule, schedule_type, date, time, last_time, memo , calendar_id,last_date,auto_last_date) VALUES ('てすと', 'A',
-TO_DATE('22-06-29', 'YY-MM-DD') ,null , null,'aaaa', 1, TO_DATE('22-06-29', 'YY-MM-DD') , TO_DATE('22-07-02', 'YY-MM-DD'));
-INSERT INTO schedules ( schedule, schedule_type, date, time, last_time, memo , calendar_id,last_date,auto_last_date) VALUES ('てすと', 'A',
-TO_DATE('22-06-17', 'YY-MM-DD') ,null , null,'aaaa', 1, TO_DATE('22-06-20', 'YY-MM-DD') , TO_DATE('22-06-20', 'YY-MM-DD'));
-INSERT INTO regular_schedules (schedule , first_date , last_date , memo , calendar_id , regular_schedule_type ,regular_schedule_value)
-VALUES('定期てすと' , TO_DATE('22-02-11', 'YY-MM-DD') , TO_DATE('22-02-12', 'YY-MM-DD') ,'めもてすと',1,'W','1,6')
+INSERT INTO schedules ( schedule, schedule_type, date, time, last_time, memo , calendar_id,last_date,auto_last_date) VALUES ('友達とランチ', 'F',
+TO_DATE('22-08-6', 'YY-MM-DD') ,null , null,'渋谷', 1, TO_DATE('22-08-6', 'YY-MM-DD') , null);
+INSERT INTO schedules ( schedule, schedule_type, date, time, last_time, memo , calendar_id,last_date,auto_last_date) VALUES ('美容院', 'F',
+TO_DATE('22-08-30', 'YY-MM-DD') ,null , null,'自由が丘', 1, TO_DATE('22-08-30', 'YY-MM-DD') , null);
+INSERT INTO schedules ( schedule, schedule_type, date, time, last_time, memo , calendar_id,last_date,auto_last_date) VALUES ('掃除', 'A',
+TO_DATE('22-08-12', 'YY-MM-DD') ,null , null,'', 1, TO_DATE('22-08-14', 'YY-MM-DD') , TO_DATE('22-08-14', 'YY-MM-DD'));
+INSERT INTO schedules ( schedule, schedule_type, date, time, last_time, memo , calendar_id,last_date,auto_last_date) VALUES ('掃除', 'A',
+TO_DATE('22-08-24', 'YY-MM-DD') ,null , null,'', 1, TO_DATE('22-08-24', 'YY-MM-DD') , TO_DATE('22-08-24', 'YY-MM-DD'));
+INSERT INTO schedules ( schedule, schedule_type, date, time, last_time, memo , calendar_id,last_date,auto_last_date) VALUES ('課題', 'A',
+TO_DATE('22-08-22', 'YY-MM-DD') ,null , null,'プログラミング', 1, TO_DATE('22-08-22', 'YY-MM-DD') , TO_DATE('22-08-22', 'YY-MM-DD'));
+INSERT INTO schedules ( schedule, schedule_type, date, time, last_time, memo , calendar_id,last_date,auto_last_date) VALUES ('ゴミ出し', 'R',
+TO_DATE('22-08-5', 'YY-MM-DD') ,null , null,'燃えるゴミ', 1, TO_DATE('22-08-5', 'YY-MM-DD') , TO_DATE('22-08-5', 'YY-MM-DD'));
+INSERT INTO schedules ( schedule, schedule_type, date, time, last_time, memo , calendar_id,last_date,auto_last_date) VALUES ('ゴミ出し', 'R',
+TO_DATE('22-08-12', 'YY-MM-DD') ,null , null,'燃えるゴミ', 1, TO_DATE('22-08-12', 'YY-MM-DD') , TO_DATE('22-08-12', 'YY-MM-DD'));
+INSERT INTO schedules ( schedule, schedule_type, date, time, last_time, memo , calendar_id,last_date,auto_last_date) VALUES ('ゴミ出し', 'R',
+TO_DATE('22-08-19', 'YY-MM-DD') ,null , null,'燃えるゴミ', 1, TO_DATE('22-08-19', 'YY-MM-DD') , TO_DATE('22-08-19', 'YY-MM-DD'));
+INSERT INTO schedules ( schedule, schedule_type, date, time, last_time, memo , calendar_id,last_date,auto_last_date) VALUES ('ゴミ出し', 'R',
+TO_DATE('22-08-26', 'YY-MM-DD') ,null , null,'燃えるゴミ', 1, TO_DATE('22-08-26', 'YY-MM-DD') , TO_DATE('22-08-26', 'YY-MM-DD'));
