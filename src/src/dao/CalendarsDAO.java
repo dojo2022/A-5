@@ -27,7 +27,7 @@ public class CalendarsDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 			// SQL文を準備する
-			String sql = "SELECT * from calendars WHERE user_id = ? ";
+			String sql = "SELECT * from calendars WHERE user_id = ? AND is_delete = false ";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -89,7 +89,7 @@ public class CalendarsDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 			// SQL文を準備する
-			String sql = "SELECT calendar_name from calendars WHERE user_id = ? ";
+			String sql = "SELECT calendar_name from calendars WHERE user_id = ? AND is_delete = false ";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
