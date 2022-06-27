@@ -54,7 +54,8 @@ public class ScheduleLogic {
 			whatLastCalendar.set(Calendar.MINUTE, 0);
 			whatLastCalendar.set(Calendar.SECOND, 0);
 			whatLastCalendar.set(Calendar.MILLISECOND, 0);
-			for (Calendar day = whatFirstCalendar; day.before(whatLastCalendar)||day.equals(whatLastCalendar); day.add(Calendar.DAY_OF_MONTH, 1)) {
+			for (Calendar day = whatFirstCalendar; day.before(whatLastCalendar) || day.equals(whatLastCalendar); day
+					.add(Calendar.DAY_OF_MONTH, 1)) {
 				scheduleData.get(day.get(Calendar.DAY_OF_MONTH) - 1).add(ScheduleList.get(i));
 			}
 		}
