@@ -1,0 +1,177 @@
+@charset "UTF-8";
+
+/* 左右に余白を付けるよ */
+main {
+	width: 100%;
+	height: 100%;
+}
+
+#calender {
+	width: calc(100% - 300px);
+	min-height: 100%;
+	height: auto;
+	margin: 0 auto;
+	padding: 75px 0 0 0;
+	background-color: #DEB887;
+}
+
+.background_img {
+	background-image: url(../img/calendar_background.png);
+	background-size: 90%;
+	object-fit: cover;
+	background-position: right top 20%;
+	background-repeat: no-repeat;
+	height: 100%;
+}
+
+/* フレームと保存ボタンや戻るボタンを横並びにするよ */
+.screen_contents {
+	display: inline-block;
+}
+
+/* 保存ボタンや戻るボタンを横並びにするよ */
+.inline_button {
+	display: inline-block;
+}
+
+/* エラーメッセージの設定 */
+.error_message {
+	color: #ff3535;
+	height: 1em;
+	line-height: 1em;
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 10px;
+	margin-left: 200px;
+	position: fixed;
+}
+
+/*フレームの設定*/
+#frame {
+	margin: 0 40px 50px 70px;
+	padding: 40px 0 40px 0;
+	width: 700px;
+	border: 20px solid #8CCCD1;
+	background-color: white;
+	text-align: center;
+	border-radius: 10px;
+}
+
+/* テキストのCSS */
+.cp_iptxt {
+	position: relative;
+	width: 400px;
+	margin: 15px auto 5px auto;
+	color: #DEB887;
+}
+
+.cp_iptxt input[type='text'] {
+	font: 20px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	padding-left: 10px;
+	letter-spacing: 1px;
+	border: 0;
+	text-align: center;
+}
+
+.cp_iptxt input[type='text']:focus {
+	outline: none;
+}
+
+.cp_iptxt input[type='text']:focus::after {
+	outline: none;
+}
+
+.cp_iptxt i {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 9px 5px;
+	transition: 0.3s;
+	color: #000000;
+}
+
+.cp_iptxt::after {
+	display: block;
+	width: 100%;
+	height: 4px;
+	margin-top: -1px;
+	content: '';
+	border-width: 0 3px 3px 3px;
+	border-style: solid;
+	border-color: #000000;
+}
+
+.name_area {
+	font: 20px sans-serif;
+	font-weight: bold;
+	margin-right: 250px;
+}
+
+/* ボタンたちの見た目 */
+.logout_button_css {
+	width: 150px;
+	font: 20px sans-serif;
+	color: #fff;
+	display: inline-block;
+	padding: 10px 0px;
+	text-align: center;
+	background-color: #EFCF24;
+	border: 3px solid white;
+	border-radius: 10px;
+	text-decoration: none;
+	cursor: pointer;
+	/*--水平方向 垂直方向 影のぼかし 色--*/
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+	margin-top: 40px;
+}
+
+.deletion_button_css {
+	width: 150px;
+	font: 20px sans-serif;
+	color: white;
+	display: inline-block;
+	padding: 10px 0px;
+	text-align: center;
+	background-color: #F03824;
+	border: 3px solid white;
+	border-radius: 10px;
+	text-decoration: none;
+	cursor: pointer;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+	margin-top: 80px;
+}
+
+.back {
+	width: 100px;
+	font: 25px sans-serif;
+	color: #7A73DA;
+	display: inline-block;
+	padding: 10px 0px;
+	text-align: center;
+	background-color: white;
+	border: 3px solid #7A73DA;
+	border-radius: 10px;
+	text-decoration: none;
+	cursor: pointer;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+	margin-left: 80px;
+}
+
+.save {
+	width: 100px;
+	font: 25px sans-serif;
+	color: white;
+	display: inline-block;
+	padding: 10px 0px;
+	text-align: center;
+	background-color: #7A73DA;
+	border: 3px solid white;
+	border-radius: 10px;
+	text-decoration: none;
+	cursor: pointer;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+	margin-left: 480px;
+}
