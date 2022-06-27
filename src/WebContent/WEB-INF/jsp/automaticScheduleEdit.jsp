@@ -38,7 +38,7 @@
 									<td><label><b>締切日</b></label></td>
 								</tr>
 								<tr>
-									<td><input type="date"  name="auto_last_date" style="font-weight: bold;" value="${editedSchedule.lastDate}">
+									<td><input type="date"  name="auto_last_date" style="font-weight: bold;" value="${editedSchedule.autoLastDate}">
 									</td>
 								</tr>
 							</table>
