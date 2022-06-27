@@ -16,7 +16,6 @@
 <div id="change_calendar_menu">
 <select name="calendar_type">
 <option value="G" <c:if test="${loginUser.calendarType.equals('G')}">selected</c:if>>マス目</option>
-<option value="L" <c:if test="${loginUser.calendarType.equals('L')}">selected</c:if>>リスト</option>
 <option value="T" <c:if test="${loginUser.calendarType.equals('T')}">selected</c:if>>Todo</option>
 </select>
 <img alt="カレンダの見た目を選ぶ" src="/machico/img/yellow_triangle.png">
