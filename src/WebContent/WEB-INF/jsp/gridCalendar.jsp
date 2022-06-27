@@ -68,6 +68,7 @@
 		</section>
 	</main>
 	<script type="text/javascript" src="/machico/js/base.js"></script>
+	<script type="text/javascript" src="/machico/js/sideMenu.js"></script>
 	<script type="text/javascript" src="/machico/js/calendarHeader.js"></script>
 	<script type="text/javascript" src="/machico/js/gridCalendar.js"></script>
 </body>
