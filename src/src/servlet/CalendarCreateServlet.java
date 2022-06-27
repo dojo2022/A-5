@@ -69,7 +69,7 @@ public class CalendarCreateServlet extends HttpServlet {
 			//カレンダーにリダイレクトする
 			loginUser.setCalendarList((ArrayList<CalendarBeans>) calendarList);
 			loginUser.setCalendarIndex(loginUser.getCalendarList().size() - 1);
-			response.sendRedirect("/machico/CalendarServlet");
+			response.sendRedirect("/machico/CalendarServlet/"+ loginUser.getCalendarIndex() + "-" + loginUser.getCalendarType() + "/?date=" + loginUser.getYear() + "-" + (loginUser.getMonth() + 1) );
 		} else {
 			//DAOではじかれたときのメッセージ表示
 			request.setAttribute("errMessage", "カレンダー追加できませんでした");

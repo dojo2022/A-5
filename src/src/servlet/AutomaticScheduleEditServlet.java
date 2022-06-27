@@ -145,7 +145,7 @@ public class AutomaticScheduleEditServlet extends HttpServlet {
 		//登録処理
 		if (sDao.updateSchedule(sc, cal)) {
 			//カレンダーにフォワードする
-			response.sendRedirect("/machico/CalendarServlet");
+			response.sendRedirect("/machico/CalendarServlet/"+ loginUser.getCalendarIndex() + "-" + loginUser.getCalendarType() + "/?date=" + loginUser.getYear() + "-" + (loginUser.getMonth() + 1) );
 		} else {
 			//登録できなかった時の処理
 			request.setAttribute("errMessage", "変更ができませんでした");

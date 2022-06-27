@@ -134,7 +134,7 @@ public class FixedScheduleRegisterServlet extends HttpServlet {
 		SchedulesDAO sDao = new SchedulesDAO();//DAOをインスタンスする
 
 		if (sDao.insertSchedule(sc, cb)) { //↑の項目が入ってる
-			response.sendRedirect("/machico/CalendarServlet");
+			response.sendRedirect("/machico/CalendarServlet/"+ loginUser.getCalendarIndex() + "-" + loginUser.getCalendarType() + "/?date=" + loginUser.getYear() + "-" + (loginUser.getMonth() + 1) );
 		} else { // 登録失敗
 			request.setAttribute("errMessage", "登録が失敗しました");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/fixedScheduleRegister.jsp");

@@ -115,8 +115,7 @@ public class AutomaticScheduleRegisterServlet extends HttpServlet {
 		//自動予定登録処理
 		SchedulesDAO sDao = new SchedulesDAO();//DAOをインスタンスする
 		if (sDao.insertSchedule(sc,cb)) {	//項目を合わせる
-			response.sendRedirect("/machico/CalendarServlet");
-
+			response.sendRedirect("/machico/CalendarServlet/"+ loginUser.getCalendarIndex() + "-" + loginUser.getCalendarType() + "/?date=" + loginUser.getYear() + "-" + (loginUser.getMonth() + 1) );
 		}
 		else {	// 登録失敗
 			request.setAttribute("errMessage", "登録が失敗しました");
