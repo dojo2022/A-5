@@ -90,7 +90,7 @@
 			</div>
 		</section>
 	</main>
-	<input type="hidden" id="err_message" value="${errMessage}">​
+	<input type="hidden" id="err_message" value="${errMessage}">
 	<%--textのJavascriptファイルであることを示す。スクリプトなどのリソースの URL を指定してる。--%>
 	<script type="text/javascript" src="/machico/js/base.js"></script>
 	<script type="text/javascript"
