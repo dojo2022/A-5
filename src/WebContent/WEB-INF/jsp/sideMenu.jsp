@@ -6,7 +6,7 @@
 		<input type="checkbox" id="cp_toggle01"> <label for="cp_toggle01"></label>
 		<div class="cp_menu">
 			<ul>
-				<li class="mypage"><a href="#mypage">マイページ</a></li>
+				<li class="mypage"><a href="/machico/MypageServlet">マイページ</a></li>
 				<c:forEach var="calendar" items="${loginUser.calendarList}" varStatus="status">
 				<li class="sidemenu_calendar_item">
 					<a href="/machico/CalendarServlet/${status.index}-${loginUser.calendarType}/?date=${loginUser.year}-${loginUser.month + 1}">${calendar.calendarName}</a>
