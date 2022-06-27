@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
@@ -43,6 +44,20 @@ public class AutomaticScheduleEditServlet extends HttpServlet {
 
 	public static boolean before(Date lastDate) {
 		Date date = new Date();
+
+	    Calendar c = Calendar.getInstance();
+	      c.setTime(date);
+	      c.set(Calendar.HOUR_OF_DAY, 0);
+	      c.set(Calendar.MINUTE, 0);
+	      c.set(Calendar.SECOND, 0);
+	      c.set(Calendar.MILLISECOND, 0);
+	      Date d1 = c.getTime();
+
+	      boolean a = d1.equals(lastDate);
+	      if(a) {
+
+	    	  return a;
+	      }
 
 		return date.before(lastDate);
 	}
@@ -97,6 +112,8 @@ public class AutomaticScheduleEditServlet extends HttpServlet {
 		//日付が前後していないかバリテーションチェック入れる
 		boolean checkDate = before(lastDate);
 		if (!checkDate) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/automaticScheduleEdit.jsp");
+			dispatcher.forward(request, response);
 			return;
 		}
 
@@ -116,11 +133,11 @@ public class AutomaticScheduleEditServlet extends HttpServlet {
 
 		//PASSの時は日付を変える
 		if (request.getParameter("SUBMIT").equals("PASS")) {
-			Date dateN = new Date();
-			Date randomDate = AutomaticScheduleLogic.autoSet(dateN, lastDate);
+
+			Date randomDate = AutomaticScheduleLogic.autoSet(sc.getAutoLastDate(), lastDate);
 			sc.setDate(randomDate);
 			sc.setLastDate(lastDate);
-			sc.setAutoLastDate(lastDate);
+			sc.setAutoLastDate(randomDate);
 		}
 		//スケジュールDAO呼ぶ
 		SchedulesDAO sDao = new SchedulesDAO();
