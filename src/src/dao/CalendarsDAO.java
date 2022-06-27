@@ -346,7 +346,7 @@ public class CalendarsDAO {
 
 	//カレンダー削除
 	//引数なしでいい？？
-	public boolean deleteAccount(CalendarBeans cb) {
+	public boolean delete(CalendarBeans cb) {
 		Connection conn = null;
 		try {
 			// JDBCドライバを読み込む
