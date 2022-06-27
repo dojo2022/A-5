@@ -42,7 +42,7 @@ public class AutomaticScheduleEditServlet extends HttpServlet {
 		return date;
 	}
 
-	public static boolean before(Date lastDate) {
+	public static boolean before(Date autoLastDate) {
 		Date date = new Date();
 
 	    Calendar c = Calendar.getInstance();
@@ -53,13 +53,13 @@ public class AutomaticScheduleEditServlet extends HttpServlet {
 	      c.set(Calendar.MILLISECOND, 0);
 	      Date d1 = c.getTime();
 
-	      boolean a = d1.equals(lastDate);
+	      boolean a = d1.equals(autoLastDate);
 	      if(a) {
 
 	    	  return a;
 	      }
 
-		return date.before(lastDate);
+		return date.before(autoLastDate);
 	}
 
 	/**
@@ -78,14 +78,14 @@ public class AutomaticScheduleEditServlet extends HttpServlet {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		String schedule = request.getParameter("autoschedule_edit_title"); //予定タイトル
-		Date lastDate = this.getDate(request.getParameter("auto_last_date")); //締切日
+		Date autoLastDate = this.getDate(request.getParameter("auto_last_date")); //締切日
 		String memo = request.getParameter("memo"); //メモ
 		int scheduleId = Integer.parseInt(request.getParameter("schedule_id"));
 
 		//登録できなかった時情報を保持する
 		//日付が保持されていないので修正必要!!!!!
 		Schedule editedSchedule = new Schedule();
-		editedSchedule.setLastDate(lastDate);
+		editedSchedule.setAutoLastDate(autoLastDate);
 		editedSchedule.setSchedule(schedule);
 		editedSchedule.setMemo(memo);
 		editedSchedule.setScheduleId(scheduleId);
@@ -101,7 +101,7 @@ public class AutomaticScheduleEditServlet extends HttpServlet {
 		}
 
 		//締切日が入っていない場合をはじく
-		if (lastDate == null) {
+		if (autoLastDate == null) {
 			request.setAttribute("errMessage", "締切日を入力してください");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/automaticScheduleEdit.jsp");
 			dispatcher.forward(request, response);
@@ -110,7 +110,7 @@ public class AutomaticScheduleEditServlet extends HttpServlet {
 		}
 
 		//日付が前後していないかバリテーションチェック入れる
-		boolean checkDate = before(lastDate);
+		boolean checkDate = before(autoLastDate);
 		if (!checkDate) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/automaticScheduleEdit.jsp");
 			dispatcher.forward(request, response);
@@ -125,25 +125,26 @@ public class AutomaticScheduleEditServlet extends HttpServlet {
 		Schedule sc = new Schedule();
 		sc.setScheduleId(scheduleId);
 		SchedulesDAO scheduleDAO = new SchedulesDAO();
-		sc = scheduleDAO.select(sc);
-		sc.setSchedule(schedule);
-		sc.setMemo(memo);
-		sc.setLastDate(lastDate);
-		sc.setDate(lastDate);
+		sc = scheduleDAO.select(sc);  //入力していない情報を持ってくる
+		sc.setSchedule(schedule);  //タイトル編集
+		sc.setMemo(memo);  //メモ
+		sc.setAutoLastDate(autoLastDate);  //締切日
+
 
 		//PASSの時は日付を変える
-		if (request.getParameter("SUBMIT").equals("PASS")) {
+		if (request.getParameter("SUBMIT").equals("PASS") || autoLastDate.before(sc.getDate())) {
 
-			Date randomDate = AutomaticScheduleLogic.autoSet(sc.getAutoLastDate(), lastDate);
-			sc.setDate(randomDate);
-			sc.setLastDate(lastDate);
-			sc.setAutoLastDate(randomDate);
+			Date randomDate = AutomaticScheduleLogic.autoSet(sc.getLastDate(), autoLastDate);
+			sc.setDate(randomDate);  //開始日ランダムで配置された値
+			sc.setLastDate(randomDate);  //終了日ランダムで配置された値
+			sc.setAutoLastDate(autoLastDate);  //締切日
 		}
 		//スケジュールDAO呼ぶ
 		SchedulesDAO sDao = new SchedulesDAO();
 
 		//登録処理
 		if (sDao.updateSchedule(sc, cal)) {
+
 			//カレンダーにフォワードする
 			response.sendRedirect("/machico/CalendarServlet/"+ loginUser.getCalendarIndex() + "-" + loginUser.getCalendarType() + "/?date=" + loginUser.getYear() + "-" + (loginUser.getMonth() + 1) );
 		} else {
