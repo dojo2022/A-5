@@ -12,16 +12,16 @@
 <body>
 	<%@ include file="sideMenu.jsp"%>
 	<%@ include file="header.jsp"%>
-
 	<main>
 		<section id="calender">
 			<div class="background_img">
-				<form id="user-name-form" method="POST" action="/machico/MypageServlet">
+				<form id="user-name-form" method="POST"
+					action="/machico/MypageServlet">
 					<div class="screen_contents">
 						<div id="frame">
 							<label class="name_area">ユーザーネーム</label>
 							<div class="cp_iptxt">
-								<input type="text" id="user_name" style="font-weight: bold;">
+								<input type="text" id="user_name" style="font-weight: bold;" value="${loginUser.name}">
 								<i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
 							</div>
 							<p id="user_name_error_message" class="error_message"
@@ -39,7 +39,7 @@
 					<br>
 					<div class="inline_button">
 						<input type="button" value="戻る" style="font-weight: bold;"
-							class="back">
+							class="back" onclick="location.href='/machico/CalendarServlet'">
 					</div>
 					<div class="inline_button">
 						<input type="button" value="保存" style="font-weight: bold;"

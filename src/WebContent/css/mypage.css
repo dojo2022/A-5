@@ -112,7 +112,7 @@ main {
 
 /* ボタンたちの見た目 */
 .logout_button_css {
-	width: 150px;
+	width: 180px;
 	font: 20px sans-serif;
 	color: #fff;
 	display: inline-block;
@@ -129,7 +129,7 @@ main {
 }
 
 .deletion_button_css {
-	width: 150px;
+	width: 180px;
 	font: 20px sans-serif;
 	color: white;
 	display: inline-block;

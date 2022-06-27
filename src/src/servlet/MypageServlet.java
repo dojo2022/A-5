@@ -24,6 +24,13 @@ public class MypageServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//ログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession();
+		LoginUser loginUser = (LoginUser) session.getAttribute("loginUser");
+		if (loginUser == null) {
+			response.sendRedirect("/machico/LoginServlet");
+			return;
+		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mypage.jsp");
 		dispatcher.forward(request, response);
 	}
