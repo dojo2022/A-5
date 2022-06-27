@@ -13,7 +13,7 @@ public class ScheduleLogicTest {
 		SchedulesDAO sdao = new SchedulesDAO();
 		CalendarBeans cb = new CalendarBeans();
 		cb.setCalendarId(1);
-		var scheduleList = ScheduleLogic.ScheduleCompile(sdao.select(cb, 2022, 2));
+		var scheduleList = ScheduleLogic.ScheduleCompile(sdao.select(cb, 2022, 2),2022, 1);
 		for (ArrayList<Schedule> schedules : scheduleList) {
 			for (Schedule schedule : schedules) {
 				System.out.println(schedule.getSchedule());

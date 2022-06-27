@@ -117,7 +117,7 @@ public class CalendarServlet extends HttpServlet {
 		CalendarBeans cb = loginUser.getCalendarList().get(loginUser.getCalendarIndex());
 		// TODO ScheduleをDBから適切に取れなかった場合の処理を書く
 		List<ArrayList<Schedule>> scheduleList = ScheduleLogic
-				.ScheduleCompile(schedulesDAO.select(cb, loginUser.getYear(), loginUser.getMonth() + 1));
+				.ScheduleCompile(schedulesDAO.select(cb, loginUser.getYear(), loginUser.getMonth() + 1),loginUser.getYear(), loginUser.getMonth());
 		OneMonthSchedule oneMonthSchedule = new OneMonthSchedule();
 		oneMonthSchedule.setSchedule((ArrayList<ArrayList<Schedule>>) scheduleList);
 		request.setAttribute("oneMonthSchedule", oneMonthSchedule);
