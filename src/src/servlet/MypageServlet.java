@@ -43,7 +43,7 @@ public class MypageServlet extends HttpServlet {
 		//ログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		LoginUser loginUser = (LoginUser) session.getAttribute("loginUser");
-		if (loginUser == null) {
+		if (loginUser != null) {
 			// セッションスコープを破棄する
 			session.removeAttribute("loginUser");
 		}
