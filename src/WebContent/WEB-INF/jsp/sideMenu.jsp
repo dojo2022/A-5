@@ -13,11 +13,12 @@
 					<label>
 			            <span><img src="/machico/img/context_icon.png" width="30px"></span>
 			            <input type="checkbox" name="checkbox" class="context_button">
-			            <div class="popup">
+			            <form class="popup" method="post" action="/machico/CalendarServlet">
 			                <ul class="context_menu">
-			                    <li>削除</li>
+								<input type="hidden" name="delete_calendar" value="${status.index}">
+			                    <li><button type="submit" >削除</button></li>
 			                </ul>
-			            </div>
+			            </form>
 			        </label>
 				</li>
 				</c:forEach>
@@ -25,4 +26,5 @@
 			</ul>
 		</div>
 	</div>
+	<input type="hidden" id="err_message" value="${errMessage}">
 </div>

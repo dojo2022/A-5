@@ -361,7 +361,7 @@ public class CalendarsDAO {
 
 			pStmt.setInt(1, cb.getCalendarId());
 			// SQL文を実行する
-			if (pStmt.executeUpdate() != 1) {
+			if (pStmt.executeUpdate() == 1) {
 				return true;
 			} else {
 				return false;

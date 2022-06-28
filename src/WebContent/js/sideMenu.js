@@ -39,3 +39,8 @@ for (let index = 0; index < contextButtons.length; index++) {
         target.checked = isChecked
     })
 }
+
+const errMessage = document.getElementById("err_message").value
+if (errMessage !== "") {
+  alert(errMessage)
+}

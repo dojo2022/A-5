@@ -22,6 +22,7 @@ import beans.GridOneMonthSchedule;
 import beans.LoginUser;
 import beans.OneMonthSchedule;
 import beans.Schedule;
+import dao.CalendarsDAO;
 import dao.SchedulesDAO;
 import logic.ScheduleLogic;
 
@@ -117,7 +118,8 @@ public class CalendarServlet extends HttpServlet {
 		CalendarBeans cb = loginUser.getCalendarList().get(loginUser.getCalendarIndex());
 		// TODO ScheduleをDBから適切に取れなかった場合の処理を書く
 		List<ArrayList<Schedule>> scheduleList = ScheduleLogic
-				.ScheduleCompile(schedulesDAO.select(cb, loginUser.getYear(), loginUser.getMonth() + 1),loginUser.getYear(), loginUser.getMonth());
+				.ScheduleCompile(schedulesDAO.select(cb, loginUser.getYear(), loginUser.getMonth() + 1),
+						loginUser.getYear(), loginUser.getMonth());
 		OneMonthSchedule oneMonthSchedule = new OneMonthSchedule();
 		oneMonthSchedule.setSchedule((ArrayList<ArrayList<Schedule>>) scheduleList);
 		request.setAttribute("oneMonthSchedule", oneMonthSchedule);
@@ -152,6 +154,7 @@ public class CalendarServlet extends HttpServlet {
 			throws ServletException, IOException {
 		//ログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
+		LoginUser loginUser = (LoginUser) session.getAttribute("loginUser");
 		if (session.getAttribute("loginUser") == null) {
 			response.sendRedirect("/machico/LoginServlet");
 			return;
@@ -227,7 +230,35 @@ public class CalendarServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 			return;
 		}
+		String deleteCalendar = request.getParameter("delete_calendar");
 
+		if (deleteCalendar != null) {
+			if (loginUser.getCalendarList().size() <= 1) {
+				request.setAttribute("errMessage", "これ以上カレンダーを減らせません");
+				doGet(request, response);
+				return;
+			}
+			try {
+				int deleteCalenderIndex = Integer.parseInt(deleteCalendar);
+				CalendarsDAO cDAO = new CalendarsDAO();
+				if (cDAO.delete(loginUser.getCalendarList().get(deleteCalenderIndex))) {
+					List<CalendarBeans> calendarList = cDAO.select(loginUser);
+					loginUser.setCalendarList((ArrayList<CalendarBeans>)calendarList);
+					loginUser.setCalendarIndex(0);
+					response.sendRedirect("/machico/CalendarServlet/" + loginUser.getCalendarIndex() + "-"
+							+ loginUser.getCalendarType() + "/?date=" + loginUser.getYear() + "-"
+							+ (loginUser.getMonth() + 1));
+					return;
+				} else {
+					request.setAttribute("errMessage", "カレンダの削除に失敗しました");
+					doGet(request, response);
+					return;
+				}
+
+			} catch (NumberFormatException e) {
+				// 失敗時は、何もせずカレンダーへ
+			}
+		}
 		// カレンダー画面へ移動
 		doGet(request, response);
 	}
