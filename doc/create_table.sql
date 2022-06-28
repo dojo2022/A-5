@@ -46,7 +46,7 @@ CREATE TABLE regular_schedules (
     regular_schedule_value VARCHAR(7) NOT NULL
 );
 
-INSERT INTO users (user_name,user_password) VALUES ('machico_A5' ,'12345678');
+INSERT INTO users (user_name,user_password) VALUES ('higuchi' ,'12345678');
 INSERT INTO calendars ( calendar_name, user_id) VALUES ('プライベート', 1);
 INSERT INTO schedules ( schedule, schedule_type, date, time, last_time, memo , calendar_id,last_date,auto_last_date) VALUES ('友達とランチ', 'F',
 TO_DATE('22-08-6', 'YY-MM-DD') ,null , null,'渋谷', 1, TO_DATE('22-08-6', 'YY-MM-DD') , null);
