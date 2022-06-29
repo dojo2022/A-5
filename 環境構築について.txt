@@ -1,0 +1,22 @@
+※DBの場所
+A-5\dojo6Data.mv.db
+A-5\dojo6Data.trace.db
+
+※DBを配置するディレクトリ(存在しないディレクトリは作成をお願いします。
+C:\dojo6Data\dojo6Data.mv.db
+C:\dojo6Data\dojo6Data.trace.db
+
+※初期化用スクリプト
+A-5\doc\create_tale.sql
+
+※ログインページのサーブレット
+servlet\LoginServlet.java
+
+※ログインネームとパスワード
+username: rina_tea
+password:12345678
+
+※登録済みのサンプルデータについて
+主なサンプルデータは、2022年7月のプライベートカレンダーに書いております
+プライベートカレンダーへの移動は、右上のハンバーガメニューから呼び出せる
+サイドメニューからできます。
