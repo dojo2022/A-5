@@ -54,6 +54,8 @@ INSERT INTO schedules ( schedule, schedule_type, date, time, last_time, memo , c
 TO_DATE('22-07-17', 'YY-MM-DD') ,null , null,'四谷', 1, TO_DATE('22-07-17', 'YY-MM-DD') , null);
 INSERT INTO schedules ( schedule, schedule_type, date, time, last_time, memo , calendar_id,last_date,auto_last_date) VALUES ('友達とランチ', 'F',
 TO_DATE('22-07-8', 'YY-MM-DD') ,null , null,'渋谷', 2, TO_DATE('22-07-8', 'YY-MM-DD') , null);
+INSERT INTO schedules ( schedule, schedule_type, date, time, last_time, memo , calendar_id,last_date,auto_last_date) VALUES ('飲み会', 'F',
+TO_DATE('22-07-8', 'YY-MM-DD') ,null , null,'渋谷', 2, TO_DATE('22-07-8', 'YY-MM-DD') , null);
 INSERT INTO schedules ( schedule, schedule_type, date, time, last_time, memo , calendar_id,last_date,auto_last_date) VALUES ('美容院', 'F',
 TO_DATE('22-07-30', 'YY-MM-DD') ,null , null,'自由が丘', 2, TO_DATE('22-07-30', 'YY-MM-DD') , null);
 INSERT INTO schedules ( schedule, schedule_type, date, time, last_time, memo , calendar_id,last_date,auto_last_date) VALUES ('友達とランチ', 'F',
