@@ -60,8 +60,6 @@ INSERT INTO schedules ( schedule, schedule_type, date, time, last_time, memo , c
 TO_DATE('22-07-12', 'YY-MM-DD') ,null , null,'自由が丘', 2, TO_DATE('22-07-12', 'YY-MM-DD') , null);
 INSERT INTO schedules ( schedule, schedule_type, date, time, last_time, memo , calendar_id,last_date,auto_last_date) VALUES ('飲み会', 'F',
 TO_DATE('22-07-15', 'YY-MM-DD') ,null , null,'麹町', 2, TO_DATE('22-07-15', 'YY-MM-DD') , null);
-INSERT INTO schedules ( schedule, schedule_type, date, time, last_time, memo , calendar_id,last_date,auto_last_date) VALUES ('ガス料金', 'A',
-TO_DATE('22-07-12', 'YY-MM-DD') ,null , null,'', 2, TO_DATE('22-07-12', 'YY-MM-DD') , TO_DATE('22-07-14', 'YY-MM-DD'));
 INSERT INTO schedules ( schedule, schedule_type, date, time, last_time, memo , calendar_id,last_date,auto_last_date) VALUES ('エアコンの掃除', 'A',
 TO_DATE('22-07-15', 'YY-MM-DD') ,null , null,'', 2, TO_DATE('22-07-15', 'YY-MM-DD') , TO_DATE('22-07-20', 'YY-MM-DD'));
 INSERT INTO schedules ( schedule, schedule_type, date, time, last_time, memo , calendar_id,last_date,auto_last_date) VALUES ('部屋の掃除', 'A',
